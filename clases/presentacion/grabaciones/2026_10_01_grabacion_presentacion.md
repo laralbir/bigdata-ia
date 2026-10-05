@@ -8,4 +8,4 @@
 
 🔗 [**Ver grabación en Google Drive**](https://drive.google.com/file/d/1bKTBhAwGD3gOfGrSBQn4uTj3mAs4SoJU/view?usp=drive_link)
 
-> 💡 **Nota:** Para acceder a esta grabación debes utilizar tu cuenta de correo corporativo institucional (`@digitechfp.com`).
+
