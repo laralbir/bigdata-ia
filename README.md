@@ -36,22 +36,22 @@ flowchart TD
 
 ## 📚 Índice de Clases y Anotaciones (Organizado por Asignatura)
 
-### 🎓 1. Sesiones y Clases Lectivas
+### [Presentación](clases/presentacion/)
 
-#### [Presentación](clases/presentacion/)
+#### 🎓 Sesiones y Clases Lectivas
 | Fecha | Sesión / Temática Impartida | Recurso / Acceso |
 | :---: | :--- | :---: |
 | **2026-10-01** | Jornada inaugural, metodología docente y presentación del programa formativo | [📊 Ver PDF](<clases/presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>)<br>[🎥 Grabación](clases/presentacion/grabaciones/2026_10_01_grabacion_presentacion.md) |
 
-#### [Sistemas de Big Data](clases/sistemas_de_big_data/)
+### [Sistemas de Big Data](clases/sistemas_de_big_data/)
+
+#### 🎓 Sesiones y Clases Lectivas
 | Fecha | Sesión / Temática Impartida | Recurso / Acceso |
 | :---: | :--- | :---: |
 | **2026-10-05** | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [Abrir carpeta](clases/sistemas_de_big_data/) |
 | **2026-10-05** | Introducción a los algoritmos y complejidad computacional | [Abrir carpeta](clases/sistemas_de_big_data/) |
 
-### 📝 2. Cuadernos de Anotaciones y Teoría
-
-#### [Sistemas de Big Data](clases/sistemas_de_big_data/)
+#### 📝 Cuadernos de Anotaciones y Teoría
 | Fecha | Documento de Anotaciones | Conceptos Clave Tratados | Acceso al Documento |
 | :---: | :--- | :--- | :---: |
 | **2026-10-05** | [Matemáticas Discretas](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) | Conjuntos, álgebra booleana, tablas de verdad, grafos y árboles aplicados a Big Data con Python | [Leer apunte](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) |
