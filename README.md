@@ -48,8 +48,8 @@ flowchart TD
 #### 🎓 Sesiones y Clases Lectivas
 | Fecha | Sesión / Temática Impartida | Recurso / Acceso |
 | :---: | :--- | :---: |
-| **2026-10-05** | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [Abrir carpeta](clases/sistemas_de_big_data/) |
-| **2026-10-05** | Introducción a los algoritmos y complejidad computacional | [Abrir carpeta](clases/sistemas_de_big_data/) |
+| **2026-10-05** | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) |
+| **2026-10-05** | Introducción a los algoritmos y complejidad computacional | [📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
 
 #### 📝 Cuadernos de Anotaciones y Teoría
 | Fecha | Documento de Anotaciones | Conceptos Clave Tratados | Acceso al Documento |
