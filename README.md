@@ -38,12 +38,12 @@ flowchart TD
 
 ### 🎓 1. Sesiones y Clases Lectivas
 
-| Fecha | Asignatura / Módulo | Sesión / Temática Impartida | Estado | Acceso al Módulo |
+| Fecha | Asignatura / Módulo | Sesión / Temática Impartida | Estado | Recurso / Acceso |
 | :---: | :--- | :--- | :---: | :---: |
-| **2026-10-01** | Presentación | Jornada inaugural, metodología docente y presentación del programa formativo | ✅ Completada | [Abrir carpeta](clases/presentacion/) |
-| **2026-10-05** | Sistemas de Big Data | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | ✅ Completada | [Abrir carpeta](clases/sistemas_de_big_data/) |
-| **2026-10-08** | Sistemas de Big Data | Arquitecturas distribuidas, clústeres, tolerancia a fallos y almacenamiento masivo | ⏳ En curso | [Abrir carpeta](clases/sistemas_de_big_data/) |
-| **2026-10-15** | Big Data Aplicado | Introducción a ecosistemas analíticos aplicados y pipelines de procesamiento | 📌 Planificada | [Abrir carpeta](clases/big_data_aplicado/) |
+| **2026-10-01** | [Presentación](clases/presentacion/) | Jornada inaugural, metodología docente y presentación del programa formativo | ✅ Completada | [📊 Ver PDF](<clases/presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>) |
+| **2026-10-05** | [Sistemas de Big Data](clases/sistemas_de_big_data/) | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | ✅ Completada | [Abrir carpeta](clases/sistemas_de_big_data/) |
+| **2026-10-08** | [Sistemas de Big Data](clases/sistemas_de_big_data/) | Arquitecturas distribuidas, clústeres, tolerancia a fallos y almacenamiento masivo | ⏳ En curso | [Abrir carpeta](clases/sistemas_de_big_data/) |
+| **2026-10-15** | [Big Data Aplicado](clases/big_data_aplicado/) | Introducción a ecosistemas analíticos aplicados y pipelines de procesamiento | 📌 Planificada | [Abrir carpeta](clases/big_data_aplicado/) |
 
 ### 📝 2. Cuadernos de Anotaciones y Teoría
 
@@ -68,7 +68,7 @@ Contiene las carpetas individuales para cada una de las asignaturas cursadas en 
 > 💡 **Nota:** Siguiendo las directrices del proyecto, nunca se almacenan archivos binarios de vídeo en el repositorio local; siempre se gestionan mediante ficheros Markdown que referencian las carpetas de Google Drive.
 
 #### Asignaturas Actuales:
-- [**`presentacion/`**](clases/presentacion/): Jornada inaugural, introducción metodológica y presentación general del curso (*Inicio: 2026-10-01*).
+- [**`presentacion/`**](clases/presentacion/): Jornada inaugural, introducción metodológica y presentación general del curso (*Inicio: 2026-10-01*). Contiene [Presentación MASTER IA y BIGDATA.pdf](<clases/presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>).
 - [**`sistemas_de_big_data/`**](clases/sistemas_de_big_data/): Infraestructuras distribuidas, matemáticas discretas aplicadas a datos, almacenamiento y clustering (*Inicio: 2026-10-05*).
 - [**`big_data_aplicado/`**](clases/big_data_aplicado/): Aplicación práctica de pipelines de datos, ingesta, procesamiento y analítica avanzada (*Inicio: 2026-10-15*).
 

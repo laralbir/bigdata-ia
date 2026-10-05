@@ -10,7 +10,7 @@ A continuación se detallan las sesiones lectivas del curso ordenadas cronológi
 
 | Fecha | Asignatura / Módulo | Sesión / Temática | Recursos Asociados | Estado |
 | :---: | :--- | :--- | :--- | :---: |
-| **2026-10-01** | [**Presentación**](presentacion/) | Bienvenida institucional, metodología docente y presentación del programa formativo | [Ver carpeta](presentacion/) | Completada |
+| **2026-10-01** | [**Presentación**](presentacion/) | Bienvenida institucional, metodología docente y presentación del programa formativo | [📊 Presentación (PDF)](<presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>) | Completada |
 | **2026-10-05** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Fundamentos de lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [Anotaciones](sistemas_de_big_data/anotaciones/matematicas_discretas.md) | Completada |
 | **2026-10-08** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Arquitecturas distribuidas, clústeres, tolerancia a fallos y paradigma de almacenamiento masivo | [Ver módulo](sistemas_de_big_data/) | En curso |
 | **2026-10-15** | [**Big Data Aplicado**](big_data_aplicado/) | Introducción a ecosistemas analíticos aplicados y pipelines de procesamiento masivo | [Ver módulo](big_data_aplicado/) | Planificada |
@@ -58,7 +58,7 @@ Navegación por las asignaturas dadas de alta en el sistema:
 ### 1. [Presentación (`presentacion/`)](presentacion/)
 *Fecha de inicio: 2026-10-01*
 - [Anotaciones](presentacion/anotaciones/)
-- [Presentaciones](presentacion/presentaciones/)
+- [Presentaciones](presentacion/presentaciones/) (incluye [Presentación MASTER IA y BIGDATA.pdf](<presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>))
 - [Entregables](presentacion/entregables/)
 - [Grabaciones](presentacion/grabaciones/)
 - [Calificaciones](presentacion/calificaciones/)
