@@ -99,14 +99,30 @@ La conjunción de dos proposiciones $p$ y $q$ (leído "$p$ y $q$") es verdadera 
 | **F** | **F** | F |
 
 #### Ejemplo Práctico (Filtrado de Logs)
-Imagina que estás procesando un flujo de datos (logs) de un servidor y evalúas dos proposiciones para cada línea de log:
+Imagina que estás procesando un flujo de datos (logs) de un servidor en Python utilizando un DataFrame de Pandas. Supongamos que nuestro DataFrame (al que llamaremos `df`) contiene los siguientes datos de ejemplo:
+
+```python
+import pandas as pd
+
+# df es nuestro DataFrame con los logs del servidor
+df = pd.DataFrame([
+    {"type": "ERROR", "date": "today", "message": "Connection lost"},
+    {"type": "INFO", "date": "today", "message": "Server started"},
+    {"type": "ERROR", "date": "yesterday", "message": "Timeout"},
+    {"type": "WARNING", "date": "today", "message": "High CPU usage"}
+])
+```
+
+Si evaluamos dos proposiciones para cada línea de log:
 - **$p$**: "El registro es de tipo ERROR"
 - **$q$**: "El registro se generó HOY"
 
+Podemos aplicar operaciones lógicas para filtrar estos datos:
+
 1. **Aplicando Negación ($\neg p$)**: Extraemos todos los registros que **NO** son errores (es decir, nos quedamos con advertencias e información). 
-   *En Python (Pandas / Colecciones):* `df[df["type"] != "ERROR"]`
+   *En Python (Pandas):* `df[df["type"] != "ERROR"]`
 2. **Aplicando Conjunción ($p \land q$)**: Filtramos buscando exclusivamente las líneas que cumplan ambas condiciones estrictamente (Errores de hoy).
-   *En Python:* `df[(df["type"] == "ERROR") & (df["date"] == "today")]`
+   *En Python (Pandas):* `df[(df["type"] == "ERROR") & (df["date"] == "today")]`
 
 #### 3. Disyunción ($\lor$)
 La disyunción de dos proposiciones $p$ y $q$ (leído "$p$ o $q$") es verdadera si **al menos una** de las proposiciones es verdadera. Solo es falsa cuando ambas son falsas. En programación suele representarse con `||` o `or`.
