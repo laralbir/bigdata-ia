@@ -60,7 +60,7 @@ Navegación por las asignaturas dadas de alta en el sistema:
 - [Anotaciones](presentacion/anotaciones/)
 - [Presentaciones](presentacion/presentaciones/) (incluye [Presentación MASTER IA y BIGDATA.pdf](<presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>))
 - [Entregables](presentacion/entregables/)
-- [Grabaciones](presentacion/grabaciones/)
+- [Grabaciones](presentacion/grabaciones/) (incluye [Grabación Sesión Inaugural](presentacion/grabaciones/2026_10_01_grabacion_presentacion.md))
 - [Calificaciones](presentacion/calificaciones/)
 
 ### 2. [Sistemas de Big Data (`sistemas_de_big_data/`)](sistemas_de_big_data/)

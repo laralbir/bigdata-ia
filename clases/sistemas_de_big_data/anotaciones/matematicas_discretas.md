@@ -175,8 +175,7 @@ Veamos cómo aplicaríamos estos dos conectores en un pipeline de datos (Data Pi
    ```
 
    ##### Equivalencia Lógica y Calidad de Datos en Python
-   En álgebra booleana, la implicación equivale a:
-   $$p \rightarrow q \equiv \neg p \lor q$$
+   En álgebra booleana, la implicación equivale a $p \rightarrow q \equiv \neg p \lor q$.
 
    *(«O bien el pedido no supera los 100 € ($\neg p$), o bien el envío es gratis ($q$)»)*
 

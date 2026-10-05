@@ -41,7 +41,7 @@ A continuación se indexan las fechas relevantes del calendario académico orden
 ## 📁 Documentos y Recursos de Planificación
 
 Este directorio puede alojar los siguientes recursos:
-- **`calendario_oficial_2026_2027.pdf`**: Calendario lectivo oficial de la comunidad autónoma y del centro de estudios.
+- 📅 [**Calendario Lectivo 2026 2027 Master IA y Big Data.pdf**](<Calendario Lectivo 2026 2027 Master IA y Big Data.pdf>): Calendario lectivo oficial de la comunidad autónoma y del centro de estudios.
 - **Archivos `.ics` (iCalendar)**: Para suscripción y sincronización automática en Google Calendar, Apple Calendar o Microsoft Outlook.
 - **Cuadros de entregables**: Tablas complementarias de control de tiempo (Gantt o Kanban).
 
