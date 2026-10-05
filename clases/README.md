@@ -8,12 +8,10 @@ Módulos formativos del **Curso de Especialización en Big Data e Inteligencia A
 
 A continuación se detallan las sesiones lectivas del curso ordenadas cronológicamente por fecha:
 
-| Fecha | Asignatura / Módulo | Sesión / Temática | Recursos Asociados | Estado |
-| :---: | :--- | :--- | :--- | :---: |
-| **2026-10-01** | [**Presentación**](presentacion/) | Bienvenida institucional, metodología docente y presentación del programa formativo | [📊 Presentación (PDF)](<presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>) | Completada |
-| **2026-10-05** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Fundamentos de lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [Anotaciones](sistemas_de_big_data/anotaciones/matematicas_discretas.md) | Completada |
-| **2026-10-08** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Arquitecturas distribuidas, clústeres, tolerancia a fallos y paradigma de almacenamiento masivo | [Ver módulo](sistemas_de_big_data/) | En curso |
-| **2026-10-15** | [**Big Data Aplicado**](big_data_aplicado/) | Introducción a ecosistemas analíticos aplicados y pipelines de procesamiento masivo | [Ver módulo](big_data_aplicado/) | Planificada |
+| Fecha | Asignatura / Módulo | Sesión / Temática | Recursos Asociados |
+| :---: | :--- | :--- | :--- |
+| **2026-10-01** | [**Presentación**](presentacion/) | Bienvenida institucional, metodología docente y presentación del programa formativo | [📊 Presentación (PDF)](<presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>)<br>[🎥 Grabación](presentacion/grabaciones/2026_10_01_grabacion_presentacion.md) |
+| **2026-10-05** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Matemáticas discretas y complejidad computacional | [📝 Mat. Discretas](sistemas_de_big_data/anotaciones/matematicas_discretas.md)<br>[📝 Intro. Algoritmos](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
 
 ---
 
@@ -24,6 +22,7 @@ Registro detallado de los apuntes teóricos y cuadernos de estudio, ordenados po
 | Fecha | Asignatura | Documento de Anotaciones | Conceptos Clave Tratados | Acceso Directo |
 | :---: | :--- | :--- | :--- | :---: |
 | **2026-10-05** | Sistemas de Big Data | [Matemáticas Discretas](sistemas_de_big_data/anotaciones/matematicas_discretas.md) | Teoría de conjuntos, lógica proposicional, tablas de verdad, álgebra de Boole, grafos y árboles aplicados a Big Data con Python | [Leer apunte](sistemas_de_big_data/anotaciones/matematicas_discretas.md) |
+| **2026-10-05** | Sistemas de Big Data | [Introducción a Algoritmos](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) | Complejidad computacional, notación Big O, análisis de tiempo y espacio, clases de complejidad en Python | [Leer apunte](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
 
 > 💡 **Nota:** Cada vez que se incorporen nuevos apuntes teóricos a la subcarpeta `anotaciones/` de cualquier asignatura, deben registrarse en esta tabla cronológica indicando la fecha de impartición correspondiente.
 

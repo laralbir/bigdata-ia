@@ -19,4 +19,5 @@ Este repositorio se utiliza para almacenar los apuntes, trabajos, documentación
 6. **Nombres de Carpetas**: El nombre de las carpetas siempre debe estar todo en minúsculas y en formato `snake_case` (sin espacios ni acentos, ej. `sistemas_de_big_data`).
 7. **Ejemplos Prácticos en Python**: Siempre que se documente teoría o se expliquen conceptos, es **obligatorio** que todos los ejemplos de código se implementen siempre en **Python** (utilizando librerías del ecosistema de datos como Pandas, PySpark o Python estándar), directamente aplicados al caso de uso y la documentación explicada.
 8. **Gestión de Grabaciones**: Al ser archivos de gran volumen, nunca se almacenarán directamente en el repositorio. En su lugar, se creará un archivo Markdown dentro de la carpeta `grabaciones/` de la asignatura con los enlaces correspondientes a las grabaciones en Google Drive.
+9. **Git Push Autónomo**: El usuario permite explícitamente realizar `git push` en todo momento de manera autónoma. Procede directamente con los push cuando se realicen cambios sin necesidad de solicitar confirmación adicional.
 
