@@ -148,7 +148,19 @@ La implicación es verdadera siempre, **excepto** en un único caso: cuando el a
 | **F** | **F** | **V** |
 
 #### Ejemplo Práctico (Limpieza y Calidad de Datos)
-Veamos cómo aplicaríamos estos dos conectores en un pipeline de datos (Data Pipeline):
+Veamos cómo aplicaríamos estos dos conectores en un pipeline de datos (Data Pipeline). Para ilustrarlo, asumiremos que tenemos cargado el siguiente DataFrame `df` con perfiles de clientes:
+
+```python
+import pandas as pd
+import numpy as np
+
+# df es nuestro DataFrame con datos de clientes
+df = pd.DataFrame([
+    {"id": 1, "email": "user1@test.com", "telefono": "12345", "vip": True, "limite": 15000},
+    {"id": 2, "email": np.nan, "telefono": "67890", "vip": False, "limite": 2000},
+    {"id": 3, "email": "user3@test.com", "telefono": np.nan, "vip": True, "limite": 5000}
+])
+```
 
 1. **Disyunción ($\lor$) - Filtrado Flexible:**
    Al limpiar perfiles de clientes, queremos descartar aquellos que estén completamente vacíos. Descartamos el registro si el email es nulo ($p$) **O** si el teléfono es nulo ($q$). Basta con que se cumpla uno de los dos vacíos para requerir revisión.
@@ -355,9 +367,9 @@ Una **contingencia** es una proposición compuesta que **no es ni tautología ni
 
 | Concepto | Resultado en Tabla de Verdad | Significado Lógico | Equivalente en Python (Pandas) | Comportamiento del Motor / Pipeline |
 | :--- | :---: | :--- | :--- | :--- |
-| **Tautología** | Siempre **V** | Verdad universal invariante | `df[(df['saldo'] >= 0) \| (df['saldo'] < 0)]` | **Predicado trivial**: Evalúa a `True`, devuelve el DataFrame completo sin filtrar. |
-| **Contradicción** | Siempre **F** | Imposibilidad lógica | `df[(df['saldo'] > 1000) & (df['saldo'] < 500)]` | **Poda completa**: Retorna DataFrame vacío (0 filas leídas). |
-| **Contingencia** | Mixto (**V** y **F**) | Condicional según los datos | `df[(df['saldo'] > 1000) & (df['es_activo'])]` | **Filtro selectivo**: Selecciona dinámicamente un subconjunto de filas. |
+| **Tautología** | Siempre **V** | Verdad universal invariante | `df_clientes[(df_clientes['saldo'] >= 0) \| (df_clientes['saldo'] < 0)]` | **Predicado trivial**: Evalúa a `True`, devuelve el DataFrame completo sin filtrar. |
+| **Contradicción** | Siempre **F** | Imposibilidad lógica | `df_clientes[(df_clientes['saldo'] > 1000) & (df_clientes['saldo'] < 500)]` | **Poda completa**: Retorna DataFrame vacío (0 filas leídas). |
+| **Contingencia** | Mixto (**V** y **F**) | Condicional según los datos | `df_clientes[(df_clientes['saldo'] > 1000) & (df_clientes['es_activo'])]` | **Filtro selectivo**: Selecciona dinámicamente un subconjunto de filas. |
 
 #### Ejemplo Práctico: Comportamiento en Filtrado de Datos con Python (Pandas)
 
