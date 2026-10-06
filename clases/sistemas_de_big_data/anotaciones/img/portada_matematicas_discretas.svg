@@ -294,14 +294,14 @@
     <!-- Línea decorativa -->
     <line x1="-300" y1="0" x2="300" y2="0" stroke="#1e3a5f" stroke-width="1.5"/>
 
-    <!-- Nombre de la institución -->
-    <text x="0" y="50" text-anchor="middle" font-size="34" font-weight="800" fill="#ffffff" letter-spacing="3">
-      DIGITECH · FORMACIÓN PROFESIONAL
+    <!-- Titulación oficial -->
+    <text x="0" y="50" text-anchor="middle" font-size="32" font-weight="800" fill="#ffffff" letter-spacing="2.5">
+      CURSO DE ESPECIALIZACIÓN EN IA Y BIG DATA
     </text>
 
-    <!-- Titulación oficial -->
-    <text x="0" y="95" text-anchor="middle" font-size="24" font-weight="600" fill="#38bdf8" letter-spacing="2">
-      Curso de Especialización en Inteligencia Artificial y Big Data
+    <!-- Subtítulo formativo -->
+    <text x="0" y="95" text-anchor="middle" font-size="24" font-weight="600" fill="#38bdf8" letter-spacing="3">
+      FORMACIÓN PROFESIONAL · CURSO 2026/2027
     </text>
 
     <!-- Metadatos de la clase -->
