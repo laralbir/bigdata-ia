@@ -807,7 +807,54 @@ El rendimiento de un algoritmo se evalúa analizando el consumo de dos recursos 
 #### La Notación Big O ($O$)
 La notación **Big O** define el límite superior asintótico del crecimiento de un algoritmo. Nos indica el **peor escenario posible** de consumo de recursos cuando el volumen de datos tiende a infinito ($n \to \infty$).
 
-![Gráfico de Complejidad Computacional](img/complejidad_computacional.png)
+```mermaid
+flowchart TD
+    subgraph BigOChart["Gráfico de Complejidad Computacional (Big O vs Tamaño de Entrada n)"]
+        direction TB
+
+        subgraph Inviable["Zona Inviable / Horrible (Intratable en Big Data)"]
+            O2n["O(2ⁿ) - Exponencial (Curva Roja Vertical)<br/>n = 16 ⇒ 65.536 ops | n = 32 ⇒ ~4.3 × 10⁹ ops<br/>Inviable para datasets masivos"]
+        end
+
+        subgraph Critico["Zona Crítica / Pobre (Peligro en Big Data)"]
+            On2["O(n²) - Cuadrática (Curva Naranja Parabólica)<br/>n = 16 ⇒ 256 ops | n = 10.000 ⇒ 100.000.000 ops<br/>Ej: Bubble Sort, Bucles anidados, Joins cartesianos"]
+        end
+
+        subgraph Aceptable["Zona Aceptable / Manejable (Crecimiento Controlado)"]
+            Onlogn["O(n log n) - Lineal-Logarítmica (Curva Morada)<br/>n = 16 ⇒ 64 ops | n = 1.000.000 ⇒ ~2 × 10⁷ ops<br/>Estándar óptimo de ordenación (Quicksort, Mergesort, Spark Shuffle)"]
+            On["O(n) - Lineal (Línea Azul con Pendiente 1:1)<br/>n = 16 ⇒ 16 ops | n = 1.000.000 ⇒ 1.000.000 ops<br/>Recorrido secuencial, transformaciones map()"]
+        end
+
+        subgraph Optima["Zona Óptima / Excelente (Altamente Escalable)"]
+            Ologn["O(log n) - Logarítmica (Curva Amarilla Sublineal)<br/>n = 16 ⇒ 4 ops | n = 1.000.000 ⇒ ~20 ops<br/>Búsqueda binaria, árboles balanceados (AVL / B-Tree)"]
+            O1["O(1) - Constante (Línea Verde Horizontal)<br/>n = 16 ⇒ 1 op | n = 1.000.000.000 ⇒ 1 op<br/>Acceso por clave en Tabla Hash / Diccionario"]
+        end
+
+        Optima ==>|Mayor consumo de operaciones por registro| Aceptable
+        Aceptable ==>|Barrera de escalabilidad en clúster| Critico
+        Critico ==>|Explosión combinatoria intratable| Inviable
+    end
+```
+
+```mermaid
+flowchart LR
+    subgraph EvalN16["Evaluación Numérica del Gráfico para n = 16"]
+        direction TB
+        N16["Tamaño de entrada:<br/>n = 16"]
+        N16 --> E1["O(1) = 1 op"]
+        N16 --> E2["O(log₂ n) = 4 ops"]
+        N16 --> E3["O(n) = 16 ops"]
+        N16 --> E4["O(n log₂ n) = 64 ops"]
+        N16 --> E5["O(n²) = 256 ops"]
+        N16 --> E6["O(2ⁿ) = 65.536 ops"]
+    end
+```
+
+> 💡 **Nota sobre las curvas:**  
+> Para una muestra de tamaño $n = 16$:  
+> - $(1, \log_2 n, n) = (1, 4, 16)$  
+> - $(n \log_2 n, n^2) = (64, 256)$  
+> - $2^n = 65.536$ ops. Mientras que un algoritmo $O(1)$ o $O(\log n)$ se ejecuta en nanosegundos, un algoritmo $O(2^n)$ se dispara de forma inasumible.
 
 | Complejidad | Nombre | Ejemplo Típico | Comportamiento en Big Data |
 | :--- | :--- | :--- | :--- |
