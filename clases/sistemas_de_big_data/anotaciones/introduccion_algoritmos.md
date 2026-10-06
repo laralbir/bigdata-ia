@@ -171,9 +171,35 @@ El rendimiento se mide en dos dimensiones fundamentales:
 ### 3.1 La Notación Big O ($O$)
 
 La notación **Big O** describe la **cota superior asintótica** de un algoritmo; es decir, representa el **peor escenario posible** de consumo de recursos. Clasifica los algoritmos según su tasa de crecimiento frente a variaciones en el tamaño de la entrada $n$.
+##### Gráfico de Curvas en Mermaid (Plano Cartesiano $n$ vs Operaciones)
+
+```mermaid
+xychart-beta
+    title "Gráfico de Curvas de Complejidad Computacional (Big O)"
+    x-axis "Tamaño de Entrada (n)" [1, 2, 4, 8, 12, 16]
+    y-axis "Operaciones f(n)" 0 --> 300
+    line [1, 1, 1, 1, 1, 1]
+    line [0, 1, 2, 3, 3.58, 4]
+    line [1, 2, 4, 8, 12, 16]
+    line [0, 2, 8, 24, 43, 64]
+    line [1, 4, 16, 64, 144, 256]
+```
+
+> 📊 **Correspondencia de Curvas en el Gráfico Mermaid (hasta $n = 16$):**  
+> - **Curva 1 (Horizontal plana):** $O(1)$ — Constante ($y = 1$)  
+> - **Curva 2 (Sublineal):** $O(\log_2 n)$ — Logarítmica ($y = 4$ para $n = 16$)  
+> - **Curva 3 (Diagonal 1:1):** $O(n)$ — Lineal ($y = 16$ para $n = 16$)  
+> - **Curva 4 (Ascendente):** $O(n \log_2 n)$ — Lineal-logarítmica ($y = 64$ para $n = 16$)  
+> - **Curva 5 (Parabólica):** $O(n^2)$ — Cuadrática ($y = 256$ para $n = 16$)  
+> - *(Fuera de escala vertical):* $O(2^n)$ — Exponencial ($2^{16} = 65.536$ operaciones, escala verticalmente disparada)
+
+##### Infografía de Referencia de Curvas y Zonas de Rendimiento
+![Gráfico de Complejidad Computacional](img/complejidad_computacional.png)
+
+##### Diagrama Estructural de Zonas y Escalabilidad en Big Data
 ```mermaid
 flowchart TD
-    subgraph BigOChart["Gráfico de Complejidad Computacional (Big O vs Tamaño de Entrada n)"]
+    subgraph BigOChart["Zonas de Escalabilidad Computacional (Big O vs Tamaño de Entrada n)"]
         direction TB
 
         subgraph Inviable["Zona Inviable / Horrible (Intratable en Big Data)"]
@@ -194,9 +220,9 @@ flowchart TD
             O1["O(1) - Constante (Línea Verde Horizontal)<br/>n = 16 ⇒ 1 op | n = 1.000.000.000 ⇒ 1 op<br/>Acceso por clave en Tabla Hash / Diccionario"]
         end
 
-        Optima ==>|Mayor consumo de operaciones por registro| Aceptable
-        Aceptable ==>|Barrera de escalabilidad en clúster| Critico
-        Critico ==>|Explosión combinatoria intratable| Inviable
+        Optima ==>|"Mayor consumo de operaciones por registro"| Aceptable
+        Aceptable ==>|"Barrera de escalabilidad en clúster"| Critico
+        Critico ==>|"Explosión combinatoria intratable"| Inviable
     end
 ```
 

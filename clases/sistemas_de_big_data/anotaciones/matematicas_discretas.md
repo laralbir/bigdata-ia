@@ -185,15 +185,15 @@ flowchart LR
     subgraph PropGrafos["Comportamiento Gráfico de las Propiedades"]
         direction TB
         subgraph Refl["Reflexividad"]
-            R_a["a"] -->|Auto-bucle| R_a
+            R_a["a"] -->|"Auto-bucle"| R_a
         end
         subgraph Sime["Simetría"]
-            S_a["a"] <-->|Arista bidireccional| S_b["b"]
+            S_a["a"] <-->|"Arista bidireccional"| S_b["b"]
         end
         subgraph Tran["Transitividad"]
             T_a["a"] --> T_b["b"]
             T_b --> T_c["c"]
-            T_a -->|Atajo directo (a, c)| T_c
+            T_a -->|"Atajo directo (a, c)"| T_c
         end
     end
 
@@ -321,8 +321,8 @@ flowchart LR
             by1["y₁"]
             by2["y₂"]
         end
-        b1 <-->|f / f⁻¹| by1
-        b2 <-->|f / f⁻¹| by2
+        b1 <-->|"f / f⁻¹"| by1
+        b2 <-->|"f / f⁻¹"| by2
     end
 ```
 
@@ -354,9 +354,9 @@ flowchart LR
     K3 --> H
     K4 --> H
 
-    H -->|h(k)=0| W0
-    H -->|h(k)=1 (Colisión)| W1
-    H -->|h(k)=2| W2
+    H -->|"h(k) = 0"| W0
+    H -->|"h(k) = 1 (Colisión)"| W1
+    H -->|"h(k) = 2"| W2
 ```
 
 > 📌 **Aplicaciones en Big Data:**  
@@ -807,9 +807,35 @@ El rendimiento de un algoritmo se evalúa analizando el consumo de dos recursos 
 #### La Notación Big O ($O$)
 La notación **Big O** define el límite superior asintótico del crecimiento de un algoritmo. Nos indica el **peor escenario posible** de consumo de recursos cuando el volumen de datos tiende a infinito ($n \to \infty$).
 
+##### 1. Gráfico de Curvas en Mermaid (Plano Cartesiano $n$ vs Operaciones)
+
+```mermaid
+xychart-beta
+    title "Gráfico de Curvas de Complejidad Computacional (Big O)"
+    x-axis "Tamaño de Entrada (n)" [1, 2, 4, 8, 12, 16]
+    y-axis "Operaciones f(n)" 0 --> 300
+    line [1, 1, 1, 1, 1, 1]
+    line [0, 1, 2, 3, 3.58, 4]
+    line [1, 2, 4, 8, 12, 16]
+    line [0, 2, 8, 24, 43, 64]
+    line [1, 4, 16, 64, 144, 256]
+```
+
+> 📊 **Correspondencia de Curvas en el Gráfico Mermaid (hasta $n = 16$):**  
+> - **Curva 1 (Horizontal plana):** $O(1)$ — Constante ($y = 1$)  
+> - **Curva 2 (Sublineal):** $O(\log_2 n)$ — Logarítmica ($y = 4$ para $n = 16$)  
+> - **Curva 3 (Diagonal 1:1):** $O(n)$ — Lineal ($y = 16$ para $n = 16$)  
+> - **Curva 4 (Ascendente):** $O(n \log_2 n)$ — Lineal-logarítmica ($y = 64$ para $n = 16$)  
+> - **Curva 5 (Parabólica):** $O(n^2)$ — Cuadrática ($y = 256$ para $n = 16$)  
+> - *(Fuera de escala vertical):* $O(2^n)$ — Exponencial ($2^{16} = 65.536$ operaciones, escala verticalmente disparada)
+
+##### 2. Infografía de Referencia de Curvas y Zonas de Rendimiento
+![Gráfico de Complejidad Computacional](img/complejidad_computacional.png)
+
+##### 3. Diagrama Estructural de Zonas y Escalabilidad en Big Data
 ```mermaid
 flowchart TD
-    subgraph BigOChart["Gráfico de Complejidad Computacional (Big O vs Tamaño de Entrada n)"]
+    subgraph BigOChart["Zonas de Escalabilidad Computacional (Big O vs Tamaño de Entrada n)"]
         direction TB
 
         subgraph Inviable["Zona Inviable / Horrible (Intratable en Big Data)"]
@@ -830,9 +856,9 @@ flowchart TD
             O1["O(1) - Constante (Línea Verde Horizontal)<br/>n = 16 ⇒ 1 op | n = 1.000.000.000 ⇒ 1 op<br/>Acceso por clave en Tabla Hash / Diccionario"]
         end
 
-        Optima ==>|Mayor consumo de operaciones por registro| Aceptable
-        Aceptable ==>|Barrera de escalabilidad en clúster| Critico
-        Critico ==>|Explosión combinatoria intratable| Inviable
+        Optima ==>|"Mayor consumo de operaciones por registro"| Aceptable
+        Aceptable ==>|"Barrera de escalabilidad en clúster"| Critico
+        Critico ==>|"Explosión combinatoria intratable"| Inviable
     end
 ```
 
@@ -1027,10 +1053,10 @@ flowchart LR
 
     subgraph Ponderado["3. Grafo Ponderado (Latencias en Red)"]
         direction LR
-        S1["Nodo A"] -->|5 ms| S2["Nodo B"]
-        S1 -->|2 ms| S3["Nodo C"]
-        S2 -->|1 ms| S4["Nodo D"]
-        S3 -->|8 ms| S4
+        S1["Nodo A"] -->|"5 ms"| S2["Nodo B"]
+        S1 -->|"2 ms"| S3["Nodo C"]
+        S2 -->|"1 ms"| S4["Nodo D"]
+        S3 -->|"8 ms"| S4
     end
 ```
 
