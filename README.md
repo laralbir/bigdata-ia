@@ -48,14 +48,14 @@ flowchart TD
 #### 🎓 Sesiones y Clases Lectivas
 | Fecha | Sesión / Temática Impartida | Recurso / Acceso |
 | :---: | :--- | :---: |
-| **2026-10-05** | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [📊 Material (DOCX)](<clases/sistemas_de_big_data/presentaciones/2026-10-05 - SBD Conceptos Basicos.docx>)<br>[📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) |
-| **2026-10-05** | Introducción a los algoritmos y complejidad computacional | [📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
+| **2026-10-05** | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [📊 Material (DOCX)](<clases/sistemas_de_big_data/presentaciones/2026-10-05 - SBD Conceptos Basicos.docx>)<br>[📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md)<br>[🎥 Grabación](clases/sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md) |
+| **2026-10-05** | Introducción a los algoritmos y complejidad computacional | [📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md)<br>[🎥 Grabación](clases/sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md) |
 
 #### 📝 Cuadernos de Anotaciones y Teoría
 | Fecha | Documento de Anotaciones | Conceptos Clave Tratados | Acceso al Documento |
-| :---: | :--- | :--- | :---: |
+| :---: | :--- | :--- | :--- : |
 | **2026-10-05** | [Matemáticas Discretas](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) | Conjuntos, álgebra booleana, tablas de verdad, grafos y árboles aplicados a Big Data con Python | [Leer apunte](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) |
-| **2026-10-05** | [Introducción a los Algoritmos](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) | Complejidad computacional, notación Big O y análisis de tiempo/espacio en Python | [Leer apunte](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
+| **2026-10-05** | [Introducción a los Algoritmos](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) | Fundamentos algorítmicos, pseudocódigo, TAD (pilas/colas), Big O, búsqueda, ordenación, grafos y árboles en Python | [Leer apunte](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
 
 > 💡 **Nota:** Para consultar la lista completa y actualizada de sesiones, dirígete a [**`clases/README.md`**](clases/README.md).
 
