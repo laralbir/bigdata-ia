@@ -11,7 +11,7 @@ A continuación se detallan las sesiones lectivas del curso ordenadas cronológi
 | Fecha | Asignatura / Módulo | Sesión / Temática | Recursos Asociados |
 | :---: | :--- | :--- | :--- |
 | **2026-10-01** | [**Presentación**](presentacion/) | Bienvenida institucional, metodología docente y presentación del programa formativo | [📊 Presentación (PDF)](<presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>)<br>[🎥 Grabación](presentacion/grabaciones/2026_10_01_grabacion_presentacion.md) |
-| **2026-10-05** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Matemáticas discretas y complejidad computacional | [📝 Mat. Discretas](sistemas_de_big_data/anotaciones/matematicas_discretas.md)<br>[📝 Intro. Algoritmos](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
+| **2026-10-05** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Matemáticas discretas y complejidad computacional | [📊 Material (DOCX)](<sistemas_de_big_data/presentaciones/2026-10-05 - SBD Conceptos Basicos.docx>)<br>[📝 Mat. Discretas](sistemas_de_big_data/anotaciones/matematicas_discretas.md)<br>[📝 Intro. Algoritmos](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
 
 ---
 
@@ -65,7 +65,7 @@ Navegación por las asignaturas dadas de alta en el sistema:
 ### 2. [Sistemas de Big Data (`sistemas_de_big_data/`)](sistemas_de_big_data/)
 *Fecha de inicio: 2026-10-05*
 - [Anotaciones](sistemas_de_big_data/anotaciones/) (incluye [Matemáticas Discretas](sistemas_de_big_data/anotaciones/matematicas_discretas.md))
-- [Presentaciones](sistemas_de_big_data/presentaciones/)
+- [Presentaciones](sistemas_de_big_data/presentaciones/) (incluye [2026-10-05 - SBD Conceptos Basicos.docx](<sistemas_de_big_data/presentaciones/2026-10-05 - SBD Conceptos Basicos.docx>))
 - [Entregables](sistemas_de_big_data/entregables/)
 - [Grabaciones](sistemas_de_big_data/grabaciones/)
 - [Calificaciones](sistemas_de_big_data/calificaciones/)

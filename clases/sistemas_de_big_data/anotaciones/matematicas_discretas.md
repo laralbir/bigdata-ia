@@ -1,453 +1,992 @@
-# Matemáticas Discretas
+# Matemáticas Discretas y Fundamentos Computacionales
 
 > Apuntes y ampliación de teoría de la asignatura **Sistemas de Big Data**.  
-> 📅 **Fecha:** 2026-10-05
+> 📅 **Fecha:** 2026-10-05  
+> 📖 **Documento de referencia:** `2026-10-05 - SBD Conceptos Basicos.docx`
 
 ---
 
-## 1. Teoría de Conjuntos
+## Introducción
 
-Un **conjunto** es una colección bien definida de objetos o entidades, llamados *elementos* o *miembros*. En matemáticas discretas y Big Data, los conjuntos son la base para estructurar y relacionar datos.
+La **matemática discreta** constituye la base teórica y conceptual sobre la que se asientan las ciencias de la computación, la ingeniería de software y el análisis masivo de datos (**Big Data**). A diferencia del cálculo infinitesimal o las matemáticas continuas (que operan con números reales y variaciones continuas), la matemática discreta estudia estructuras compuestas por elementos diferenciados, individuales y contables.
 
-### Operaciones Básicas entre Conjuntos
+Conceptos fundamentales como **conjuntos**, **relaciones**, **funciones**, **lógica formal** y **algorítmica** son esenciales para modelar, estructurar, transformar y optimizar la información en arquitecturas distribuidas. Dominar estos fundamentos permite a los ingenieros y científicos de datos comprender los principios internos de los motores de procesamiento (como Apache Spark, Hadoop o motores relacionales), diseñar algoritmos escalables y prevenir cuellos de botella computacionales.
 
-A continuación, se resumen las principales operaciones que puedes realizar entre dos conjuntos $A$ y $B$, asumiendo un conjunto universal $U$.
+### Lecturas Recomendadas y Recursos de Autoformación
+- 🌐 [Math is Fun - Set Theory Index](https://www.mathsisfun.com/sets/): Guía interactiva de fundamentos de teoría de conjuntos.
+- 🎥 [Matemática Discreta 1: Inducción Completa (Sesión 1)](https://youtu.be/8Ag507fO62w): Demostraciones por inducción matemática y razonamiento deductivo.
+- 🎥 [Matemática Discreta 1: Inducción Completa (Sesión 2)](https://youtu.be/uB1K-a414yI): Ejercicios y aplicaciones del principio de inducción.
+
+```mermaid
+flowchart LR
+    MD["Matemáticas Discretas en Big Data"] --> P1["1. Conjuntos, Relaciones y Funciones"]
+    MD --> P2["2. Lógica Formal e Inferencia"]
+    MD --> P3["3. Algoritmos, Estructuras y Complejidad"]
+
+    P1 --> P1_desc["Estructuración, relaciones entre entidades y mapeo funcional"]
+    P2 --> P2_desc["Reglas de negocio, optimización de consultas y deducción en IA"]
+    P3 --> P3_desc["Eficiencia asintótica, estructuras de datos, grafos y árboles"]
+```
+
+---
+
+## 1. Conjuntos, Relaciones y Funciones
+
+### 1.1 ¿Por qué Matemática Discreta en Big Data e IA?
+
+El procesamiento de datos a gran escala no opera sobre flujos continuos indeterminados, sino sobre registros atómicos, particiones, tablas y grafos. La matemática discreta aporta:
+
+1. **Fundamento computacional esencial:** Toda la arquitectura de procesadores y sistemas binarios descansa en estados discretos (0 y 1). Proporciona la base teórica para las estructuras de datos (arrays, listas, colas, grafos, árboles) y algoritmos.
+2. **Lógica de programación y diseño de consultas:** La semántica de las consultas SQL, el cálculo relacional y las expresiones booleanas en condicionales (`if-else`, filtros) son aplicaciones directas de la lógica proposicional y de conjuntos.
+3. **Modelado de problemas en Big Data:** Representación de redes sociales mediante grafos, modelado de particionado de datos mediante funciones hash y particiones de conjuntos, y optimización de hiperparámetros en Machine Learning.
+4. **Pensamiento lógico y analítico:** Fomenta el razonamiento estructurado, la demostración de corrección de algoritmos y la capacidad sistemática de resolución de problemas técnicos complejos.
+
+---
+
+### 1.2 Conjuntos: La Base de Todo
+
+Un **conjunto** es una colección bien definida de objetos o entidades, llamados *elementos* o *miembros*. Un elemento solo puede pertenecer o no pertenecer a un conjunto ($\in$ o $\notin$), y los elementos de un conjunto son **únicos y distintos** (no hay duplicados por definición).
+
+Los conjuntos pueden ser:
+- **Finitos:** Poseen un número contable determinado de elementos (por ejemplo, el catálogo de productos de una tienda o los nodos de un clúster).
+- **Infinitos:** Poseen infinitos elementos (por ejemplo, el conjunto de los números enteros $\mathbb{Z}$ o los posibles flujos continuos de números reales).
+
+#### Operaciones Básicas entre Conjuntos
+
+Considerando dos conjuntos $A$ y $B$ dentro de un conjunto universal $U$:
 
 | Operación | Símbolo | Definición (Lógica) | Descripción |
 | :--- | :---: | :--- | :--- |
-| **Unión** | $A \cup B$ | $\{x \mid x \in A \lor x \in B\}$ | Elementos que pertenecen a $A$, a $B$, o a ambos. Se combinan todos los elementos sin repetir. |
-| **Intersección**| $A \cap B$ | $\{x \mid x \in A \land x \in B\}$ | Elementos que son comunes tanto a $A$ como a $B$. |
-| **Diferencia** | $A \setminus B$ | $\{x \mid x \in A \land x \notin B\}$ | Elementos que pertenecen exclusivamente a $A$ y que no están en $B$. |
-| **Complemento**| $A^c$ o $A'$ | $\{x \mid x \in U \land x \notin A\}$ | Todos los elementos del conjunto universal $U$ que **no** pertenecen a $A$. |
+| **Unión** | $A \cup B$ | $\{x \mid x \in A \lor x \in B\}$ | Elementos que pertenecen a $A$, a $B$, o a ambos (todos combinados sin duplicados). |
+| **Intersección**| $A \cap B$ | $\{x \mid x \in A \land x \in B\}$ | Elementos comunes que pertenecen simultáneamente a $A$ y a $B$. |
+| **Diferencia** | $A \setminus B$ | $\{x \mid x \in A \land x \notin B\}$ | Elementos que pertenecen exclusivamente a $A$ y no están en $B$. |
+| **Complemento**| $A^c$ o $A'$ | $\{x \mid x \in U \land x \notin A\}$ | Todos los elementos del universo $U$ que **no** pertenecen a $A$. |
 
 #### Mapa Conceptual de Operaciones
 ```mermaid
 flowchart TD
-    Root["Operaciones de Conjuntos"] --> U["Unión"]
-    Root --> I["Intersección"]
-    Root --> D["Diferencia"]
-    Root --> C["Complemento"]
+    Root["Operaciones de Conjuntos"] --> U["Unión (A ∪ B)"]
+    Root --> I["Intersección (A ∩ B)"]
+    Root --> D["Diferencia (A ∖ B)"]
+    Root --> C["Complemento (Aᶜ)"]
     
-    U --> U_desc["Todo lo de A y B"]
-    I --> I_desc["Solo elementos en común"]
-    D --> D_desc["En A pero no en B"]
-    C --> C_desc["Lo que no está en A"]
+    U --> U_desc["Todos los elementos de A y B sin duplicados"]
+    I --> I_desc["Solo elementos comunes a ambos"]
+    D --> D_desc["En A pero descartando los que están en B"]
+    C --> C_desc["Todos los elementos del universo que no están en A"]
 ```
 
-#### Ejemplo Práctico (Analítica de Datos)
-Imagina que analizamos los clientes de un e-commerce:
-- **Conjunto A**: Clientes que compraron tecnología en Black Friday $\rightarrow \{Ana, Luis, Carlos, Marta\}$
-- **Conjunto B**: Clientes que son usuarios "Premium" $\rightarrow \{Carlos, Marta, Pedro, Sofia\}$
+> 💡 **Representación Visual (Diagramas de Venn):**  
+> Los diagramas de Venn representan conjuntos mediante curvas cerradas (habitualmente círculos) en un plano. Las áreas superpuestas ilustran las relaciones e intersecciones entre los conjuntos, mientras que la región exterior dentro del rectángulo delimitador representa el universo $U$.
 
-- **Unión ($A \cup B$)**: $\{Ana, Luis, Carlos, Marta, Pedro, Sofia\}$ *(Todos los clientes que impactan en una campaña combinada)*.
-- **Intersección ($A \cap B$)**: $\{Carlos, Marta\}$ *(Clientes Premium que compraron tecnología)*.
-- **Diferencia ($A \setminus B$)**: $\{Ana, Luis\}$ *(Clientes que compraron tecnología pero **no** son Premium, ideal para ofrecerles la suscripción)*.
-- **Complemento ($A^c$)**: Si el universo $U$ es toda la base de datos (1.000 usuarios), el complemento serían los 996 usuarios que **no** compraron tecnología.
+#### Ejemplo Práctico en Python (Analítica de Datos)
 
-> 💡 **Equivalencia en Python (Conjuntos y Estructuras de Datos):** 
-> - **Unión ($A \cup B$):** `A | B` o `A.union(B)`.
-> - **Intersección ($A \cap B$):** `A & B` o `A.intersection(B)`.
-> - **Diferencia ($A \setminus B$):** `A - B` o `A.difference(B)`.
-> - **Complemento ($A^c$):** `universo - A`.
-
----
-
-## 2. Lógica Proposicional
-
-### La Proposición (Afirmación)
-Una **proposición lógica** o **afirmación** es un enunciado declarativo que tiene un único valor de verdad: **Verdadero (V)** o **Falso (F)**. Nunca puede ser ambas cosas a la vez ni ninguna de ellas.
-
-**Ejemplos:**
-- ✅ *"Hadoop es un framework de Big Data."* -> Es una proposición (Verdadera).
-- ✅ *"2 + 2 = 5."* -> Es una proposición (Falsa).
-- ❌ *"¡Cierra la puerta!"* -> **No** es una proposición (Es una orden, no se puede evaluar como V o F).
-- ❌ *"¿Qué hora es?"* -> **No** es una proposición (Es una pregunta).
-
-#### Árbol de Decisión: ¿Es una proposición?
-
-```mermaid
-flowchart TD
-    A["Enunciado"] --> B{"¿Es declarativo?"}
-    B -->|"No"| C["No es proposición"]
-    B -->|"Sí"| D{"¿Tiene valor V o F?"}
-    D -->|"No o Ambas"| E["No es proposición"]
-    D -->|"Solo una"| F["Sí es proposición"]
-```
-
-### Conectores Lógicos Básicos
-
-Los conectores lógicos nos permiten construir proposiciones compuestas a partir de proposiciones simples. Operan de forma muy similar a las compuertas lógicas en sistemas informáticos.
-
-#### 1. Negación ($\neg$ o $\sim$)
-La negación invierte el valor de verdad de una proposición. Si $p$ es Verdadera, $\neg p$ es Falsa, y viceversa. En programación suele representarse con `!` o `NOT`.
-
-**Tabla de Verdad:**
-| $p$ | $\neg p$ |
-| :---: | :---: |
-| **V** | F |
-| **F** | V |
-
-#### 2. Conjunción ($\land$)
-La conjunción de dos proposiciones $p$ y $q$ (leído "$p$ y $q$") es verdadera **solo si ambas** proposiciones son verdaderas simultáneamente. En programación suele representarse con `&&` o `AND`.
-
-**Tabla de Verdad:**
-| $p$ | $q$ | $p \land q$ |
-| :---: | :---: | :---: |
-| **V** | **V** | **V** |
-| **V** | **F** | F |
-| **F** | **V** | F |
-| **F** | **F** | F |
-
-#### Ejemplo Práctico (Filtrado de Logs)
-Imagina que estás procesando un flujo de datos (logs) de un servidor en Python utilizando un DataFrame de Pandas. Supongamos que nuestro DataFrame (al que llamaremos `df`) contiene los siguientes datos de ejemplo:
+Imaginemos que analizamos usuarios de una plataforma e-commerce en Python utilizando `set` y un DataFrame de `pandas`:
 
 ```python
 import pandas as pd
 
-# df es nuestro DataFrame con los logs del servidor
-df = pd.DataFrame([
-    {"type": "ERROR", "date": "today", "message": "Connection lost"},
-    {"type": "INFO", "date": "today", "message": "Server started"},
-    {"type": "ERROR", "date": "yesterday", "message": "Timeout"},
-    {"type": "WARNING", "date": "today", "message": "High CPU usage"}
+# Definición de universos y conjuntos de usuarios
+universo_usuarios = {"Ana", "Luis", "Carlos", "Marta", "Pedro", "Sofia", "Jorge", "Elena"}
+compradores_tecnologia = {"Ana", "Luis", "Carlos", "Marta"}      # Conjunto A
+usuarios_premium = {"Carlos", "Marta", "Pedro", "Sofia"}          # Conjunto B
+
+# Operaciones con tipos set en Python
+union = compradores_tecnologia | usuarios_premium
+interseccion = compradores_tecnologia & usuarios_premium
+diferencia = compradores_tecnologia - usuarios_premium
+complemento = universo_usuarios - compradores_tecnologia
+
+print("Unión (A ∪ B):", union)
+print("Intersección (A ∩ B):", interseccion)
+print("Diferencia (A ∖ B - candidatos a suscripción):", diferencia)
+print("Complemento (Aᶜ - usuarios que no compraron tecnología):", complemento)
+
+# Equivalencia vectorial con Pandas
+df_clientes = pd.DataFrame([
+    {"usuario": u, "compro_tec": u in compradores_tecnologia, "es_premium": u in usuarios_premium}
+    for u in universo_usuarios
 ])
+
+# Filtrado por intersección y diferencia
+premium_con_tecnologia = df_clientes[df_clientes["compro_tec"] & df_clientes["es_premium"]]
+candidatos_promo = df_clientes[df_clientes["compro_tec"] & (~df_clientes["es_premium"])]
+
+print("\n--- Vista en Pandas: Compraron tecnología y NO son Premium ---")
+print(candidatos_promo[["usuario", "compro_tec", "es_premium"]])
 ```
 
-Si evaluamos dos proposiciones para cada línea de log:
-- **$p$**: "El registro es de tipo ERROR"
-- **$q$**: "El registro se generó HOY"
+---
 
-Podemos aplicar operaciones lógicas para filtrar estos datos:
+### 1.3 Relaciones: Conexiones entre Elementos
 
-1. **Aplicando Negación ($\neg p$)**: Extraemos todos los registros que **NO** son errores (es decir, nos quedamos con advertencias e información). 
-   *En Python (Pandas):* `df[df["type"] != "ERROR"]`
-2. **Aplicando Conjunción ($p \land q$)**: Filtramos buscando exclusivamente las líneas que cumplan ambas condiciones estrictamente (Errores de hoy).
-   *En Python (Pandas):* `df[(df["type"] == "ERROR") & (df["date"] == "today")]`
+Una **relación binaria** $R$ entre dos conjuntos $A$ y $B$ es formalmente un subconjunto de su producto cartesiano: $R \subseteq A \times B$. Representa una correspondencia o vínculo entre pares ordenados $(a, b)$ que satisfacen una condición específica (se escribe $a R b$ si $(a, b) \in R$).
 
-#### 3. Disyunción ($\lor$)
-La disyunción de dos proposiciones $p$ y $q$ (leído "$p$ o $q$") es verdadera si **al menos una** de las proposiciones es verdadera. Solo es falsa cuando ambas son falsas. En programación suele representarse con `||` o `or`.
+**Ejemplo numérico:** Dado el conjunto $A = \{2, 3, 4, 6\}$, la relación *"es múltiplo de"* genera pares como $(4, 2)$, $(6, 2)$ y $(6, 3)$, pero no $(3, 2)$ ni $(2, 4)$.
 
-**Tabla de Verdad:**
-| $p$ | $q$ | $p \lor q$ |
-| :---: | :---: | :---: |
-| **V** | **V** | **V** |
-| **V** | **F** | **V** |
-| **F** | **V** | **V** |
-| **F** | **F** | F |
+#### Propiedades Fundamentales de las Relaciones
 
-#### 4. Implicación o Condicional ($\rightarrow$)
-La implicación $p \rightarrow q$ (leído "si $p$, entonces $q$") establece que si la condición $p$ (antecedente) se cumple, entonces $q$ (consecuente) debe cumplirse obligatoriamente. 
-La implicación es verdadera siempre, **excepto** en un único caso: cuando el antecedente es Verdadero y el consecuente Falso (es decir, una premisa verdadera no puede llevar a una conclusión falsa).
+Sea una relación $R$ sobre un mismo conjunto $A$ ($R \subseteq A \times A$):
 
-**Tabla de Verdad:**
-| $p$ | $q$ | $p \rightarrow q$ |
-| :---: | :---: | :---: |
-| **V** | **V** | **V** |
-| **V** | **F** | F |
-| **F** | **V** | **V** |
-| **F** | **F** | **V** |
+| Propiedad | Definición Formal | Explicación |
+| :--- | :--- | :--- |
+| **Reflexiva** | $\forall a \in A, \, (a, a) \in R$ | Todo elemento está relacionado consigo mismo. |
+| **Simétrica** | $\forall a, b \in A, \, (a, b) \in R \implies (b, a) \in R$ | Si $a$ se relaciona con $b$, entonces obligatoriamente $b$ se relaciona con $a$ (relación bidireccional). |
+| **Transitiva**| $\forall a, b, c \in A, \, ((a, b) \in R \land (b, c) \in R) \implies (a, c) \in R$ | Si $a$ se relaciona con $b$ y $b$ con $c$, entonces $a$ se relaciona directamente con $c$. |
 
-#### Ejemplo Práctico (Limpieza y Calidad de Datos)
-Veamos cómo aplicaríamos estos dos conectores en un pipeline de datos (Data Pipeline). Para ilustrarlo, asumiremos que tenemos cargado el siguiente DataFrame `df` con perfiles de clientes:
+```mermaid
+flowchart TD
+    Prop["Propiedades de las Relaciones sobre un Conjunto A"]
+    Prop --> Ref["Reflexiva: (a, a) ∈ R para todo a"]
+    Prop --> Sim["Simétrica: (a, b) ∈ R ⇒ (b, a) ∈ R"]
+    Prop --> Tra["Transitiva: (a, b) ∈ R y (b, c) ∈ R ⇒ (a, c) ∈ R"]
+
+    Ref --> Ref_ej["Ej: 'Tiene la misma edad que' (a = a)"]
+    Sim --> Sim_ej["Ej: 'Es amigo de en Facebook'"]
+    Tra --> Tra_ej["Ej: 'Es antepasado de', 'Mayor que (>)']"]
+```
+
+#### Caso de Estudio: La Relación "Es Mayor Que" ($>$)
+Analicemos la relación $R = \{(a, b) \in \mathbb{R} \times \mathbb{R} \mid a > b\}$:
+- **¿Es reflexiva?** ❌ **No**. Ningún número es estrictamente mayor que sí mismo ($a \ngtr a$).
+- **¿Es simétrica?** ❌ **No**. Si $5 > 2$, es imposible que $2 > 5$.
+- **¿Es transitiva?** ✅ **Sí**. Si $a > b$ y $b > c$, necesariamente $a > c$ (ej. $10 > 5$ y $5 > 2 \implies 10 > 2$).
+
+> 📌 **Aplicación en Big Data:**  
+> Las relaciones modelan las **claves foráneas (Foreign Keys)** en bases de datos relacionales, los vínculos de linaje entre transformaciones (DAG de dependencias), las interacciones en redes sociales (seguidores en Twitter son relaciones no simétricas, amigos en LinkedIn son simétricas) y los pares clave-valor `(K, V)` en MapReduce.
+
+#### Ejemplo Práctico en Python: Validador de Propiedades Relacionales
+
+```python
+def evaluar_propiedades_relacion(conjunto: set, relacion: set) -> dict:
+    """
+    Evalúa si una relación binaria sobre un conjunto es reflexiva, simétrica y transitiva.
+    """
+    # 1. Reflexividad: (a, a) in relacion para todo a in conjunto
+    es_reflexiva = all((a, a) in relacion for a in conjunto)
+    
+    # 2. Simetría: (a, b) in relacion => (b, a) in relacion
+    es_simetrica = all((b, a) in relacion for (a, b) in relacion)
+    
+    # 3. Transitividad: (a, b) in relacion y (b, c) in relacion => (a, c) in relacion
+    es_transitiva = True
+    for (a, b) in relacion:
+        for (x, c) in relacion:
+            if b == x and (a, c) not in relacion:
+                es_transitiva = False
+                break
+        if not es_transitiva:
+            break
+            
+    return {
+        "reflexiva": es_reflexiva,
+        "simetrica": es_simetrica,
+        "transitiva": es_transitiva
+    }
+
+# Prueba con el conjunto {1, 2, 3} y la relación ">" (Mayor que)
+A = {1, 2, 3}
+relacion_mayor_que = {(2, 1), (3, 1), (3, 2)}
+resultados = evaluar_propiedades_relacion(A, relacion_mayor_que)
+
+print("Relación 'Mayor que' en {1, 2, 3}:", relacion_mayor_que)
+print("Evaluación formal:")
+for prop, val in resultados.items():
+    print(f"  - {prop.capitalize()}: {'✅ Sí' if val else '❌ No'}")
+```
+
+---
+
+### 1.4 Funciones: Mapeo entre Conjuntos
+
+Una **función** $f: A \to B$ es un tipo especial de relación matemática que asigna a **cada** elemento de un conjunto de entrada $A$ exactamente **un único** elemento de un conjunto de salida $B$.
+
+- **Dominio ($A$):** Conjunto de todos los posibles valores de entrada para los cuales la función está definida.
+- **Codominio ($B$):** Conjunto de todos los posibles valores de salida declarados.
+- **Imagen o Rango ($f(A) \subseteq B$):** Subconjunto de valores del codominio que realmente son producidos por algún elemento del dominio.
+- **Regla de correspondencia:** Expresión lógica o algoritmo que determina cómo transformar una entrada en su salida (ej. $f(x) = x^2 + 1$).
+
+#### Clasificación de Funciones
+
+| Tipo | Definición Formal | Explicación | Impacto Práctico |
+| :--- | :--- | :--- | :--- |
+| **Inyectiva** (*Uno a uno*) | $f(x_1) = f(x_2) \implies x_1 = x_2$ | Cada elemento del codominio tiene a lo sumo **una preimagen**. No hay dos entradas distintas con la misma salida. | Claves primarias únicas (`Primary Keys`), IDs generados sin colisiones. |
+| **Suprayectiva** (*Sobreyectiva / Sobre*) | $\forall y \in B, \, \exists x \in A \text{ tq } f(x) = y$ | Todo elemento del codominio tiene al menos **una preimagen**. La imagen cubre por completo el codominio ($f(A) = B$). | Transformaciones completas de categorización donde todas las clases de salida son pobladas. |
+| **Biyectiva** | Inyectiva $\land$ Suprayectiva | Correspondencia biunívoca perfecta y exacta entre $A$ y $B$. Tiene **función inversa** $f^{-1}$. | Codificación y decodificación reversible (cifrado, serialización/deserialización de datos). |
+
+```mermaid
+flowchart LR
+    subgraph Dominio["Dominio A (Entradas)"]
+        A1["x₁"]
+        A2["x₂"]
+        A3["x₃"]
+    end
+    subgraph Codominio["Codominio B (Salidas)"]
+        B1["y₁"]
+        B2["y₂"]
+        B3["y₃"]
+    end
+
+    A1 -->|f| B1
+    A2 -->|f| B2
+    A3 -->|f| B3
+```
+
+> 📌 **Aplicaciones en Big Data:**  
+> - **Funciones Hash:** Mapean un espacio de claves arbitrario a un rango finito de enteros. Si la función no es inyectiva, surgen *colisiones de hash*, lo que requiere algoritmos de resolución (encadenamiento o direccionamiento abierto) en tablas hash y sharding distribuido.
+> - **Transformaciones ETL / MapReduce:** La primitiva `map(f)` toma un conjunto de datos y aplica la función determinista $f$ a cada registro en paralelo a través de los nodos del clúster.
+
+#### Ejemplo Práctico en Python: Clasificación Funcional y Transformaciones
+
+```python
+import pandas as pd
+
+def analizar_mapeo_funcional(dominio: list, codominio: list, mapeo: dict):
+    """
+    Determina si un mapeo entre dominio y codominio es inyectivo, suprayectivo y biyectivo.
+    """
+    imagenes = [mapeo[x] for x in dominio]
+    valores_unicos_imagen = set(imagenes)
+    
+    # Inyectiva: longitud de entradas igual a salidas únicas (no hay dos x con igual y)
+    es_inyectiva = len(dominio) == len(valores_unicos_imagen)
+    
+    # Suprayectiva: todos los elementos del codominio tienen al menos una preimagen
+    es_suprayectiva = set(codominio).issubset(valores_unicos_imagen)
+    
+    # Biyectiva: ambas
+    es_biyectiva = es_inyectiva and es_suprayectiva
+    
+    return {
+        "inyectiva": es_inyectiva,
+        "suprayectiva": es_suprayectiva,
+        "biyectiva": es_biyectiva
+    }
+
+# Prueba con función de categorización de clientes por nivel de gasto
+dom = ["Cliente_1", "Cliente_2", "Cliente_3"]
+codom = ["Bajo", "Medio", "Alto"]
+regla_mapeo = {"Cliente_1": "Medio", "Cliente_2": "Alto", "Cliente_3": "Medio"}
+
+res_func = analizar_mapeo_funcional(dom, codom, regla_mapeo)
+print("Mapeo analizado:", regla_mapeo)
+print(f"  - Inyectiva: {res_func['inyectiva']} (Cliente_1 y Cliente_3 colisionan en 'Medio')")
+print(f"  - Suprayectiva: {res_func['suprayectiva']} (La categoría 'Bajo' no tiene preimagen)")
+print(f"  - Biyectiva: {res_func['biyectiva']}")
+
+# Mapeo con Pandas en pipelines
+df_transacciones = pd.DataFrame({"cliente_id": [101, 102, 103], "gasto": [45, 1200, 310]})
+# Aplicación de una función determinista sobre una columna
+df_transacciones["categoria"] = df_transacciones["gasto"].apply(
+    lambda g: "Alto" if g > 500 else ("Medio" if g > 100 else "Bajo")
+)
+print("\n--- Pipeline con Pandas .apply() ---")
+print(df_transacciones)
+```
+
+---
+
+## 2. Lógica Proposicional y Lógica de Predicados
+
+### 2.1 Lógica Proposicional: El Arte de Razonar
+
+La **lógica proposicional** estudia las proposiciones y las formas en que se combinan mediante conectores lógicos para estructurar razonamientos válidos. Es el fundamento directo para el diseño de circuitos digitales (compuertas lógicas como AND, OR, NOT) y las sentencias condicionales en el código de cualquier lenguaje.
+
+#### La Proposición (Afirmación)
+Una **proposición** es un enunciado declarativo que posee un único valor de verdad bien determinado: **Verdadero (V)** o **Falso (F)**. No puede ser ambiguo, subjetivo, ni ambas cosas simultáneamente.
+
+```mermaid
+flowchart TD
+    A["Enunciado"] --> B{"¿Es declarativo?"}
+    B -->|"No (orden, pregunta, exclamación)"| C["No es proposición"]
+    B -->|"Sí"| D{"¿Tiene un único valor de verdad (V o F)?"}
+    D -->|"No o depende del contexto/opinión"| E["No es proposición"]
+    D -->|"Sí, estrictamente V o F"| F["Sí es proposición lógica"]
+```
+
+#### Conectores Lógicos Básicos
+
+| Conector | Nombre | Símbolo | Operador Python | Condición de Verdad |
+| :--- | :--- | :---: | :---: | :--- |
+| **Negación** | NOT | $\neg$ o $\sim$ | `not` o `~` | Invierte el valor: $\neg V = F$, $\neg F = V$. |
+| **Conjunción** | AND | $\land$ | `and` o `&` | Verdadera **únicamente si ambas** proposiciones son verdaderas. |
+| **Disyunción** | OR | $\lor$ | `or` o `\|` | Verdadera si **al menos una** de las proposiciones es verdadera. |
+| **Implicación** | Si... entonces | $\rightarrow$ | `not p or q` | Verdadera siempre, **excepto** si el antecedente es $V$ y el consecuente $F$. |
+| **Bicondicional**| Si y solo si | $\leftrightarrow$ | `p == q` | Verdadera cuando ambas proposiciones tienen **el mismo valor de verdad**. |
+
+#### Tablas de Verdad Combinadas
+
+| $p$ | $q$ | $\neg p$ | $p \land q$ | $p \lor q$ | $p \rightarrow q$ | $p \leftrightarrow q$ |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **V** | **V** | F | **V** | **V** | **V** | **V** |
+| **V** | **F** | F | F | **V** | F | F |
+| **F** | **V** | **V** | F | **V** | **V** | F |
+| **F** | **F** | **V** | F | F | **V** | **V** |
+
+#### Casos de Negocio en Data Quality y Filtrado (Pandas)
 
 ```python
 import pandas as pd
 import numpy as np
 
-# df es nuestro DataFrame con datos de clientes
-df = pd.DataFrame([
-    {"id": 1, "email": "user1@test.com", "telefono": "12345", "vip": True, "limite": 15000},
-    {"id": 2, "email": np.nan, "telefono": "67890", "vip": False, "limite": 2000},
-    {"id": 3, "email": "user3@test.com", "telefono": np.nan, "vip": True, "limite": 5000}
+# DataFrame con logs y pedidos
+df_pedidos = pd.DataFrame([
+    {"id": 1, "importe": 120, "envio_gratis": True,  "vip": True,  "email": "a@test.com"},
+    {"id": 2, "importe": 130, "envio_gratis": False, "vip": False, "email": np.nan},
+    {"id": 3, "importe": 40,  "envio_gratis": True,  "vip": True,  "email": "c@test.com"},
+    {"id": 4, "importe": 35,  "envio_gratis": False, "vip": False, "email": np.nan}
 ])
-```
 
-1. **Disyunción ($\lor$) - Filtrado Flexible:**
-   Al limpiar perfiles de clientes, queremos descartar aquellos que estén completamente vacíos. Descartamos el registro si el email es nulo ($p$) **O** si el teléfono es nulo ($q$). Basta con que se cumpla uno de los dos vacíos para requerir revisión.
-   *En Python:* `df[df["email"].isna() | df["telefono"].isna()]`
+# 1. Conjunción: Importe > 100 AND VIP
+pedidos_vip_grandes = df_pedidos[(df_pedidos["importe"] > 100) & (df_pedidos["vip"] == True)]
 
-2. **Implicación ($\rightarrow$) - Reglas de Negocio y Data Quality:**
-   
-   **Caso A: Límite de crédito VIP**
-   Supongamos una regla en nuestro almacén de datos: "Si un usuario tiene el estado 'VIP' ($p$), entonces su límite de crédito es > 10.000 ($q$)".
-   - Si es VIP (**V**) y su límite es > 10.000 (**V**), la regla está bien (**V**).
-   - Si es VIP (**V**) pero su límite es menor a 10.000 (**F**), salta una alarma de calidad, esto rompe la regla (**F**).
-   - Si **NO** es VIP (**F**), no nos importa si su crédito es alto o bajo, la regla del sistema no se está violando, así que la lógica no falla (**V**).
+# 2. Implicación: "Si el pedido > 100 €, entonces el envío DEBE ser gratis"
+# Violación de regla: Antecedente Verdadero Y Consecuente Falso (p and not q)
+p = df_pedidos["importe"] > 100
+q = df_pedidos["envio_gratis"]
+violaciones_regla_envio = df_pedidos[p & (~q)]
 
-   **Caso B: Regla de E-commerce (Promoción de Envío Gratis)**
-   - **$p$ (Antecedente / Premisa):** "El importe del pedido supera los 100 €"
-   - **$q$ (Consecuente / Conclusión):** "El envío es gratis"
-   - **Fórmula:** $p \rightarrow q$ (*"Si el pedido supera los 100 €, entonces el envío es gratis"*)
+# 3. Bicondicional: "Es VIP si y solo si tiene email corporativo válido"
+df_pedidos["bicondicional_email"] = df_pedidos["vip"] == df_pedidos["email"].notna()
 
-   | $p$ (Importe > 100 €) | $q$ (Envío gratis) | $p \rightarrow q$ | Significado en el Negocio | Estado de la Regla |
-   | :---: | :---: | :---: | :--- | :---: |
-   | **V** | **V** | **V** | Pedido de 120 € con envío gratis. | ✅ Cumple la promesa |
-   | **V** | **F** | **F** | Pedido de 120 € con gastos de envío cobrados. | ❌ **Error / Violación de regla** |
-   | **F** | **V** | **V** | Pedido de 40 € con envío gratis (por promoción/cupón). | ✅ Válido (no contradice la regla) |
-   | **F** | **F** | **V** | Pedido de 40 € con gastos de envío cobrados. | ✅ Válido (caso estándar) |
-
-   > 📌 **Intuición del caso $F \rightarrow V$:**  
-   > La regla garantiza envío gratis *a partir de 100 €*, pero no prohíbe regalarlo en importes inferiores (por ejemplo, con cupones o campañas especiales). Por ello, que el antecedente sea falso no hace que la regla sea falsa.
-
-   ```mermaid
-   flowchart TD
-       Inicio["Evaluación del Pedido"] --> P{"¿Importe > 100 €? (p)"}
-       
-       P -->|"Sí (V)"| Q1{"¿Envío gratis? (q)"}
-       Q1 -->|"Sí (V)"| V1["Regla Válida (V)"]
-       Q1 -->|"No (F)"| F1["Regla Violada (F) - Error en cobro"]
-       
-       P -->|"No (F)"| Q2{"¿Envío gratis? (q)"}
-       Q2 -->|"Sí (V)"| V2["Regla Válida (V) - Promoción aplicada"]
-       Q2 -->|"No (F)"| V3["Regla Válida (V) - Cobro estándar"]
-   ```
-
-   ##### Equivalencia Lógica y Calidad de Datos en Python
-   En álgebra booleana, la implicación equivale a $p \rightarrow q \equiv \neg p \lor q$.
-
-   *(«O bien el pedido no supera los 100 € ($\neg p$), o bien el envío es gratis ($q$)»)*
-
-   Para auditar un DataFrame y detectar pedidos con anomalías que violen la implicación, buscamos registros donde se cumpla $p \land \neg q$:
-   ```python
-   import pandas as pd
-
-   # Simulación de pedidos para validar la regla de negocio
-   df_pedidos = pd.DataFrame([
-       {"id_pedido": 1, "importe": 120, "envio_gratis": True},   # V -> V (Válido)
-       {"id_pedido": 2, "importe": 130, "envio_gratis": False},  # V -> F (Anomalía: regla violada)
-       {"id_pedido": 3, "importe": 40,  "envio_gratis": True},   # F -> V (Válido: promoción)
-       {"id_pedido": 4, "importe": 35,  "envio_gratis": False},  # F -> F (Válido: cobro ordinario)
-   ])
-
-   # Detección de filas donde el antecedente es True pero el consecuente es False
-   p = df_pedidos["importe"] > 100
-   q = df_pedidos["envio_gratis"]
-
-   errores_implicacion = df_pedidos[p & (~q)]
-   print("Pedidos con anomalías (violan la implicación):")
-   print(errores_implicacion)
-   ```
-
-#### 5. Bicondicional o Doble Implicación ($\leftrightarrow$ o $\equiv$)
-El bicondicional de dos proposiciones $p$ y $q$ (leído "$p$ si y solo si $q$", frecuentemente abreviado como *iff* del inglés *"if and only if"*, o expresado como *"condición necesaria y suficiente"*) establece que ambas proposiciones deben tener **exactamente el mismo valor de verdad**.
-
-El bicondicional es verdadero cuando ambas proposiciones son verdaderas al unísono ($V \leftrightarrow V$) o cuando ambas son falsas ($F \leftrightarrow F$). Si tienen valores de verdad opuestos, la proposición compuesta es falsa.
-
-**Tabla de Verdad:**
-| $p$ | $q$ | $p \leftrightarrow q$ | Explicación |
-| :---: | :---: | :---: | :--- |
-| **V** | **V** | **V** | Ambos coinciden en ser verdaderos. |
-| **V** | **F** | F | Hay discrepancia (uno es verdadero y el otro falso). |
-| **F** | **V** | F | Hay discrepancia. |
-| **F** | **F** | **V** | Ambos coinciden en ser falsos (ninguno ocurre, se mantiene la coherencia). |
-
-> ℹ️ **Relación con la Doble Implicación y Álgebra Booleana:**
-> - El bicondicional se compone de dos implicaciones simultáneas: $p \leftrightarrow q \equiv (p \rightarrow q) \land (q \rightarrow p)$.
-> - En arquitectura de computadores y compuertas lógicas, equivale a la función **XNOR** (o la negación del XOR): funciona como un comparador estricto de igualdad lógica (`p == q`).
-
-##### Diagrama de Flujo: Evaluación Bicondicional
-
-```mermaid
-flowchart TD
-    Inicio["Evaluación de Registro / Evento"] --> Check{"¿Coinciden los valores de verdad?<br/>p == q"}
-    Check -->|"Sí (V y V, o F y F)"| Valido["Bicondicional Verdadero (V)<br/>Estados sincronizados y coherentes"]
-    Check -->|"No (Discrepancia)"| Invalido["Bicondicional Falso (F)<br/>Inconsistencia o anomalía detectada"]
-```
-
-#### Ejemplo Práctico (Sincronización, Integridad y Data Quality)
-
-En ingeniería de datos, almacenes de datos (*Data Warehouses*) y pipelines analíticos, el bicondicional es la herramienta fundamental para modelar **restricciones de consistencia bidireccional**.
-
-##### Caso de Negocio A: Acceso a la Plataforma y Suscripción Activa
-Imaginemos un servicio SaaS o plataforma de contenidos con la siguiente regla de negocio estricta:
-*"Un usuario tiene acceso al catálogo Premium ($p$) si y solo si tiene una suscripción activa al corriente de pago ($q$)."*
-
-- **$p$:** `acceso_premium == True`
-- **$q$:** `pago_al_corriente == True`
-
-| $p$ (Acceso) | $q$ (Pago) | $p \leftrightarrow q$ | Diagnóstico en el Sistema | Estado / Alerta |
-| :---: | :---: | :---: | :--- | :---: |
-| **V** | **V** | **V** | Cliente con servicio activo y cobro correcto. | ✅ Consistente |
-| **V** | **F** | **F** | Acceso concedido sin cobro registrado. | 🚨 **Fuga de ingresos / Error de auth** |
-| **F** | **V** | **F** | Cliente ha pagado pero no tiene acceso disponible. | 🚨 **Incidencia crítica de servicio** |
-| **F** | **F** | **V** | Cliente sin pago y sin acceso. | ✅ Consistente |
-
-##### Caso de Negocio B: Borrado Lógico (*Soft Delete*) en Data Lakes
-Otra restricción típica en bases de datos relacionales y tablas Delta/Iceberg:
-*"Un registro se considera archivado o dado de baja ($p$) si y solo si tiene asignada una fecha de baja ($q$)."*
-
-- **Regla:** `is_deleted == True` $\leftrightarrow$ `deleted_at is not None`
-
-##### Detección de Incoherencias en Python (Pandas)
-
-En auditorías de calidad de datos (*Data Quality Checks*), buscamos los casos donde se rompe el bicondicional, es decir, donde $\neg(p \leftrightarrow q)$. Esto equivale a la diferencia simétrica (XOR): $(p \land \neg q) \lor (\neg p \land q)$.
-
-```python
-import pandas as pd
-
-# Dataset simulado de usuarios en un pipeline
-df = pd.DataFrame({
-    "id_usuario": [101, 102, 103, 104],
-    "acceso_premium": [True, True, False, False],
-    "pago_al_corriente": [True, False, True, False]
-})
-
-# El bicondicional p <=> q equivale directamente a la igualdad booleana: p == q
-df["bicondicional_valido"] = df["acceso_premium"] == df["pago_al_corriente"]
-
-# Filtramos las filas que violan la regla bicondicional
-anomalias = df[~df["bicondicional_valido"]]
-print("Registros anómalos detectados:")
-print(anomalias)
-```
-
-**Salida:**
-```text
-Registros anómalos detectados:
-   id_usuario  acceso_premium  pago_al_corriente  bicondicional_valido
-1         102            True              False                 False
-2         103           False               True                 False
+print("Violaciones de la regla de envío gratis (Implicación rota):")
+print(violaciones_regla_envio[["id", "importe", "envio_gratis"]])
+print("\nRegistros con consistencia bicondicional (VIP <=> Email presente):")
+print(df_pedidos[["id", "vip", "email", "bicondicional_email"]])
 ```
 
 ---
 
-### Clasificación de Proposiciones Compuestas
+### 2.2 Tablas de Verdad y Clasificación de Proposiciones Compuestas
 
-Al evaluar la tabla de verdad completa de una proposición compuesta, su columna de resultados nos permite clasificarla según su comportamiento frente a todas las combinaciones posibles de verdad de sus variables componentes:
+Al evaluar la tabla de verdad exhaustiva de cualquier fórmula lógica proposicional, la columna final nos permite clasificarla en tres categorías fundamentales:
 
 ```mermaid
 flowchart TD
-    Inicio["Proposición Compuesta"] --> Eval{"Evaluación de todas las combinaciones en la Tabla de Verdad"}
-    Eval -->|"Todas las salidas son Verdaderas (V)"| Tautologia["Tautología<br/>(Siempre Válida / Redundante)"]
-    Eval -->|"Todas las salidas son Falsas (F)"| Contradiccion["Contradicción<br/>(Siempre Falsa / Imposible)"]
-    Eval -->|"Combinación de salidas (al menos una V y una F)"| Contingencia["Contingencia<br/>(Condicional / Filtro Selectivo)"]
+    Eval["Evaluación del espacio de verdad"]
+    Eval -->|"Todas las salidas son Verdaderas (V)"| Taut["Tautología (Invariante True)"]
+    Eval -->|"Todas las salidas son Falsas (F)"| Contra["Contradicción (Invariante False)"]
+    Eval -->|"Salidas mixtas (al menos una V y una F)"| Contin["Contingencia (Depende de los datos)"]
 ```
 
-#### 1. Tautología
-Una **tautología** es una proposición compuesta que resulta **verdadera para cualquier combinación de valores de verdad** de las proposiciones simples que la forman. Representa una verdad lógica universal o un hecho que se cumple de manera invariable.
+| Tipo | Resultado en Tabla | Significado Lógico | Impacto en Motores de Big Data / Optimización |
+| :--- | :---: | :--- | :--- |
+| **Tautología** | Siempre **V** | Verdad universal invariante ($p \lor \neg p$) | **Predicado trivial:** Motores como Catalyst (Spark) simplifican la cláusula a `True` y eliminan la evaluación para ahorrar CPU. |
+| **Contradicción** | Siempre **F** | Imposibilidad lógica ($p \land \neg p$) | **Poda de particiones (*Partition Pruning*):** El planificador descarta leer archivos de disco porque la relación retornará 0 registros. |
+| **Contingencia** | Mixto (**V** y **F**) | Depende de los datos ($p \land q$) | **Filtro selectivo:** Condición de negocio habitual que selecciona un subconjunto dinámico de filas. |
 
-- **Ejemplo clásico (Principio del tercero excluso):** $p \lor \neg p$ *(«O bien el servidor está activo, o bien el servidor no está activo»).*
-
-**Tabla de Verdad:**
-| $p$ | $\neg p$ | $p \lor \neg p$ |
-| :---: | :---: | :---: |
-| **V** | F | **V** |
-| **F** | **V** | **V** |
-
-- **Impacto en Sistemas y Big Data:**  
-  - **Predicados redundantes:** Condiciones como `(precio >= 0) | (precio < 0)` o `1 == 1`.
-  - **Optimización de consultas (*Query Optimization*):** Los motores de procesamiento (como el optimizador *Catalyst* en Apache Spark o el planificador de bases de datos) simplifican predicados tautológicos a `True`, descartando la condición para no malgastar ciclos de CPU evaluándola registro a registro.
-
-#### 2. Contradicción
-Una **contradicción** (o antitautología) es una proposición compuesta que resulta **falsa para cualquier combinación de valores de verdad** de sus variables componentes. Representa una imposibilidad lógica o un absurdo.
-
-- **Ejemplo clásico (Principio de no contradicción):** $p \land \neg p$ *(«El sensor está enviando señal Y el sensor no está enviando señal a la vez»).*
-
-**Tabla de Verdad:**
-| $p$ | $\neg p$ | $p \land \neg p$ |
-| :---: | :---: | :---: |
-| **V** | F | **F** |
-| **F** | **V** | **F** |
-
-- **Impacto en Sistemas y Big Data:**  
-  - **Filtros imposibles:** Por ejemplo, `(fecha > '2026-01-01') & (fecha < '2025-01-01')` o `(id.isna()) & (id.notna())`.
-  - **Poda de particiones y eliminación de lecturas (*Empty Relation / Partition Pruning*):** Si el motor analítico detecta una contradicción en el predicado de filtrado, no llega a escanear el almacenamiento en disco ni los ficheros Parquet/Delta en el Data Lake; retorna 0 registros al instante con coste de I/O nulo.
-
-#### 3. Contingencia
-Una **contingencia** es una proposición compuesta que **no es ni tautología ni contradicción**. Su valor de verdad depende estrictamente de los valores que tomen sus proposiciones simples en cada caso concreto (su tabla de verdad contiene al menos un valor **Verdadero** y al menos un valor **Falso**).
-
-- **Ejemplo clásico:** $p \land q$ o $p \rightarrow q$ *(«El cliente es VIP Y tiene compras acumuladas superiores a 500 €»).*
-
-- **Impacto en Sistemas y Big Data:**  
-  Constituye el **escenario habitual (99%)** en la lógica de negocio, filtros de selección analítica y validación de datos: clasifica y selecciona dinámicamente qué registros cumplen una condición y cuáles no.
-
----
-
-### Resumen Comparativo
-
-| Concepto | Resultado en Tabla de Verdad | Significado Lógico | Equivalente en Python (Pandas) | Comportamiento del Motor / Pipeline |
-| :--- | :---: | :--- | :--- | :--- |
-| **Tautología** | Siempre **V** | Verdad universal invariante | `df_clientes[(df_clientes['saldo'] >= 0) \| (df_clientes['saldo'] < 0)]` | **Predicado trivial**: Evalúa a `True`, devuelve el DataFrame completo sin filtrar. |
-| **Contradicción** | Siempre **F** | Imposibilidad lógica | `df_clientes[(df_clientes['saldo'] > 1000) & (df_clientes['saldo'] < 500)]` | **Poda completa**: Retorna DataFrame vacío (0 filas leídas). |
-| **Contingencia** | Mixto (**V** y **F**) | Condicional según los datos | `df_clientes[(df_clientes['saldo'] > 1000) & (df_clientes['es_activo'])]` | **Filtro selectivo**: Selecciona dinámicamente un subconjunto de filas. |
-
-#### Ejemplo Práctico: Comportamiento en Filtrado de Datos con Python (Pandas)
-
-```python
-import pandas as pd
-
-# DataFrame representativo de clientes
-df_clientes = pd.DataFrame({
-    "id_cliente": [1, 2, 3],
-    "saldo": [1200, 450, -50],
-    "es_activo": [True, False, True]
-})
-
-# 1. TAUTOLOGÍA: La condición siempre es True para cualquier registro
-# Resultado: Selecciona todas las filas del DataFrame
-filtro_tautologia = (df_clientes["saldo"] >= 0) | (df_clientes["saldo"] < 0)
-df_tautologia = df_clientes[filtro_tautologia]
-print(f"Tautología -> Filas seleccionadas: {len(df_tautologia)} de {len(df_clientes)}")
-
-# 2. CONTRADICCIÓN: La condición siempre es False (intersección imposible)
-# Resultado: DataFrame vacío (0 filas)
-filtro_contradiccion = (df_clientes["saldo"] > 1000) & (df_clientes["saldo"] < 500)
-df_contradiccion = df_clientes[filtro_contradiccion]
-print(f"Contradicción -> Filas seleccionadas: {len(df_contradiccion)} (Vacío)")
-
-# 3. CONTINGENCIA: Regla selectiva real dependiente de los datos
-# Resultado: Subconjunto de clientes que cumplen ambas condiciones
-filtro_contingencia = (df_clientes["saldo"] > 1000) & (df_clientes["es_activo"])
-df_contingencia = df_clientes[filtro_contingencia]
-print(f"Contingencia -> Filas seleccionadas: {len(df_contingencia)}")
-```
-
-#### Ejemplo en Python: Clasificador Automático de Expresiones Booleanas
-
-Podemos implementar un analizador que determine si una función lógica es una tautología, contradicción o contingencia evaluando exhaustivamente su espacio de estados:
+#### Ejemplo en Python: Clasificador Exhaustivo de Fórmulas Lógicas
 
 ```python
 import itertools
 
-def clasificar_logica(nombre, expresion_func, n_variables=2):
-    # Genera todas las combinaciones posibles de True/False para n variables
-    espacio_estados = list(itertools.product([True, False], repeat=n_variables))
-    resultados = [expresion_func(*estado) for estado in espacio_estados]
+def clasificar_formula_logica(nombre: str, func, n_variables: int = 2):
+    """
+    Evalúa exhaustivamente el espacio booleano {True, False}^n para clasificar una expresión.
+    """
+    combinaciones = list(itertools.product([True, False], repeat=n_variables))
+    resultados = [func(*comb) for comb in combinaciones]
     
     if all(resultados):
-        tipo = "TAUTOLOGÍA (Siempre Verdadera)"
+        categoria = "TAUTOLOGÍA (Siempre Verdadera)"
     elif not any(resultados):
-        tipo = "CONTRADICCIÓN (Siempre Falsa)"
+        categoria = "CONTRADICCIÓN (Siempre Falsa)"
     else:
-        tipo = "CONTINGENCIA (Depende de los valores de entrada)"
+        categoria = "CONTINGENCIA (Dependiente del estado)"
         
-    print(f"Expresión: {nombre}")
-    print(f"  -> Clasificación: {tipo}")
-    print(f"  -> Resultados evaluados: {resultados}\n")
+    print(f"Fórmula: {nombre:15} -> {categoria} | Resultados: {resultados}")
 
-# Pruebas:
-# 1. Tercero excluso: p or not p
-clasificar_logica("p ∨ ¬p", lambda p: p or not p, n_variables=1)
-
-# 2. No contradicción: p and not p
-clasificar_logica("p ∧ ¬p", lambda p: p and not p, n_variables=1)
-
-# 3. Filtro de negocio: p and q
-clasificar_logica("p ∧ q", lambda p, q: p and q, n_variables=2)
+# Pruebas de expresiones:
+clasificar_formula_logica("p ∨ ¬p", lambda p: p or not p, n_variables=1)
+clasificar_formula_logica("p ∧ ¬p", lambda p: p and not p, n_variables=1)
+clasificar_formula_logica("p ∧ q",  lambda p, q: p and q, n_variables=2)
+clasificar_formula_logica("p → (p ∨ q)", lambda p, q: (not p) or (p or q), n_variables=2)
 ```
 
-**Salida de la ejecución:**
-```text
-Expresión: p ∨ ¬p
-  -> Clasificación: TAUTOLOGÍA (Siempre Verdadera)
-  -> Resultados evaluados: [True, True]
+---
 
-Expresión: p ∧ ¬p
-  -> Clasificación: CONTRADICCIÓN (Siempre Falsa)
-  -> Resultados evaluados: [False, False]
+### 2.3 Lógica de Predicados: Más Allá de lo Binario
 
-Expresión: p ∧ q
-  -> Clasificación: CONTINGENCIA (Depende de los valores de entrada)
-  -> Resultados evaluados: [True, False, False, False]
+La lógica proposicional trata a las afirmaciones como cajas negras atómicas ($p, q$). Sin embargo, en el análisis de datos necesitamos modelar **propiedades sobre objetos específicos** y **relaciones entre múltiples variables**. Aquí entra la **lógica de primer orden o lógica de predicados**.
+
+Un **predicado** $P(x)$ es una función proposicional que toma una o más variables de un dominio de discurso $D$ y devuelve un valor de verdad.
+- Ejemplo: $P(x) = \text{“}x \text{ es un servidor activo”}$. Si $x = \text{“Nodo-1”}$, $P(\text{Nodo-1})$ evalúa a $V$ o $F$.
+
+#### Cuantificadores Lógicos
+
+Los cuantificadores determinan cuántos elementos del dominio satisfacen un predicado:
+
+| Cuantificador | Símbolo | Lectura | Significado Formal | Equivalencia Discreta |
+| :--- | :---: | :--- | :--- | :--- |
+| **Universal** | $\forall$ | *"Para todo"* | $\forall x \, P(x)$: La propiedad $P(x)$ es verdadera para **todos y cada uno** de los elementos $x \in D$. | $P(x_1) \land P(x_2) \land \dots \land P(x_n)$ |
+| **Existencial** | $\exists$ | *"Existe al menos uno"* | $\exists x \, P(x)$: Existe **al menos un** elemento $x \in D$ tal que $P(x)$ es verdadero. | $P(x_1) \lor P(x_2) \lor \dots \lor P(x_n)$ |
+
+```mermaid
+flowchart TD
+    Dominio["Dominio de Elementos D = {x₁, x₂, ..., xₙ}"]
+    Dominio --> CuantUniv["Cuantificador Universal ∀x P(x)"]
+    Dominio --> CuantExist["Cuantificador Existencial ∃x P(x)"]
+
+    CuantUniv --> CU_res{"¿Todos cumplen P(x)?"}
+    CU_res -->|"Sí"| CU_V["Verdadero"]
+    CU_res -->|"Basta 1 contraejemplo"| CU_F["Falso"]
+
+    CuantExist --> CE_res{"¿Al menos 1 cumple P(x)?"}
+    CE_res -->|"Sí, basta 1 testigo"| CE_V["Verdadero"]
+    CE_res -->|"Ninguno lo cumple"| CE_F["Falso"]
 ```
 
+#### Negación de Cuantificadores (Leyes de De Morgan Generalizadas)
+- Negar que *todos* cumplan una propiedad equivale a afirmar que *existe al menos uno* que no la cumple:
+  $$\neg(\forall x \, P(x)) \equiv \exists x \, \neg P(x)$$
+- Negar que *exista alguien* que cumpla una propiedad equivale a decir que *todos* la incumplen:
+  $$\neg(\exists x \, P(x)) \equiv \forall x \, \neg P(x)$$
+
+> 📌 **Aplicaciones en Inteligencia Artificial y Big Data:**  
+> - **Representación del conocimiento en IA:** Modelado de ontologías (OWL), razonamiento en grafos de conocimiento y procesamiento del lenguaje natural.
+> - **Verificación formal de software:** Especificación de invariantes de bucles, precondiciones y postcondiciones en arquitecturas críticas.
+> - **Consultas analíticas:** Cláusulas SQL del tipo `WHERE NOT EXISTS (...)`, o validaciones en pipelines `all()` y `any()`.
+
+#### Ejemplo Práctico en Python: Evaluación de Predicados y Cuantificadores
+
+```python
+import pandas as pd
+
+# Servidores de un cluster distribuido
+df_cluster = pd.DataFrame([
+    {"nodo": "srv-01", "cpu_pct": 45, "activo": True,  "version_os": "Ubuntu 22.04"},
+    {"nodo": "srv-02", "cpu_pct": 78, "activo": True,  "version_os": "Ubuntu 22.04"},
+    {"nodo": "srv-03", "cpu_pct": 92, "activo": True,  "version_os": "Ubuntu 22.04"},
+    {"nodo": "srv-04", "cpu_pct": 15, "activo": False, "version_os": "Ubuntu 20.04"}
+])
+
+# Predicado P(x): "El nodo x está activo"
+# Predicado Q(x): "La CPU de x supera el 85%"
+# Predicado R(x): "La versión de OS de x es Ubuntu 22.04"
+
+# 1. Cuantificador Universal: ∀x P(x) -> "¿Están TODOS los nodos activos?"
+todos_activos = df_cluster["activo"].all()
+print(f"∀x P(x) [Todos activos]: {todos_activos}")
+
+# 2. Cuantificador Existencial: ∃x Q(x) -> "¿Existe AL MENOS UN nodo con sobrecarga de CPU (>85%)?"
+existe_sobrecarga = (df_cluster["cpu_pct"] > 85).any()
+print(f"∃x Q(x) [Existe sobrecarga]: {existe_sobrecarga}")
+
+# 3. Demostración De Morgan: ¬(∀x R(x)) <=> ∃x ¬R(x)
+neg_para_todo_os = not (df_cluster["version_os"] == "Ubuntu 22.04").all()
+existe_distinto_os = (df_cluster["version_os"] != "Ubuntu 22.04").any()
+print(f"¬(∀x R(x)) equivale a ∃x ¬R(x): {neg_para_todo_os == existe_distinto_os} ({neg_para_todo_os})")
+```
+
+---
+
+### 2.4 Inferencia Lógica: Sacando Conclusiones
+
+La **inferencia lógica** es el proceso formal mediante el cual se deducen nuevas proposiciones o conclusiones válidas a partir de un conjunto de premisas asumidas como verdaderas. Si las premisas son verdaderas y la regla de inferencia es válida, la conclusión está **garantizada** como verdadera.
+
+#### Reglas Fundamentales de Inferencia
+
+```mermaid
+flowchart TD
+    subgraph MP["Modus Ponens (Afirmación)"]
+        MP_P["Premisa 1: P → Q<br/>Premisa 2: P es Verdadero"] --> MP_C["Conclusión: Q es obligatoriamente Verdadero"]
+    end
+    subgraph MT["Modus Tollens (Negación)"]
+        MT_P["Premisa 1: P → Q<br/>Premisa 2: ¬Q (Q es Falso)"] --> MT_C["Conclusión: ¬P (P es obligatoriamente Falso)"]
+    end
+```
+
+1. **Modus Ponens (Modo que afirma al afirmar):**
+   - **Regla formal:** $[(P \rightarrow Q) \land P] \implies Q$
+   - **Esquema:**
+     - Si ocurre $P$, entonces ocurre $Q$. *(Premisa 1)*
+     - Se constata que ocurre $P$. *(Premisa 2)*
+     - **Conclusión:** Ocurre $Q$.
+   - **Ejemplo en Big Data:**
+     - *P1:* Si el volumen de datos supera 1 TB/hora ($P$), el motor activa particionado distribuido ($Q$).
+     - *P2:* El volumen actual es 1.5 TB/hora ($P$ es $V$).
+     - *Conclusión:* El motor activa particionado distribuido ($Q$ es $V$).
+
+2. **Modus Tollens (Modo que niega al negar):**
+   - **Regla formal:** $[(P \rightarrow Q) \land \neg Q] \implies \neg P$
+   - **Esquema:**
+     - Si ocurre $P$, entonces ocurre $Q$. *(Premisa 1)*
+     - Se constata que no ocurre $Q$ ($\neg Q$). *(Premisa 2)*
+     - **Conclusión:** No ocurrió $P$ ($\neg P$).
+   - **Ejemplo en Seguridad:**
+     - *P1:* Si la transacción es legítima ($P$), la firma criptográfica es válida ($Q$).
+     - *P2:* La firma criptográfica no es válida ($\neg Q$).
+     - *Conclusión:* La transacción no es legítima ($\neg P$, activar alerta de fraude).
+
+> 📌 **Base para Sistemas Expertos e Inteligencia Artificial:**  
+> - **Sistemas basados en reglas (Rule-Based Expert Systems):** Compuestos por una base de conocimientos (hechos) y un conjunto de reglas `SI (condición) ENTONCES (acción)`.
+> - **Motores de Inferencia (Inference Engines):**
+>   - *Encadenamiento hacia adelante (Forward Chaining):* Parte de los datos conocidos y aplica *Modus Ponens* repetidamente para derivar todas las conclusiones posibles (típico en monitoreo y alertas en tiempo real).
+>   - *Encadenamiento hacia atrás (Backward Chaining):* Parte de una hipótesis meta y busca premisas que la sustenten (típico en sistemas de diagnóstico médico o resolución de incidencias).
+
+#### Ejemplo Práctico en Python: Motor de Inferencia Deductivo
+
+```python
+class MotorInferenciaReglas:
+    """
+    Motor básico de inferencia lógica que aplica Modus Ponens y Modus Tollens.
+    """
+    def __init__(self):
+        self.hechos_verdaderos = set()
+        self.hechos_falsos = set()
+        self.reglas_implicacion = [] # Lista de tuplas (P, Q) representando P -> Q
+
+    def registrar_hecho(self, hecho: str, valor: bool):
+        if valor:
+            self.hechos_verdaderos.add(hecho)
+        else:
+            self.hechos_falsos.add(hecho)
+
+    def agregar_regla(self, antecedente: str, consecuente: str):
+        self.reglas_implicacion.append((antecedente, consecuente))
+
+    def inferir(self) -> dict:
+        nuevas_inferencias = {}
+        cambios = True
+        
+        while cambios:
+            cambios = False
+            for P, Q in self.reglas_implicacion:
+                # Modus Ponens: P -> Q y P es V => Q es V
+                if P in self.hechos_verdaderos and Q not in self.hechos_verdaderos:
+                    self.hechos_verdaderos.add(Q)
+                    nuevas_inferencias[Q] = ("Verdadero", f"Modus Ponens derivado de {P}")
+                    cambios = True
+                
+                # Modus Tollens: P -> Q y Q es F => P es F
+                if Q in self.hechos_falsos and P not in self.hechos_falsos:
+                    self.hechos_falsos.add(P)
+                    nuevas_inferencias[P] = ("Falso", f"Modus Tollens derivado de ¬{Q}")
+                    cambios = True
+                    
+        return nuevas_inferencias
+
+# Simulación de un sistema de diagnóstico de clúster Big Data
+motor = MotorInferenciaReglas()
+
+# Reglas del sistema:
+# 1. Pérdida_Heartbeat -> Nodo_Caído
+# 2. Nodo_Caído -> Rebalanceo_Particiones
+# 3. Respuesta_Ping_OK -> Red_Operativa
+motor.agregar_regla("Perdida_Heartbeat", "Nodo_Caido")
+motor.agregar_regla("Nodo_Caido", "Rebalanceo_Particiones")
+motor.agregar_regla("Transaccion_Legitima", "Firma_Valida")
+
+# Hechos observados:
+motor.registrar_hecho("Perdida_Heartbeat", True) # Se detecta pérdida de heartbeat
+motor.registrar_hecho("Firma_Valida", False)       # La firma de la transacción falló
+
+conclusiones = motor.inferir()
+print("--- Conclusiones obtenidas por el Motor de Inferencia ---")
+for hecho, (val, razon) in conclusiones.items():
+    print(f"• Hecho derivado: {hecho:25} = {val:10} | Justificación: {razon}")
+```
+
+---
+
+## 3. Algorítmica, Estructuras de Datos y Complejidad Computacional
+
+### 3.1 Algoritmos: Recetas para Resolver Problemas
+
+Un **algoritmo** es una secuencia ordenada, unívoca y finita de instrucciones o pasos lógicos bien definidos que toma un conjunto de datos de entrada, los procesa y produce una solución o resultado de salida.
+
+#### Características Formales de un Algoritmo
+1. **Finitud:** El algoritmo debe finalizar obligatoriamente tras un número finito de pasos para cualquier entrada válida. Nunca puede quedar en bucles infinitos no intencionados.
+2. **Definición (Precisión):** Cada paso debe estar libre de ambigüedades. Dadas las mismas entradas, la ejecución debe producir exactamente el mismo comportamiento paso a paso.
+3. **Efectividad:** Cada instrucción debe ser lo suficientemente básica y realizable con recursos computacionales finitos (tiempo y memoria finitos).
+
+---
+
+### 3.2 Pseudocódigo: Planificando la Solución
+
+El **pseudocódigo** es una descripción informal de alto nivel de un algoritmo que combina lenguaje natural estructurado con convenciones de programación. Actúa como puente entre la conceptualización del algoritmo y su implementación en un lenguaje específico (como Python, Scala o Java).
+
+- Permite abstraerse de detalles sintácticos estrictos (punteros, llaves, tipos rígidos) y centrarse en la corrección lógica.
+- Utiliza palabras clave estándar: `SI-ENTONCES-SINO`, `MIENTRAS`, `PARA`, `RETORNAR`.
+- Facilita la comunicación algorítmica entre ingenieros y científicos de datos antes de escribir código de producción.
+
+---
+
+### 3.3 Estructuras de Control: Dirigiendo el Flujo
+
+Todo algoritmo computacional puede implementarse utilizando únicamente tres estructuras de control fundamentales:
+
+```mermaid
+flowchart TD
+    EC["Estructuras de Control"]
+    EC --> Sec["1. Secuencia"]
+    EC --> Sel["2. Selección (Condicionales)"]
+    EC --> Ite["3. Iteración (Bucles)"]
+
+    Sec --> Sec_d["Instrucción 1 → Instrucción 2 → Instrucción 3"]
+    Sel --> Sel_d["SI condición ENTONCES rama A SINO rama B"]
+    Ite --> Ite_d["MIENTRAS / PARA: Repetición controlada de bloques"]
+```
+
+---
+
+### 3.4 Tipos de Datos: Organizando la Información
+
+La organización de los datos en memoria determina la velocidad con la que un algoritmo puede acceder, buscar y modificar información:
+
+1. **Tipos Primitivos:** Elementos atómicos gestionados directamente por los registros del procesador (`int`, `float`, `bool`, `char`).
+2. **Tipos Estructurados:** Agrupaciones de tipos primitivos u otras estructuras (`arrays`, listas contiguas, tuplas, diccionarios).
+3. **Tipos Abstractos de Datos (TAD):** Modelos conceptuales que definen qué operaciones se pueden realizar sobre los datos sin importar la implementación física:
+   - **Pila (*Stack*):** Estructura **LIFO** (*Last In, First Out*). El último elemento insertado es el primero en salir (ej. historial de navegación, llamadas a funciones en la pila de ejecución).
+   - **Cola (*Queue*):** Estructura **FIFO** (*First In, First Out*). El primer elemento insertado es el primero en ser procesado (ej. buffers de ingesta de mensajes como Apache Kafka o RabbitMQ).
+   - **Grafos y Árboles:** Estructuras no lineales que modelan jerarquías y redes interconectadas.
+
+#### Ejemplo Práctico en Python: Implementación de Pilas y Colas con `collections.deque`
+
+```python
+from collections import deque
+
+# 1. TAD Cola (FIFO) para ingesta de eventos de streaming
+cola_eventos = deque()
+cola_eventos.append("Evento_01: Login")
+cola_eventos.append("Evento_02: Clic_Boton")
+cola_eventos.append("Evento_03: Compra")
+
+print("Cola inicial (FIFO):", list(cola_eventos))
+evento_procesado = cola_eventos.popleft() # Extrae el más antiguo
+print(f"Evento atendido: {evento_procesado}")
+print("Cola restante:", list(cola_eventos))
+
+# 2. TAD Pila (LIFO) para backtracking o reversión de transacciones
+pila_operaciones = []
+pila_operaciones.append("UPDATE saldo SET 100")
+pila_operaciones.append("INSERT INTO auditoria")
+pila_operaciones.append("LOCK TABLE")
+
+print("\nPila inicial (LIFO):", pila_operaciones)
+rollback = pila_operaciones.pop() # Extrae la última operación ejecutada
+print(f"Operación revertida (Undo): {rollback}")
+print("Pila restante:", pila_operaciones)
+```
+
+---
+
+### 3.5 Complejidad Computacional: Midiendo Eficiencia
+
+El rendimiento de un algoritmo se evalúa analizando el consumo de dos recursos esenciales en función del tamaño de entrada $n$:
+- **Tiempo ($T(n)$):** Número de operaciones elementales ejecutadas por la CPU.
+- **Espacio ($S(n)$):** Cantidad de memoria volátil RAM consumida.
+
+#### La Notación Big O ($O$)
+La notación **Big O** define el límite superior asintótico del crecimiento de un algoritmo. Nos indica el **peor escenario posible** de consumo de recursos cuando el volumen de datos tiende a infinito ($n \to \infty$).
+
+![Gráfico de Complejidad Computacional](img/complejidad_computacional.png)
+
+| Complejidad | Nombre | Ejemplo Típico | Comportamiento en Big Data |
+| :--- | :--- | :--- | :--- |
+| $O(1)$ | Constante | Acceso por clave en tabla hash / índice de array | **Óptimo:** Mismo tiempo para 10 filas que para $10^9$ filas. |
+| $O(\log n)$ | Logarítmica | Búsqueda binaria, búsqueda en árboles balanceados | **Excelente:** Duplicar los datos añade solo 1 operación adicional. |
+| $O(n)$ | Lineal | Búsqueda secuencial, recorrido de filtrado simple | **Aceptable:** Crece proporcionalmente al tamaño del dataset. |
+| $O(n \log n)$ | Lineal-logarítmica | Quicksort, Mergesort, ordenamiento distribuido | **Estándar:** Límite teórico inferior de ordenación por comparación. |
+| $O(n^2)$ | Cuadrática | Bucles anidados, Bubble Sort, producto cartesiano | **Crítico:** Totalmente inviable para $n > 10^5$ registros. |
+| $O(2^n)$ | Exponencial | Fuerza bruta, subconjuntos de un grafo | **Inviable:** Requiere heurísticas o aproximaciones. |
+
+---
+
+### 3.6 Análisis Asintótico: Comportamiento a Largo Plazo
+
+El análisis asintótico estudia la tendencia de crecimiento de una función matemática ignorando detalles irrelevantes de hardware específico:
+
+1. **Se ignoran las constantes multiplicativas:**  
+   $O(3n) \to O(n)$  
+   $O(500) \to O(1)$  
+2. **Se descartan los términos de menor orden:**  
+   $O(n^2 + 100n + 5000) \to O(n^2)$  
+   Porque cuando $n = 1.000.000$, $n^2 = 10^{12}$, mientras que $100n$ es apenas $10^8$. El término $n^2$ domina abrumadoramente el tiempo de ejecución.
+
+---
+
+### 3.7 Clases de Complejidad: Categorización de Problemas
+
+En la teoría de la computación, los problemas de decisión se clasifican según los recursos requeridos para resolverlos o verificarlos:
+
+```mermaid
+flowchart TD
+    subgraph Espacio["Espacio de Problemas Computacionales"]
+        NP["Clase NP: Verificables en tiempo polinómico"]
+        P["Clase P: Resolubles en tiempo polinómico O(nᵏ)"]
+        NPC["Problemas NP-Completos (Los más duros de NP)"]
+        
+        P --> NP
+        NPC --> NP
+    end
+```
+
+- **Clase P (*Polynomial time*):** Problemas resolubles en tiempo polinómico ($O(n^k)$ para alguna constante $k$). Son computacionalmente **tratables**.  
+  *Ejemplos:* Búsqueda binaria ($O(\log n)$), ordenación ($O(n \log n)$), camino mínimo de Dijkstra.
+- **Clase NP (*Nondeterministic Polynomial time*):** Problemas cuyas soluciones, una vez obtenidas, pueden **verificarse** en tiempo polinómico, aunque encontrarlas pueda ser extremadamente costoso.
+- **Problemas NP-Completos:** Los problemas más difíciles dentro de $NP$. Si se descubriera un algoritmo polinómico para cualquiera de ellos, **todos** los problemas en $NP$ podrían resolverse en tiempo polinómico ($P = NP$).  
+  *Ejemplos clásicos:* Problema del viajante de comercio (TSP), Satisfacibilidad Booleana (SAT), Problema de la Mochila (*Knapsack*).  
+  *Tratamiento en Big Data:* No se busca la solución exacta óptima por su coste astronómico; se aplican **algoritmos de aproximación y metaheurísticas** (algoritmos genéticos, greedy algorithms, recocido simulado).
+
+---
+
+### 3.8 Algoritmos de Búsqueda: Encontrando Información
+
+La búsqueda de elementos en memoria o disco es una de las operaciones más recurrentes en ingeniería de datos:
+
+1. **Búsqueda Lineal ($O(n)$):** Recorre la colección elemento a elemento. No exige orden previo, pero es muy lenta para millones de registros.
+2. **Búsqueda Binaria ($O(\log n)$):** Requiere que los datos estén previamente ordenados. En cada paso compara con el elemento central y descarta la mitad del espacio restante.
+3. **Árboles de Búsqueda (ABB / AVL):** Estructuras jerárquicas dinámicas donde cada nodo tiene a su izquierda elementos menores y a su derecha elementos mayores. Los árboles balanceados (AVL) garantizan búsquedas, inserciones y borrados en $O(\log n)$.
+
+#### Ejemplo Práctico en Python: Comparativa de Búsqueda Lineal vs Binaria vs Hash
+
+```python
+import time
+import bisect
+
+# Dataset sintético ordenado de 1.000.000 de enteros
+n = 1_000_000
+datos_lista = list(range(n))
+datos_set = set(datos_lista) # Hash Table O(1)
+objetivo = 999_998           # Elemento cercano al final
+
+# 1. Búsqueda Lineal O(n)
+t0 = time.perf_counter()
+encontrado_lineal = objetivo in datos_lista
+t_lineal = time.perf_counter() - t0
+
+# 2. Búsqueda Binaria O(log n) usando bisect sobre lista ordenada
+t0 = time.perf_counter()
+idx = bisect.bisect_left(datos_lista, objetivo)
+encontrado_binario = (idx < len(datos_lista) and datos_lista[idx] == objetivo)
+t_binario = time.perf_counter() - t0
+
+# 3. Búsqueda en Tabla Hash O(1)
+t0 = time.perf_counter()
+encontrado_hash = objetivo in datos_set
+t_hash = time.perf_counter() - t0
+
+print(f"Tiempo Búsqueda Lineal  O(n):     {t_lineal:.8f} s")
+print(f"Tiempo Búsqueda Binaria O(log n): {t_binario:.8f} s")
+print(f"Tiempo Búsqueda Hash    O(1):     {t_hash:.8f} s")
+print(f"Aceleración Binaria vs Lineal:    {t_lineal / max(t_binario, 1e-9):.1f}x veces más rápida")
+```
+
+---
+
+### 3.9 Algoritmos de Ordenamiento: Poniendo Orden
+
+Ordenar colecciones es indispensable antes de realizar búsquedas binarias, agregaciones grupales (`GROUP BY`) o uniones de tablas (`Merge Join`).
+
+| Algoritmo | Mejor Caso | Caso Promedio | Peor Caso | Espacio | Paradigma / Características |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Bubble Sort** | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ | Comparación adyacente simple. Desaconsejado en producción. |
+| **Quicksort** | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | $O(\log n)$ | **Divide y Vencerás.** Elige pivote y particiona en memoria. Muy rápido en la práctica. |
+| **Mergesort** | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$ | **Divide y Vencerás.** Estable. Base del *External Sort* y Shuffle en MapReduce/Spark. |
+
+#### Ejemplo Práctico en Python: Implementación de Quicksort y Mergesort
+
+```python
+def quicksort(arr: list) -> list:
+    """Implementación funcional de Quicksort (O(n log n) promedio)."""
+    if len(arr) <= 1:
+        return arr
+    pivote = arr[len(arr) // 2]
+    menores = [x for x in arr if x < pivote]
+    iguales = [x for x in arr if x == pivote]
+    mayores = [x for x in arr if x > pivote]
+    return quicksort(menores) + iguales + quicksort(mayores)
+
+def mergesort(arr: list) -> list:
+    """Implementación de Mergesort (O(n log n) garantizado)."""
+    if len(arr) <= 1:
+        return arr
+    medio = len(arr) // 2
+    izq = mergesort(arr[:medio])
+    der = mergesort(arr[medio:])
+    
+    # Fusión ordenada (Merge)
+    resultado = []
+    i = j = 0
+    while i < len(izq) and j < len(der):
+        if izq[i] <= der[j]:
+            resultado.append(izq[i]); i += 1
+        else:
+            resultado.append(der[j]); j += 1
+    resultado.extend(izq[i:])
+    resultado.extend(der[j:])
+    return resultado
+
+# Prueba de ordenación
+muestra = [64, 34, 25, 12, 22, 11, 90, 8]
+print("Array original:", muestra)
+print("Ordenado con Quicksort:", quicksort(muestra))
+print("Ordenado con Mergesort:", mergesort(muestra))
+```
+
+---
+
+### 3.10 Grafos: Modelando Relaciones Complejas
+
+Un **grafo** $G = (V, E)$ es una estructura discreta no lineal formada por un conjunto de **vértices o nodos** ($V$) y un conjunto de **aristas o enlaces** ($E$) que conectan pares de vértices.
+
+- **Grafos Dirigidos (DAG - Directed Acyclic Graph):** Las aristas tienen dirección. En Big Data, los pipelines de Apache Airflow y los planes físicos de Apache Spark se modelan como DAGs.
+- **Grafos Ponderados:** Las aristas tienen un coste, distancia o peso asociado.
+
+```mermaid
+flowchart LR
+    A["Nodo A"] -->|5| B["Nodo B"]
+    A -->|2| C["Nodo C"]
+    B -->|1| D["Nodo D"]
+    C -->|8| D
+    C -->|4| E["Nodo E"]
+    D -->|3| E
+```
+
+#### Algoritmos Fundamentales sobre Grafos
+1. **BFS (*Breadth-First Search* / Búsqueda en Anchura):** Explora nivel por nivel utilizando una cola FIFO. Calcula el camino más corto en grafos no ponderados.
+2. **DFS (*Depth-First Search* / Búsqueda en Profundidad):** Explora una rama hasta el fondo antes de retroceder (usa pila o recursión). Detecta ciclos y analiza conectividad.
+3. **Algoritmo de Dijkstra:** Calcula la ruta de menor coste desde un nodo origen a todos los demás en grafos con pesos no negativos.
+
+#### Ejemplo Práctico en Python: Algoritmo de Dijkstra con Cola de Prioridad
+
+```python
+import heapq
+
+def dijkstra(grafo: dict, inicio: str) -> dict:
+    """
+    Calcula las distancias mínimas desde el nodo 'inicio' utilizando una cola de prioridad (heapq).
+    Complejidad: O((|V| + |E|) log |V|)
+    """
+    distancias = {nodo: float('infinity') for nodo in grafo}
+    distancias[inicio] = 0
+    cola_prioridad = [(0, inicio)] # Tupla: (distancia, nodo)
+    
+    while cola_prioridad:
+        dist_actual, nodo_actual = heapq.heappop(cola_prioridad)
+        
+        if dist_actual > distancias[nodo_actual]:
+            continue
+            
+        for vecino, peso in grafo[nodo_actual].items():
+            distancia = dist_actual + peso
+            if distancia < distancias[vecino]:
+                distancias[vecino] = distancia
+                heapq.heappush(cola_prioridad, (distancia, vecino))
+                
+    return distancias
+
+# Grafo ponderado de nodos de red en un clúster
+grafo_red = {
+    "Srv_A": {"Srv_B": 5, "Srv_C": 2},
+    "Srv_B": {"Srv_D": 1},
+    "Srv_C": {"Srv_D": 8, "Srv_E": 4},
+    "Srv_D": {"Srv_E": 3},
+    "Srv_E": {}
+}
+
+distancias_minimas = dijkstra(grafo_red, "Srv_A")
+print("Rutas óptimas desde 'Srv_A' (Dijkstra):")
+for destino, coste in distancias_minimas.items():
+    print(f"  -> Hacia {destino}: latencia mínima de {coste} ms")
+```
+
+---
+
+### 3.11 Árboles: Jerarquía y Organización
+
+Un **árbol** es un grafo conexo y acíclico donde existe un único nodo especial denominado **raíz**, y cada nodo hijo tiene exactamente un único nodo padre (excepto la raíz, que no tiene padre).
+
+```mermaid
+flowchart TD
+    R["Raíz: / (Directorio raíz)"] --> U["usr"]
+    R --> V["var"]
+    R --> E["etc"]
+    
+    U --> B["bin"]
+    U --> L["lib"]
+    V --> Lg["log"]
+    Lg --> App["app.log"]
+```
+
+#### Tipos Clave de Árboles
+- **Árbol Binario:** Cada nodo tiene como máximo dos hijos (izquierdo y derecho).
+- **Árbol AVL:** Árbol binario de búsqueda autobalanceado que mantiene su altura en $O(\log n)$.
+- **Árboles B y B+ (*B-Trees*):** Árboles multicamino autobalanceados optimizados para sistemas de almacenamiento en disco y bloques de lectura/escritura. Son la estructura estándar detrás de los **índices en bases de datos relacionales** (PostgreSQL, MySQL) y almacenes distribuidos.
+
+#### Aplicaciones en Big Data e Inteligencia Artificial
+1. **Índices en bases de datos:** Permiten localizar cualquier registro entre miles de millones en pocas lecturas de disco ($O(\log n)$).
+2. **Árboles de Sintaxis Abstracta (AST):** Motores como Catalyst en Apache Spark parsean consultas SQL y las representan como árboles de expresiones para optimizarlas algebraicamente antes de ejecutarlas.
+3. **Machine Learning:** Algoritmos basados en árboles de decisión (CART, Random Forest, XGBoost, LightGBM) que clasifican registros mediante bifurcaciones jerárquicas sucesivas.
+
+#### Ejemplo Práctico en Python: Árbol de Decisión Binario
+
+```python
+class NodoDecision:
+    """Nodo simple para modelar un clasificador jerárquico basado en árbol."""
+    def __init__(self, caracteristica=None, umbral=None, izquierdo=None, derecho=None, resultado=None):
+        self.caracteristica = caracteristica
+        self.umbral = umbral
+        self.izquierdo = izquierdo
+        self.derecho = derecho
+        self.resultado = resultado
+
+    def es_hoja(self):
+        return self.resultado is not None
+
+def predecir_arbol(nodo: NodoDecision, registro: dict) -> str:
+    if nodo.es_hoja():
+        return nodo.resultado
+    
+    valor = registro[nodo.caracteristica]
+    if valor <= nodo.umbral:
+        return predecir_arbol(nodo.izquierdo, registro)
+    else:
+        return predecir_arbol(nodo.derecho, registro)
+
+# Construcción de un árbol de decisión para concesión de préstamos
+# Raíz: ingresos <= 2500
+#   -> Izq: Denegado
+#   -> Der: Deuda <= 5000 -> Concedido / Denegado
+arbol_credito = NodoDecision(
+    caracteristica="ingresos", umbral=2500,
+    izquierdo=NodoDecision(resultado="❌ Préstamo Denegado (Ingresos bajos)"),
+    derecho=NodoDecision(
+        caracteristica="deuda", umbral=5000,
+        izquierdo=NodoDecision(resultado="✅ Préstamo Concedido"),
+        derecho=NodoDecision(resultado="⚠️ Requiere Aval (Deuda alta)")
+    )
+)
+
+solicitud = {"ingresos": 3200, "deuda": 1200}
+dictamen = predecir_arbol(arbol_credito, solicitud)
+print("Evaluación de solicitud con Árbol de Decisión:", solicitud)
+print("Resultado:", dictamen)
+```
+
+---
+
+### 3.12 Aplicando lo Aprendido: Análisis de Datos y Arquitecturas Big Data
+
+La convergencia de teoría de conjuntos, lógica formal y algorítmica discreta es lo que permite operar las modernas plataformas de Big Data:
+
+| Concepto Discreto | Implementación en Arquitecturas Big Data | Beneficio Tecnológico |
+| :--- | :--- | :--- |
+| **Tablas Hash ($O(1)$)** | *Broadcast Hash Join* y agregaciones en memoria en Apache Spark / DuckDB | Cruces de tablas ultrarrápidos sin necesidad de ordenar previamente los datos. |
+| **Árboles B+ / Log-Structured Trees** | Índices primarios en RDBMS, Parquet file footers, índices de zona (*Zone Maps*) | Lectura selectiva de bloques de datos en almacenamiento columnar, omitiendo terabytes irrelevantes. |
+| **Divide y Vencerás ($O(n \log n)$)** | Paradigma MapReduce, particiones distribuidas de RDDs en Spark | Paralelización horizontal masiva de tareas complejas en clústeres de miles de máquinas. |
+| **Grafos Acíclicos Dirigidos (DAG)** | Planificadores físicos de ejecución en Spark, linaje de datos en Apache Atlas, orquestación en Apache Airflow | Detección de dependencias, reintento resiliente ante fallos de nodos y eliminación de pasos redundantes. |
+| **Lógica de Predicados y Álgebra** | Optimizadores de consultas (*Catalyst Optimizer*, Calcite) | Pushing down de filtros hacia el almacenamiento (`Predicate Pushdown`) antes de cargar datos en RAM. |
+
+---
+
+## 4. Resumen Global de Complejidades y Estructuras
+
+| Estructura de Datos | Acceso | Búsqueda | Inserción | Borrado | Caso de Uso en Sistemas de Datos |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Array / Lista Contigua** | $O(1)$ | $O(n)$ | $O(n)$ | $O(n)$ | Lecturas secuenciales rápidas en memoria contigua. |
+| **Tabla Hash (Dict / Set)** | N/A | $O(1)$ | $O(1)$ | $O(1)$ | Cachés de sesión, índices en memoria, lookup de claves primarias. |
+| **Árbol Balanceado (AVL / B-Tree)**| $O(\log n)$ | $O(\log n)$ | $O(\log n)$ | $O(\log n)$ | Índices en bases de datos relacionales y búsquedas por rango numérico. |
+| **Grafo (Matriz / Lista Adyacencia)**| N/A | $O(\|V\| + \|E\|)$ | $O(1)$ | $O(\|E\|)$ | Redes de fraude, sistemas de recomendación, linaje de pipelines. |
+| **Pila (Stack) / Cola (Queue)** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | Buffers de streaming (Kafka), evaluación de expresiones y recursión. |
