@@ -121,10 +121,21 @@ flowchart LR
         Q2 --> Q1["Elemento 1 (Frente)"]
         Q1 --> Q_out["Dequeue (Salida)"]
     end
+
+    subgraph Heap["Cola de Prioridad (Min-Heap: O(log n))"]
+        direction TB
+        H1["10 (Prioridad Máxima / Mínimo)"] --> H2["20"]
+        H1 --> H3["15"]
+        H2 --> H4["35"]
+        H2 --> H5["28"]
+        H3 --> H6["40"]
+        H3 --> H7["18"]
+    end
 ```
 
 - **Pila (*Stack* - LIFO):** El último elemento en entrar es el primero en salir. Fundamental para la gestión de llamadas a funciones (*Call Stack*), operaciones de deshacer (*Undo*) y algoritmos de recorrido en profundidad (DFS).
 - **Cola (*Queue* - FIFO):** El primer elemento en entrar es el primero en salir. Indispensable en arquitecturas de Big Data para procesar flujos de mensajes en streaming (buffers en Apache Kafka, colas de tareas en RabbitMQ o Celery).
+- **Cola de Prioridad (*Heap*):** Árbol binario semiordenado que mantiene siempre el elemento de máxima prioridad en la raíz. Permite extracciones en $O(1)$ e inserciones en $O(\log n)$ (utilizado por el algoritmo de Dijkstra y planificadores de tareas en clústeres YARN/Kubernetes).
 
 #### Ejemplo Práctico en Python: Procesamiento de Mensajes con `collections.deque`
 
@@ -234,6 +245,19 @@ Aplica la técnica de **divide y vencerás**. Requiere obligatoriamente que la c
 - **Mecanismo:** Compara el objetivo con el elemento central de la colección. Si coincide, finaliza; si el objetivo es menor, descarta toda la mitad derecha; si es mayor, descarta la mitad izquierda.
 - **Eficiencia:** Reduce a la mitad el espacio de búsqueda en cada paso. Para 1.000.000 de registros, requiere un máximo de 20 comparaciones ($\log_2(10^6) \approx 19.9$).
 
+```mermaid
+flowchart TD
+    subgraph BinSearch["Proceso de Búsqueda Binaria (Divide y Vencerás)"]
+        direction TB
+        P0["Espacio inicial: Array ordenado [10, 20, 30, 40, 50, 60, 70, 80, 90] | Objetivo = 70"]
+        P1["Paso 1: Elemento central = 50 (Índice 4)<br/>¿70 == 50? No. 70 > 50 → Descartar mitad izquierda [10..50]"]
+        P2["Paso 2: Sub-array activo [60, 70, 80, 90]<br/>Elemento central = 80 → ¿70 == 80? No. 70 < 80 → Descartar mitad derecha [80..90]"]
+        P3["Paso 3: Sub-array activo [60, 70]<br/>Elemento central = 70 → ¡Coincidencia encontrada! Retorna índice."]
+        
+        P0 --> P1 --> P2 --> P3
+    end
+```
+
 ### 4.3 Árboles de Búsqueda (ABB / AVL)
 Estructuras jerárquicas dinámicas donde cada nodo mantiene la propiedad de búsqueda: elementos menores a la izquierda y mayores a la derecha. Los árboles balanceados (AVL o Rojo-Negro) garantizan que la altura no supere $O(\log n)$, evitando la degradación a listas lineales.
 
@@ -287,8 +311,56 @@ Ordenar datos es una fase previa indispensable para realizar búsquedas binarias
 ### 5.1 Quicksort (Divide y Vencerás)
 Selecciona un elemento como **pivote** y reorganiza el array de modo que todos los elementos menores queden a la izquierda y los mayores a la derecha. A continuación, aplica recursivamente el mismo proceso sobre los dos sub-arrays resultantes.
 
+```mermaid
+flowchart LR
+    subgraph QuicksortPart["Particionado de Quicksort con Pivote"]
+        direction LR
+        Arr["Array: [42, 12, 88, 23, 65, 9, 34, 71]"]
+        Piv["Pivote = 34"]
+        Menores["Menores que Pivote:<br/>[12, 23, 9]"]
+        PivoteNode["Pivote:<br/>[34]"]
+        Mayores["Mayores que Pivote:<br/>[42, 88, 65, 71]"]
+        
+        Arr --> Piv
+        Piv --> Menores
+        Piv --> PivoteNode
+        Piv --> Mayores
+        
+        Menores -.->|"Recursión Quicksort"| Rec1["[9, 12, 23]"]
+        Mayores -.->|"Recursión Quicksort"| Rec2["[42, 65, 71, 88]"]
+    end
+```
+
 ### 5.2 Mergesort (Mezcla Ordenada)
 Divide repetidamente la colección por la mitad hasta llegar a sub-listas de un único elemento (que ya están trivialmente ordenadas). Luego combina (*merge*) ordenadamente los pares de sub-listas de abajo hacia arriba. Es el algoritmo estándar cuando los datos no caben en memoria y deben ordenarse en disco (*External Sorting*).
+
+```mermaid
+flowchart TD
+    subgraph MergesortFlow["Árbol de Mergesort: División y Fusión Ordenada"]
+        direction TB
+        subgraph Division["1. Fase Divide (Hacia Abajo)"]
+            Orig["[38, 27, 43, 3]"] --> D1["[38, 27]"]
+            Orig --> D2["[43, 3]"]
+            D1 --> D11["[38]"]
+            D1 --> D12["[27]"]
+            D2 --> D21["[43]"]
+            D2 --> D22["[3]"]
+        end
+
+        subgraph Fusion["2. Fase Vence y Mezcla (Merge Hacia Arriba)"]
+            F1["[27, 38]"]
+            F2["[3, 43]"]
+            Final["[3, 27, 38, 43] (Resultado Ordenado O(n log n))"]
+        end
+
+        D11 --> F1
+        D12 --> F1
+        D21 --> F2
+        D22 --> F2
+        F1 --> Final
+        F2 --> Final
+    end
+```
 
 #### Ejemplo Práctico en Python: Implementación de Quicksort y Mergesort
 
@@ -343,13 +415,53 @@ Un **grafo** $G = (V, E)$ es una estructura discreta no lineal compuesta por un 
 - **Grafos Ponderados:** Cada arista posee un coste, distancia o latencia asociada.
 
 ```mermaid
-flowchart LR
-    A["Nodo A"] -->|5| B["Nodo B"]
-    A -->|2| C["Nodo C"]
-    B -->|1| D["Nodo D"]
-    C -->|8| D
-    C -->|4| E["Nodo E"]
-    D -->|3| E
+flowchart TD
+    subgraph DAG_Spark["DAG de Ejecución en Apache Spark (Modelo Distribuido)"]
+        direction TB
+        subgraph Stage1["Etapa 1: Dependencias Estrechas (Sin Shuffle en Red)"]
+            direction LR
+            P1["Partición 1 (Disco)"] --> F1["Filter"] --> M1["Map (Worker 1)"]
+            P2["Partición 2 (Disco)"] --> F2["Filter"] --> M2["Map (Worker 2)"]
+        end
+
+        subgraph Shuffle["Barrera de Shuffle (Redistribución por Red)"]
+            SW["Shuffle Write"] ==> SR["Shuffle Read"]
+        end
+
+        subgraph Stage2["Etapa 2: Dependencias Amplias (Agregación / Reducción)"]
+            direction LR
+            SR --> R1["ReduceByKey (Worker A)"] --> O1["Salida A"]
+            SR --> R2["ReduceByKey (Worker B)"] --> O2["Salida B"]
+        end
+
+        Stage1 --> SW
+        SR --> Stage2
+    end
+```
+
+#### Comparativa Visual de Recorridos en Grafos: BFS vs DFS
+
+```mermaid
+flowchart TD
+    subgraph RecorridoBFS["BFS: Búsqueda en Anchura (Cola FIFO)"]
+        direction TB
+        b1["1º: Nodo Raíz (Nivel 0)"] --> b2["2º: Nodo B (Nivel 1)"]
+        b1 --> b3["3º: Nodo C (Nivel 1)"]
+        b2 --> b4["4º: Nodo D (Nivel 2)"]
+        b2 --> b5["5º: Nodo E (Nivel 2)"]
+        b3 --> b6["6º: Nodo F (Nivel 2)"]
+    end
+
+    subgraph RecorridoDFS["DFS: Búsqueda en Profundidad (Pila LIFO)"]
+        direction TB
+        d1["1º: Nodo Raíz"] --> d2["2º: Nodo B"]
+        d2 --> d3["3º: Nodo D (Fondo)"]
+        d3 -.->|"Retroceso"| d2
+        d2 --> d4["4º: Nodo E"]
+        d4 -.->|"Retroceso"| d1
+        d1 --> d5["5º: Nodo C"]
+        d5 --> d6["6º: Nodo F"]
+    end
 ```
 
 #### Algoritmos Fundamentales sobre Grafos:
@@ -416,6 +528,56 @@ flowchart TD
     U --> L["lib"]
     V --> Lg["log"]
     Lg --> App["app.log"]
+```
+
+#### Comparativa Visual: Árbol Balanceado vs Árbol Degenerado
+
+La propiedad de auto-balanceo es la que asegura que la altura del árbol sea logarítmica ($h = \lfloor \log_2 n \rfloor$):
+
+```mermaid
+flowchart LR
+    subgraph Balanceado["Árbol Balanceado (AVL / B-Tree): O(log n)"]
+        direction TB
+        bR["50"] --> b1["30"]
+        bR --> b2["70"]
+        b1 --> b11["20"]
+        b1 --> b12["40"]
+        b2 --> b21["60"]
+        b2 --> b22["80"]
+    end
+
+    subgraph Degenerado["Árbol Degenerado (Peor Caso): O(n)"]
+        direction TB
+        d1["10"] --> d2["20"]
+        d2 --> d3["30"]
+        d3 --> d4["40"]
+        d4 --> d5["50 (Búsqueda degrada a lineal)"]
+    end
+```
+
+#### Arquitectura B+ Tree y Salto de Bloques (Data Skipping) en Big Data
+
+```mermaid
+flowchart TD
+    subgraph BPlusTree["Índice B+ Tree en Formatos de Almacenamiento"]
+        direction TB
+        RootIdx["Raíz: [ Min: 1 | Max: 1000 ]"] --> Mid1["Rango [ 1 .. 500 ]"]
+        RootIdx --> Mid2["Rango [ 501 .. 1000 ]"]
+
+        Mid1 --> H1["Hoja A: Claves 1..250"]
+        Mid1 --> H2["Hoja B: Claves 251..500"]
+        Mid2 --> H3["Hoja C: Claves 501..750"]
+        Mid2 --> H4["Hoja D: Claves 751..1000"]
+
+        H1 <==>|"Punteros secuenciales"| H2
+        H2 <==> H3
+        H3 <==> H4
+
+        H1 -.-> B1["Row Group 1 (Parquet)"]
+        H2 -.-> B2["Row Group 2 (Parquet)"]
+        H3 -.-> B3["Row Group 3 (Parquet)"]
+        H4 -.-> B4["Row Group 4 (Parquet)"]
+    end
 ```
 
 #### Aplicaciones en Big Data e Inteligencia Artificial:

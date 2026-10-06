@@ -62,18 +62,48 @@ Considerando dos conjuntos $A$ y $B$ dentro de un conjunto universal $U$:
 | **Diferencia** | $A \setminus B$ | $\{x \mid x \in A \land x \notin B\}$ | Elementos que pertenecen exclusivamente a $A$ y no están en $B$. |
 | **Complemento**| $A^c$ o $A'$ | $\{x \mid x \in U \land x \notin A\}$ | Todos los elementos del universo $U$ que **no** pertenecen a $A$. |
 
-#### Mapa Conceptual de Operaciones
+#### Mapa Conceptual y Diagrama de Regiones (Estilo Venn)
+
 ```mermaid
 flowchart TD
-    Root["Operaciones de Conjuntos"] --> U["Unión (A ∪ B)"]
-    Root --> I["Intersección (A ∩ B)"]
-    Root --> D["Diferencia (A ∖ B)"]
-    Root --> C["Complemento (Aᶜ)"]
-    
-    U --> U_desc["Todos los elementos de A y B sin duplicados"]
-    I --> I_desc["Solo elementos comunes a ambos"]
-    D --> D_desc["En A pero descartando los que están en B"]
-    C --> C_desc["Todos los elementos del universo que no están en A"]
+    subgraph Universo["Universo U (Total de Usuarios / Registros)"]
+        subgraph SoloA["Región A ∖ B (Diferencia)"]
+            A_elem["Solo en A<br/>Ej: Clientes Tecnología no Premium"]
+        end
+        subgraph Interseccion["Región A ∩ B (Intersección)"]
+            AB_elem["En A y en B simultáneamente<br/>Ej: Clientes Premium que compran Tecnología"]
+        end
+        subgraph SoloB["Región B ∖ A (Diferencia)"]
+            B_elem["Solo en B<br/>Ej: Clientes Premium que no compran Tecnología"]
+        end
+        subgraph ComplementoExt["Región (A ∪ B)ᶜ (Complemento Exterior)"]
+            U_elem["Elementos del Universo fuera de A y B<br/>Ej: Usuarios que ni compran tecnología ni son Premium"]
+        end
+    end
+
+    SoloA -.->|"Unión A ∪ B"| Interseccion
+    Interseccion -.->|"Unión A ∪ B"| SoloB
+```
+
+#### Relaciones de Inclusión y Particionado de Conjuntos en Big Data
+
+En sistemas distribuidos, un conjunto universal de datos $U$ se divide mediante **particionamiento disjunto** para su procesamiento paralelo en clústeres:
+
+```mermaid
+flowchart LR
+    subgraph Inclusion["Relaciones de Inclusión"]
+        direction TB
+        Sub["Subconjunto (A ⊆ B)<br/>Todo elemento de A está en B"]
+        Disj["Conjuntos Disjuntos (A ∩ B = ∅)<br/>Ningún elemento en común"]
+    end
+
+    subgraph Particionado["Particionamiento en Big Data (Sharding)"]
+        direction TB
+        U["Dataset Global U"] --> P1["Partición P₁ (Worker 1)"]
+        U --> P2["Partición P₂ (Worker 2)"]
+        U --> P3["Partición P₃ (Worker 3)"]
+        Prop["Propiedades:<br/>1. P₁ ∪ P₂ ∪ P₃ = U (Cobertura total)<br/>2. Pᵢ ∩ Pⱼ = ∅ para i ≠ j (Sin solapamiento)"]
+    end
 ```
 
 > 💡 **Representación Visual (Diagramas de Venn):**  
@@ -146,6 +176,40 @@ flowchart TD
     Tra --> Tra_ej["Ej: 'Es antepasado de', 'Mayor que (>)']"]
 ```
 
+#### Representación de Relaciones mediante Grafos Dirigidos (Digrafos)
+
+Toda relación binaria sobre un conjunto finito puede representarse rigurosamente mediante un **grafo dirigido** donde los vértices son los elementos del conjunto y las aristas dirigidas representan los pares ordenados pertenecientes a la relación:
+
+```mermaid
+flowchart LR
+    subgraph PropGrafos["Comportamiento Gráfico de las Propiedades"]
+        direction TB
+        subgraph Refl["Reflexividad"]
+            R_a["a"] -->|Auto-bucle| R_a
+        end
+        subgraph Sime["Simetría"]
+            S_a["a"] <-->|Arista bidireccional| S_b["b"]
+        end
+        subgraph Tran["Transitividad"]
+            T_a["a"] --> T_b["b"]
+            T_b --> T_c["c"]
+            T_a -->|Atajo directo (a, c)| T_c
+        end
+    end
+
+    subgraph CasoMayorQue["Grafo Dirigido: Relación 'Mayor Que' en {1, 2, 3}"]
+        direction LR
+        N3["Elemento 3"] -->|"3 > 2"| N2["Elemento 2"]
+        N2 -->|"2 > 1"| N1["Elemento 1"]
+        N3 ==>|"Atajo Transitivo: 3 > 1"| N1
+    end
+```
+
+> 💡 **Interpretación del Grafo "Mayor Que":**  
+> - **Sin bucles propios:** Ningún nodo tiene una arista hacia sí mismo ($a \ngtr a$) $\implies$ **No reflexiva**.  
+> - **Sin aristas de retorno:** No existen caminos en sentido inverso ($2 \ngtr 3$) $\implies$ **No simétrica** (es asimétrica).  
+> - **Atajo directo presente:** El camino $3 \to 2 \to 1$ está cerrado por la arista directa $3 \to 1$ $\implies$ **Transitiva**.
+
 #### Caso de Estudio: La Relación "Es Mayor Que" ($>$)
 Analicemos la relación $R = \{(a, b) \in \mathbb{R} \times \mathbb{R} \mid a > b\}$:
 - **¿Es reflexiva?** ❌ **No**. Ningún número es estrictamente mayor que sí mismo ($a \ngtr a$).
@@ -216,20 +280,83 @@ Una **función** $f: A \to B$ es un tipo especial de relación matemática que a
 
 ```mermaid
 flowchart LR
-    subgraph Dominio["Dominio A (Entradas)"]
-        A1["x₁"]
-        A2["x₂"]
-        A3["x₃"]
-    end
-    subgraph Codominio["Codominio B (Salidas)"]
-        B1["y₁"]
-        B2["y₂"]
-        B3["y₃"]
+    subgraph Inyectiva["1. Inyectiva (Uno a Uno)"]
+        direction LR
+        subgraph Dom1["Dominio"]
+            i1["x₁"]
+            i2["x₂"]
+        end
+        subgraph Cod1["Codominio"]
+            iy1["y₁"]
+            iy2["y₂"]
+            iy3["y₃ (Libre)"]
+        end
+        i1 --> iy1
+        i2 --> iy2
     end
 
-    A1 -->|f| B1
-    A2 -->|f| B2
-    A3 -->|f| B3
+    subgraph Suprayectiva["2. Suprayectiva (Sobre)"]
+        direction LR
+        subgraph Dom2["Dominio"]
+            s1["x₁"]
+            s2["x₂"]
+            s3["x₃"]
+        end
+        subgraph Cod2["Codominio"]
+            sy1["y₁"]
+            sy2["y₂"]
+        end
+        s1 --> sy1
+        s2 --> sy1
+        s3 --> sy2
+    end
+
+    subgraph Biyectiva["3. Biyectiva (1 a 1 y Reversible)"]
+        direction LR
+        subgraph Dom3["Dominio"]
+            b1["x₁"]
+            b2["x₂"]
+        end
+        subgraph Cod3["Codominio"]
+            by1["y₁"]
+            by2["y₂"]
+        end
+        b1 <-->|f / f⁻¹| by1
+        b2 <-->|f / f⁻¹| by2
+    end
+```
+
+#### Diagrama de Función Hash y Sharding en Big Data
+
+En almacenamiento distribuido y motores de procesamiento, una función de dispersión (*Hash Function*) mapea el espacio continuo o discreto de claves hacia un número finito de particiones o nodos de cómputo:
+
+```mermaid
+flowchart LR
+    subgraph Claves["Espacio de Claves (Dominio)"]
+        K1["Clave: 'usr_102'"]
+        K2["Clave: 'usr_854'"]
+        K3["Clave: 'usr_331'"]
+        K4["Clave: 'usr_909'"]
+    end
+
+    subgraph Hash["Función Hash h(k) mod 3"]
+        H["Hash & Mapeo de Partición"]
+    end
+
+    subgraph Workers["Particiones / Servidores (Codominio)"]
+        W0["Partición 0 / Worker 0"]
+        W1["Partición 1 / Worker 1"]
+        W2["Partición 2 / Worker 2"]
+    end
+
+    K1 --> H
+    K2 --> H
+    K3 --> H
+    K4 --> H
+
+    H -->|h(k)=0| W0
+    H -->|h(k)=1 (Colisión)| W1
+    H -->|h(k)=2| W2
 ```
 
 > 📌 **Aplicaciones en Big Data:**  
@@ -836,12 +963,54 @@ Un **grafo** $G = (V, E)$ es una estructura discreta no lineal formada por un co
 
 ```mermaid
 flowchart LR
-    A["Nodo A"] -->|5| B["Nodo B"]
-    A -->|2| C["Nodo C"]
-    B -->|1| D["Nodo D"]
-    C -->|8| D
-    C -->|4| E["Nodo E"]
-    D -->|3| E
+    subgraph NoDirigido["1. Grafo No Dirigido (Relación Simétrica)"]
+        direction LR
+        U1["Usuario 1"] --- U2["Usuario 2"]
+        U2 --- U3["Usuario 3"]
+        U1 --- U3
+    end
+
+    subgraph DAG_Spark["2. Grafo Dirigido Acíclico (DAG en Spark/Airflow)"]
+        direction LR
+        T1["Task 1: Lectura"] --> T2["Task 2: Filter"]
+        T1 --> T3["Task 3: Map"]
+        T2 --> T4["Task 4: Join (Shuffle)"]
+        T3 --> T4
+    end
+
+    subgraph Ponderado["3. Grafo Ponderado (Latencias en Red)"]
+        direction LR
+        S1["Nodo A"] -->|5 ms| S2["Nodo B"]
+        S1 -->|2 ms| S3["Nodo C"]
+        S2 -->|1 ms| S4["Nodo D"]
+        S3 -->|8 ms| S4
+    end
+```
+
+#### Comparativa Visual de Recorridos en Grafos (BFS vs DFS)
+
+La forma en que se exploran los vértices define la idoneidad del algoritmo para resolver problemas específicos (caminos más cortos vs análisis topológico/ciclos):
+
+```mermaid
+flowchart TD
+    subgraph BFS_Visual["BFS: Búsqueda en Anchura (Cola FIFO - Por Niveles)"]
+        direction TB
+        B0["Nivel 0: Raíz (1º)"] --> B1["Nivel 1: Vecino A (2º)"]
+        B0 --> B2["Nivel 1: Vecino B (3º)"]
+        B1 --> B3["Nivel 2: Hoja C (4º)"]
+        B1 --> B4["Nivel 2: Hoja D (5º)"]
+        B2 --> B5["Nivel 2: Hoja E (6º)"]
+    end
+
+    subgraph DFS_Visual["DFS: Búsqueda en Profundidad (Pila LIFO - Por Ramas)"]
+        direction TB
+        D0["Inicio: Raíz (1º)"] --> D1["Rama 1: Nodo A (2º)"]
+        D1 --> D2["Fondo: Nodo C (3º)"]
+        D2 -.->|"Retroceso (Backtracking)"| D1
+        D1 --> D3["Siguiente fondo: Nodo D (4º)"]
+        D3 -.->|"Retroceso"| D0
+        D0 --> D4["Rama 2: Nodo B (5º)"]
+    end
 ```
 
 #### Algoritmos Fundamentales sobre Grafos
@@ -908,6 +1077,63 @@ flowchart TD
     U --> L["lib"]
     V --> Lg["log"]
     Lg --> App["app.log"]
+```
+
+#### Estructuras de Árboles en Computación y Bases de Datos
+
+```mermaid
+flowchart TD
+    subgraph ABB["1. Árbol Binario de Búsqueda (ABB - Invariante: Izq < Padre < Der)"]
+        direction TB
+        N50["Clave 50 (Raíz)"] --> N30["Clave 30 (Menor)"]
+        N50 --> N70["Clave 70 (Mayor)"]
+        N30 --> N20["20"]
+        N30 --> N40["40"]
+        N70 --> N60["60"]
+        N70 --> N80["80"]
+    end
+
+    subgraph ComparativaBalanceo["2. Importancia del Balanceo Asintótico"]
+        direction LR
+        subgraph Bal["Balanceado: AVL / B-Tree<br/>Altura = O(log n)<br/>Búsqueda Óptima"]
+            bR["Raíz"] --> b1["A"]
+            bR --> b2["B"]
+            b1 --> b11["C"]
+            b1 --> b12["D"]
+            b2 --> b21["E"]
+            b2 --> b22["F"]
+        end
+        subgraph Deg["Degenerado (Peor Caso)<br/>Altura = O(n)<br/>Degenera a Lista Enlazada"]
+            d1["Nodo 1"] --> d2["Nodo 2"]
+            d2 --> d3["Nodo 3"]
+            d3 --> d4["Nodo 4"]
+        end
+    end
+```
+
+#### Arquitectura de un B+ Tree (Motor de Almacenamiento en Big Data)
+
+Los árboles B+ organizan los índices de las bases de datos para garantizar lecturas mínimas en disco:
+
+```mermaid
+flowchart TD
+    subgraph BTree["Estructura B+ Tree (Almacenamiento Persistente)"]
+        direction TB
+        RootNode["Nodo Raíz: [ Rangos: 1..100 | 101..200 ]"] --> Inter1["Nodo Interno: [ 1..50 | 51..100 ]"]
+        RootNode --> Inter2["Nodo Interno: [ 101..150 | 151..200 ]"]
+
+        Inter1 --> Leaf1["Hoja: Claves 1..50"]
+        Inter1 --> Leaf2["Hoja: Claves 51..100"]
+        Inter2 --> Leaf3["Hoja: Claves 101..150"]
+        Inter2 --> Leaf4["Hoja: Claves 151..200"]
+
+        Leaf1 <==>|"Punteros de lista enlazada secuencial (Range Scans)"| Leaf2
+        Leaf2 <==> Leaf3
+        Leaf3 <==> Leaf4
+
+        Leaf1 -.-> D1["Bloques de Datos en Disco (Parquet / SSD)"]
+        Leaf2 -.-> D2["Bloques de Datos en Disco"]
+    end
 ```
 
 #### Tipos Clave de Árboles
