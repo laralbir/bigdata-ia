@@ -171,30 +171,27 @@ El rendimiento se mide en dos dimensiones fundamentales:
 ### 3.1 La Notación Big O ($O$)
 
 La notación **Big O** describe la **cota superior asintótica** de un algoritmo; es decir, representa el **peor escenario posible** de consumo de recursos. Clasifica los algoritmos según su tasa de crecimiento frente a variaciones en el tamaño de la entrada $n$.
-##### Gráfico de Curvas en Mermaid (Plano Cartesiano $n$ vs Operaciones)
+##### Gráfico de Curvas en Mermaid (Plano Cartesiano Extendido $n$ vs Operaciones)
 
 ```mermaid
 xychart-beta
     title "Gráfico de Curvas de Complejidad Computacional (Big O)"
-    x-axis "Tamaño de Entrada (n)" [1, 2, 4, 8, 12, 16]
-    y-axis "Operaciones f(n)" 0 --> 300
-    line [1, 1, 1, 1, 1, 1]
-    line [0, 1, 2, 3, 3.58, 4]
-    line [1, 2, 4, 8, 12, 16]
-    line [0, 2, 8, 24, 43, 64]
-    line [1, 4, 16, 64, 144, 256]
+    x-axis "Tamaño de Entrada (n)" [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+    y-axis "Operaciones f(n)" 0 --> 600
+    line [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    line [0, 1, 1.58, 2, 2.32, 2.58, 2.81, 3, 3.17, 3.32, 3.46, 3.58, 3.7, 3.81, 3.91, 4, 4.09, 4.17, 4.25, 4.32, 4.39, 4.46, 4.52, 4.58]
+    line [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+    line [0, 2, 4.75, 8, 11.61, 15.51, 19.65, 24, 28.53, 33.22, 38.05, 43.02, 48.11, 53.3, 58.6, 64, 69.49, 75.06, 80.71, 86.44, 92.24, 98.11, 104.04, 110.04]
+    line [1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576]
 ```
 
-> 📊 **Correspondencia de Curvas en el Gráfico Mermaid (hasta $n = 16$):**  
-> - **Curva 1 (Horizontal plana):** $O(1)$ — Constante ($y = 1$)  
-> - **Curva 2 (Sublineal):** $O(\log_2 n)$ — Logarítmica ($y = 4$ para $n = 16$)  
-> - **Curva 3 (Diagonal 1:1):** $O(n)$ — Lineal ($y = 16$ para $n = 16$)  
-> - **Curva 4 (Ascendente):** $O(n \log_2 n)$ — Lineal-logarítmica ($y = 64$ para $n = 16$)  
-> - **Curva 5 (Parabólica):** $O(n^2)$ — Cuadrática ($y = 256$ para $n = 16$)  
-> - *(Fuera de escala vertical):* $O(2^n)$ — Exponencial ($2^{16} = 65.536$ operaciones, escala verticalmente disparada)
-
-##### Infografía de Referencia de Curvas y Zonas de Rendimiento
-![Gráfico de Complejidad Computacional](img/complejidad_computacional.png)
+> 📊 **Correspondencia de Curvas en el Gráfico Mermaid Extendido ($n = 1 \dots 24$):**  
+> - **Línea 1 (Horizontal plana en la base):** $O(1)$ — Constante ($y = 1$)  
+> - **Línea 2 (Sublineal, amortiguada):** $O(\log_2 n)$ — Logarítmica ($y \approx 4.58$ en $n = 24$, crece extremadamente despacio)  
+> - **Línea 3 (Diagonal uniforme 1:1):** $O(n)$ — Lineal ($y = 24$ en $n = 24$)  
+> - **Línea 4 (Curva ascendente acelerada):** $O(n \log_2 n)$ — Lineal-logarítmica ($y \approx 110$ en $n = 24$, estándar óptimo de ordenación)  
+> - **Línea 5 (Parábola empinada):** $O(n^2)$ — Cuadrática ($y = 576$ en $n = 24$, se dispara verticalmente y domina el consumo)  
+> - *(Fuera de escala vertical):* $O(2^n)$ — Exponencial ($2^{24} \approx 1.67 \times 10^7$ operaciones, totalmente intratable)
 
 ##### Diagrama Estructural de Zonas y Escalabilidad en Big Data
 ```mermaid
@@ -483,8 +480,35 @@ print("Ordenado con Mergesort:", mergesort(datos_muestra))
 ### 6.1 Grafos: Modelando Relaciones Complejas
 
 Un **grafo** $G = (V, E)$ es una estructura discreta no lineal compuesta por un conjunto de **vértices o nodos** ($V$) y un conjunto de **aristas o enlaces** ($E$) que conectan pares de vértices:
+- **Grafos No Dirigidos:** Las aristas no tienen dirección; la relación es simétrica y bidireccional (ej. amistades en redes sociales o enlaces físicos de red).
 - **Grafos Dirigidos (DAG - *Directed Acyclic Graph*):** Las aristas tienen un sentido determinado y no forman ciclos cerrados. En Big Data, los **planes físicos de Apache Spark** y las dependencias de tareas en **Apache Airflow** son DAGs.
-- **Grafos Ponderados:** Cada arista posee un coste, distancia o latencia asociada.
+- **Grafos Ponderados:** Cada arista posee un coste, distancia o latencia asociada (ej. latencia entre servidores en un clúster).
+
+```mermaid
+flowchart LR
+    subgraph NoDirigido["1. Grafo No Dirigido (Relación Simétrica)"]
+        direction LR
+        U1["Usuario 1"] --- U2["Usuario 2"]
+        U2 --- U3["Usuario 3"]
+        U1 --- U3
+    end
+
+    subgraph DAG_Gen["2. Grafo Dirigido Acíclico (DAG)"]
+        direction LR
+        T1["Task 1: Lectura"] --> T2["Task 2: Filter"]
+        T1 --> T3["Task 3: Map"]
+        T2 --> T4["Task 4: Join (Shuffle)"]
+        T3 --> T4
+    end
+
+    subgraph Ponderado["3. Grafo Ponderado (Latencias en Red)"]
+        direction LR
+        S1["Nodo A"] -->|"5 ms"| S2["Nodo B"]
+        S1 -->|"2 ms"| S3["Nodo C"]
+        S2 -->|"1 ms"| S4["Nodo D"]
+        S3 -->|"8 ms"| S4
+    end
+```
 
 ```mermaid
 flowchart TD
@@ -600,6 +624,21 @@ flowchart TD
     U --> L["lib"]
     V --> Lg["log"]
     Lg --> App["app.log"]
+```
+
+#### Estructuras de Árboles en Computación y Bases de Datos
+
+```mermaid
+flowchart TD
+    subgraph ABB["Árbol Binario de Búsqueda (ABB - Invariante: Izq < Padre < Der)"]
+        direction TB
+        N50["Clave 50 (Raíz)"] --> N30["Clave 30 (Menor)"]
+        N50 --> N70["Clave 70 (Mayor)"]
+        N30 --> N20["20"]
+        N30 --> N40["40"]
+        N70 --> N60["60"]
+        N70 --> N80["80"]
+    end
 ```
 
 #### Comparativa Visual: Árbol Balanceado vs Árbol Degenerado
