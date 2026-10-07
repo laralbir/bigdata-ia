@@ -67,7 +67,7 @@
 
   <!-- footer -->
   <text x="800" y="2220" text-anchor="middle" font-size="30" fill="#8fa9c4">Cisco Networking Academy</text>
-  <text x="800" y="2266" text-anchor="middle" font-size="22" fill="#5a7699">Curso de Especialización en Big Data e IA para FP · Digitech</text>
+  <text x="800" y="2266" text-anchor="middle" font-size="22" fill="#5a7699">Curso de Especialización en Big Data e IA para FP</text>
 
   <!-- bottom accent bar -->
   <rect x="0" y="2386" width="1600" height="14" fill="url(#accent)"/>
