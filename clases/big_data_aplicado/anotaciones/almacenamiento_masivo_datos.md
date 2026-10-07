@@ -114,27 +114,27 @@ flowchart LR
 
 ### 2.2.2 Comparativa: Almacenamiento Tradicional vs. Almacenamiento Masivo
 
-Las diferencias estructurales entre un enfoque tradicional (RDBMS, NAS de oficina) y una infraestructura de datos masivos se resumen en los siguientes pilares organizados en dos filas:
+Las diferencias estructurales entre un enfoque tradicional (RDBMS, NAS de oficina) y una infraestructura de datos masivos se resumen en los siguientes pilares organizados en dos columnas:
 
 ```mermaid
-flowchart TD
-    subgraph FilaTradicional["🏢 Fila 1: Almacenamiento Tradicional"]
-        direction LR
+flowchart LR
+    subgraph ColumnaTradicional["🏢 Almacenamiento Tradicional"]
+        direction TB
         T1["Escalabilidad Vertical<br>(Scale-Up)"]
         T2["Arquitectura Monolítica<br>y Centralizada"]
         T3["Esquema Rígido<br>(Schema-on-Write)"]
         T4["Coste elevado por TB<br>al crecer"]
     end
 
-    subgraph FilaMasivo["🌐 Fila 2: Almacenamiento Masivo (Big Data)"]
-        direction LR
+    subgraph ColumnaMasivo["🌐 Almacenamiento Masivo (Big Data)"]
+        direction TB
         M1["Escalabilidad Horizontal<br>(Scale-Out)"]
         M2["Arquitectura Distribuida<br>y Desacoplada"]
         M3["Esquema Flexible<br>(Schema-on-Read)"]
         M4["Alta tolerancia a fallos<br>(Réplicas nativas)"]
     end
 
-    FilaTradicional ==>|Evolución por volumen, velocidad y coste| FilaMasivo
+    ColumnaTradicional ==>|Evolución por volumen,<br>velocidad y coste| ColumnaMasivo
 ```
 
 | Criterio | Almacenamiento Tradicional | Almacenamiento Masivo (Big Data) |
