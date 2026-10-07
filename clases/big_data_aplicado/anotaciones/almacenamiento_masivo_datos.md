@@ -33,7 +33,7 @@
    - 4.4. [Componentes, Beneficios y Consideraciones](#44-componentes-beneficios-y-consideraciones)
 5. [Políticas sobre los Datos](#5-políticas-sobre-los-datos)
    - 5.1. [Importancia de las Copias de Seguridad](#51-importancia-de-las-copias-de-seguridad)
-   - 5.2. Tipos de backups
+   - 5.2. [Tipos de Backup / Respaldo](#52-tipos-de-backup--respaldo)
    - 5.3. Estrategias de recuperación de datos
    - 5.4. Políticas de retención y cumplimiento normativo
 6. [Resumen de la Unidad](#6-resumen-de-la-unidad-y-conclusiones)
@@ -595,6 +595,47 @@ La gestión y salvaguarda de la información es tan crítica como su almacenamie
   
 - **Continuidad del Negocio:**
   - Ayuda a **prevenir, identificar y minimizar o eliminar los riesgos** asociados a la pérdida temporal o permanente de los datos operacionales de la empresa.
+
+### 5.2 Tipos de Backup / Respaldo
+
+Dependiendo de la estrategia de redundancia y el espacio disponible, las políticas de datos implementan diferentes aproximaciones para los respaldos diarios.
+
+#### 1. Copia de Seguridad Completa
+- **Todos los datos son completamente copiados** en cada ejecución.
+- **Característica principal:** Fácil administración (para restaurar el sistema solo se necesita el backup del día deseado).
+
+```mermaid
+xychart-beta
+    title "Volumen de copia diario: Completa"
+    x-axis ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"]
+    y-axis "Volumen Copiado" 0 --> 100
+    bar [60, 65, 70, 75, 80, 85, 90, 95]
+```
+
+#### 2. Copia de Seguridad Incremental Acumulativa
+- Copia de seguridad completa una vez a la semana (ej. Domingo).
+- En el resto de la semana, la **diferencia con la última copia de seguridad completa** es copiada cada día.
+
+```mermaid
+xychart-beta
+    title "Volumen de copia diario: Incremental Acumulativa"
+    x-axis ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"]
+    y-axis "Volumen Copiado" 0 --> 100
+    bar [60, 5, 10, 15, 20, 25, 30, 95]
+```
+
+#### 3. Copia de Seguridad Incremental Diferencial
+- Copia de seguridad completa una vez a la semana.
+- El resto de la semana, la **diferencia de datos con la última copia de seguridad** es copiada cada día.
+
+```mermaid
+xychart-beta
+    title "Volumen de copia diario: Incremental Diferencial"
+    x-axis ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"]
+    y-axis "Volumen Copiado" 0 --> 100
+    bar [60, 5, 7, 4, 6, 8, 5, 95]
+```
+
 
 ---
 
