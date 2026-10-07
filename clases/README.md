@@ -12,6 +12,7 @@ A continuación se detallan las sesiones lectivas del curso ordenadas cronológi
 | :---: | :--- | :--- | :--- |
 | **2026-10-01** | [**Presentación**](presentacion/) | Bienvenida institucional, metodología docente y presentación del programa formativo | [📊 Presentación (PDF)](<presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>)<br>[🎥 Grabación](presentacion/grabaciones/2026_10_01_grabacion_presentacion.md) |
 | **2026-10-05** | [**Sistemas de Big Data**](sistemas_de_big_data/) | Matemáticas discretas y complejidad computacional | [📊 Material (DOCX)](<sistemas_de_big_data/presentaciones/2026-10-05 - SBD Conceptos Basicos.docx>)<br>[📝 Mat. Discretas](sistemas_de_big_data/anotaciones/matematicas_discretas.md)<br>[📝 Intro. Algoritmos](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md)<br>[🎥 Grabación](sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md) |
+| **2026-10-07** | [**Big Data Aplicado**](big_data_aplicado/) | Almacenamiento masivo y procesamiento de datos: fundamentos, 4 V's y tecnologías | [📝 Almacenamiento Masivo](big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md) |
 
 ---
 
@@ -23,6 +24,7 @@ Registro detallado de los apuntes teóricos y cuadernos de estudio, ordenados po
 | :---: | :--- | :--- | :--- | :---: |
 | **2026-10-05** | Sistemas de Big Data | [Matemáticas Discretas](sistemas_de_big_data/anotaciones/matematicas_discretas.md) | Teoría de conjuntos, lógica proposicional, tablas de verdad, álgebra de Boole, grafos y árboles aplicados a Big Data con Python | [Leer apunte](sistemas_de_big_data/anotaciones/matematicas_discretas.md) |
 | **2026-10-05** | Sistemas de Big Data | [Introducción a Algoritmos](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) | Complejidad computacional, notación Big O, análisis de tiempo y espacio, clases de complejidad en Python | [Leer apunte](sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
+| **2026-10-07** | Big Data Aplicado | [Almacenamiento Masivo y Procesamiento](big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md) | Fundamentos de almacenamiento masivo, escala global (Zettabytes), 4 V's de datos, tradicional vs. masivo y validación en Python | [Leer apunte](big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md) |
 
 > 💡 **Nota:** Cada vez que se incorporen nuevos apuntes teóricos a la subcarpeta `anotaciones/` de cualquier asignatura, deben registrarse en esta tabla cronológica indicando la fecha de impartición correspondiente.
 
@@ -71,8 +73,8 @@ Navegación por las asignaturas dadas de alta en el sistema:
 - [Calificaciones](sistemas_de_big_data/calificaciones/)
 
 ### 3. [Big Data Aplicado (`big_data_aplicado/`)](big_data_aplicado/)
-*Fecha de inicio: 2026-10-15*
-- [Anotaciones](big_data_aplicado/anotaciones/)
+*Fecha de inicio: 2026-10-07 (Docente: Alejandro Delgado)*
+- [Anotaciones](big_data_aplicado/anotaciones/) (incluye [Almacenamiento Masivo y Procesamiento](big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md))
 - [Presentaciones](big_data_aplicado/presentaciones/)
 - [Entregables](big_data_aplicado/entregables/)
 - [Grabaciones](big_data_aplicado/grabaciones/)

@@ -1,0 +1,337 @@
+# Almacenamiento Masivo y Procesamiento de Datos
+
+> Apuntes y conceptos teóricos de la asignatura **Big Data Aplicado**.  
+> 📅 **Fecha:** 2026-10-07  
+> 👨‍🏫 **Docente:** Alejandro Delgado  
+> 📖 **Módulo:** Big Data Aplicado — Almacenamiento y Procesamiento de Datos  
+
+---
+
+## 📑 Índice de Contenidos
+
+### Parte #1: Fundamentos y Tecnologías de Almacenamiento
+1. [Introducción](#1-introducción)
+   - 1.1. [Objetivos de la sesión](#11-objetivos-de-la-sesión)
+   - 1.2. [Relevancia del Almacenamiento Masivo en la Era Digital](#12-relevancia-del-almacenamiento-masivo-en-la-era-digital)
+2. [Definición y Características del Almacenamiento Masivo de Datos](#2-definición-y-características-del-almacenamiento-masivo-de-datos)
+   - 2.1. [¿Qué es el almacenamiento masivo?](#21-qué-es-el-almacenamiento-masivo)
+   - 2.2. [Características clave (Las 4 V's y Tradicional vs. Masivo)](#22-las-4-vs-aplicadas-al-almacenamiento-masivo)
+   - 2.3. [Tipos de datos almacenados](#23-tipos-de-datos-almacenados)
+   - 2.4. [Desafíos del almacenamiento masivo](#24-desafíos-del-almacenamiento-masivo)
+3. [Evolución de las tecnologías de almacenamiento](#3-evolución-de-las-tecnologías-de-almacenamiento)
+   - 3.1. Almacenamiento en cinta magnética
+   - 3.2. Discos duros (HDD)
+   - 3.3. Discos de estado sólido (SSD)
+   - 3.4. Almacenamiento en red (NAS y SAN)
+   - 3.5. Almacenamiento en la Nube
+
+### Parte #2: Estrategias, Protección y Gobernanza
+4. [Estrategias para la compresión y deduplicación de datos](#4-estrategias-para-la-compresión-y-deduplicación-de-datos)
+   - 4.1. Conceptos básicos de compresión de datos
+   - 4.2. Técnicas de deduplicación
+   - 4.3. Beneficios y consideraciones
+5. [Políticas de Backup, Recuperación y Retención de datos](#5-políticas-de-backup-recuperación-y-retención-de-datos)
+   - 5.1. Importancia de las copias de seguridad
+   - 5.2. Tipos de backups
+   - 5.3. Estrategias de recuperación de datos
+   - 5.4. Políticas de retención y cumplimiento normativo
+6. [Resumen de la Unidad](#6-resumen-de-la-unidad-y-conclusiones)
+   - 6.1. Recapitulación de conceptos clave
+   - 6.2. Tendencias futuras en almacenamiento masivo
+   - 6.3. Sesión de preguntas y respuestas
+
+---
+
+## 1. Introducción
+
+### 1.1 Objetivos de la Sesión
+
+Al finalizar la unidad didáctica, el alumnado será capaz de:
+- **Comprender los conceptos fundamentales** que rigen el almacenamiento masivo de datos en entornos empresariales.
+- **Identificar las diferentes tecnologías de almacenamiento** y entender su evolución histórica (desde medios secuenciales analógicos hasta almacenamiento distribuido en la nube).
+- **Analizar las estrategias de gestión y optimización** de grandes volúmenes de información (reducción de huella física, compresión y deduplicación).
+- **Evaluar las mejores prácticas en políticas de backup y recuperación de desastres** para garantizar la continuidad del negocio y el cumplimiento normativo.
+
+---
+
+### 1.2 Relevancia del Almacenamiento Masivo en la Era Digital
+
+La digitalización integral de procesos, la proliferación de dispositivos IoT, el comercio electrónico y el aprendizaje automático han generado una explosión sin precedentes en la generación de datos:
+
+- **Crecimiento exponencial:** La esfera global de datos (*Global Datasphere*) ha pasado de apenas unos pocos Zettabytes al inicio de la década de 2010 a superar los **175–180 Zettabytes** anuales.
+  > 📌 **Dato gráfico:** Un volumen de 175 Zettabytes ($175 \times 10^{21}$ bytes) equivaldría metafóricamente a llenar de granos de arena todas las playas del planeta Tierra 8 veces consecutivas.
+- **Toma de decisiones basada en datos (*Data-Driven*):** El almacenamiento masivo ya no es un mero repositorio pasivo; es la materia prima para la analítica avanzada, el entrenamiento de modelos predictivos y la inteligencia de negocios (BI).
+- **Eje de la transformación digital:** Permite a las corporaciones romper silos informativos, centralizar el conocimiento y operar con arquitecturas escalables.
+
+```mermaid
+flowchart TD
+    Fuentes["🌐 Fuentes Heterogéneas<br>(IoT, Redes, Transacciones, Logs)"] --> Explosion["📈 Crecimiento Exponencial<br>(~175 ZB anuales)"]
+    Explosion --> Necesidad["🏢 Reto Corporativo:<br>Almacenar, Proteger y Servir a Escala"]
+    Necesidad --> Explotacion["🎯 Impacto Real:<br>Decisiones Data-Driven y Modelos de IA"]
+```
+
+
+---
+
+## 2. Definición y Características del Almacenamiento Masivo de Datos
+
+### 2.1 ¿Qué es el Almacenamiento Masivo?
+
+El **almacenamiento masivo de datos** (*Massive Data Storage*) hace referencia a las infraestructuras lógicas y de hardware específicamente diseñadas para retener, organizar, proteger y disponibilizar volúmenes de datos que superan ampliamente las capacidades de procesamiento y disco de un único servidor o sistema de almacenamiento tradicional.
+
+A diferencia del almacenamiento convencional centrado en ficheros aislados o bases de datos departamentales, el almacenamiento masivo opera sobre **arquitecturas distribuidas, redundantes y elásticas**, garantizando alta disponibilidad, tolerancia a desastres y acceso continuo con baja latencia para analítica.
+
+---
+
+### 2.2 Las 4 V's Aplicadas al Almacenamiento Masivo
+
+El paradigma clásico de Big Data adquiere implicaciones directas sobre los requerimientos de hardware y software de almacenamiento:
+
+```mermaid
+flowchart TD
+    subgraph BigData["🧩 Dimensiones Clave (4 V's)"]
+        Vol["📦 Volumen (Volume)<br>¿Cuántos datos hay?<br>• Datos a gran escala<br>• Procesamiento distribuido"]
+        Vel["⚡ Velocidad (Velocity)<br>¿Con qué frecuencia o inmediatez?<br>• Ritmo de generación<br>• Tasa de ingesta/procesamiento<br>• Latencia en peticiones"]
+        Var["🔀 Variedad (Variety)<br>¿Cuántos tipos de datos existen?<br>• Diversidad de fuentes<br>• Heterogeneidad de esquemas"]
+        Ver["🛡️ Veracidad (Veracity)<br>¿Cuán precisos y confiables son?<br>• Calidad del dato<br>• Limpieza y autenticidad"]
+    end
+
+    Vol <--> Vel
+    Vel <--> Var
+    Var <--> Ver
+    Ver <--> Vol
+```
+
+| Dimensión (V) | Pregunta Fundamental | Reto de Almacenamiento | Solución en Arquitectura Masiva |
+| :--- | :--- | :--- | :--- |
+| **Volumen** | *¿Cuánta información existe?* | Desbordamiento de la capacidad física de discos locales. | Clústeres distribuidos (*scale-out*), Data Lakes y almacenamiento de bloques/objetos elástico. |
+| **Velocidad** | *¿Con qué frecuencia o tiempo real se reciben?* | Cuellos de botella en operaciones de entrada/salida (*I/O bottlenecks*) y escrituras concurrentes. | *Buffers* en memoria, almacenamiento NVMe/SSD, y sistemas de ingesta distribuida (ej. Apache Kafka). |
+| **Variedad** | *¿Cuántas formas y estructuras tienen?* | Rigidez en motores relacionales tradicionales para albergar datos no tabulares. | Almacenamiento multipropósito: datos estructurados (tablas), semiestructurados (JSON, Parquet, Avro) y no estructurados (vídeos, logs, texto). |
+| **Veracidad** | *¿Cuán veraces y exactos son los registros?* | Presencia de ruido, datos corruptos, duplicados o fuentes poco fiables. | Mecanismos de validación, sumas de comprobación (*checksums*), linaje de datos y pipelines de saneamiento. |
+
+---
+
+### 2.2.2 Comparativa: Almacenamiento Tradicional vs. Almacenamiento Masivo
+
+Las diferencias estructurales entre un enfoque tradicional (RDBMS, NAS de oficina) y una infraestructura de datos masivos se resumen en los siguientes pilares organizados en dos filas:
+
+```mermaid
+flowchart TD
+    subgraph FilaTradicional["🏢 Fila 1: Almacenamiento Tradicional"]
+        direction LR
+        T1["Escalabilidad Vertical<br>(Scale-Up)"]
+        T2["Arquitectura Monolítica<br>y Centralizada"]
+        T3["Esquema Rígido<br>(Schema-on-Write)"]
+        T4["Coste elevado por TB<br>al crecer"]
+    end
+
+    subgraph FilaMasivo["🌐 Fila 2: Almacenamiento Masivo (Big Data)"]
+        direction LR
+        M1["Escalabilidad Horizontal<br>(Scale-Out)"]
+        M2["Arquitectura Distribuida<br>y Desacoplada"]
+        M3["Esquema Flexible<br>(Schema-on-Read)"]
+        M4["Alta tolerancia a fallos<br>(Réplicas nativas)"]
+    end
+
+    FilaTradicional ==>|Evolución por volumen, velocidad y coste| FilaMasivo
+```
+
+| Criterio | Almacenamiento Tradicional | Almacenamiento Masivo (Big Data) |
+| :--- | :--- | :--- |
+| **Escalabilidad** | **Vertical (*Scale-Up*):** Ampliar recursos (CPU, RAM, discos) del mismo servidor. Llega a un límite físico y económico insalvable. | **Horizontal (*Scale-Out*):** Añadir más nodos de hardware estándar (*commodity hardware*) interconectados mediante red de alta velocidad. Prácticamente ilimitada. |
+| **Arquitectura** | **Centralizada:** Un servidor principal o cabinas de discos especializadas (SAN tradicionales). | **Distribuida y Desacoplada:** La computación y el almacenamiento pueden desacoplarse; los datos se particionan y replican a lo largo del clúster. |
+| **Flexibilidad de Esquema** | **Esquema en Escritura (*Schema-on-Write*):** El modelo de datos debe definirse estrictamente antes de insertar los registros. | **Esquema en Lectura (*Schema-on-Read*):** Los datos se almacenan en su formato nativo; la estructura se valida y parsea al momento de la consulta. |
+| **Complejidad Operativa** | Baja o moderada en entornos pequeños, pero muy frágil ante picos no planificados de carga. | Mayor complejidad de coordinación y sincronización, resuelta mediante capas de orquestación y tolerancia nativa a fallos. |
+
+---
+
+### 2.3 Tipos de Datos Almacenados
+
+En las arquitecturas de almacenamiento masivo conviven diversas tipologías de datos con distintos grados de organización y flexibilidad:
+
+```mermaid
+flowchart TD
+    Datos["📊 Datos en el Almacenamiento Masivo"] --> Est["1. Datos Estructurados<br>(Esquema rígido en tablas)"]
+    Datos --> Semi["2. Datos Semiestructurados<br>(Jerárquicos con etiquetas)"]
+    Datos --> NoEst["3. Datos No Estructurados<br>(Sin formato predefinido)"]
+    Datos --> Meta["4. Metadatos<br>(Datos sobre los datos)"]
+
+    Est --> Est_ej["RDBMS / SQL (Tablas OLTP y OLAP)"]
+    Semi --> Semi_ej["JSON, XML, YAML, Parquet"]
+    NoEst --> NoEst_ej["Texto, Imágenes, Vídeos, Audios"]
+    Meta --> Meta_ej["Timestamps, Autor, Tamaño, Linaje"]
+```
+
+---
+
+#### 1. Datos Estructurados: RDBS (*Relational Database Systems*)
+
+Los **datos estructurados** siguen un modelo de datos rígido y formal definido previamente (**esquema en escritura** o *schema-on-write*). Se organizan en **tablas** compuestas por **filas** (registros o tuplas) y **columnas** (campos o atributos tipados: `Int`, `String`, `Date`, `Money`).
+
+- **Garantías ACID:** Aseguran atomicidad, consistencia, aislamiento y durabilidad en transacciones.
+- **Integridad Referencial:** Mediante claves primarias (*Primary Keys - PK*) y claves foráneas (*Foreign Keys - FK*).
+- **Modelos relacionales habituales:**
+  - **Modelo Transaccional (OLTP):** Normalizado para minimizar redundancias en operaciones de inserción, actualización y borrado concurrentes.
+    - *Ejemplo visto en clase:* Tablas maestras `Customers`, `Employees` y `Products` vinculadas mediante la tabla transaccional `Orders`:
+  
+      | Tabla | Campos y Tipos Clave | Relación |
+      | :--- | :--- | :--- |
+      | `Customers` | `customerID (Int [PK])`, `firstName (String)`, `lastName (String)`, `birthDate (Date)`, `moneySpent (Money)` | 1 a N con `Orders` |
+      | `Products` | `productID (Int [PK])`, `category (String)`, `price (Money)` | 1 a N con `Orders` |
+      | `Employees` | `employeeID (Int [PK])`, `firstName (String)`, `lastName (String)`, `birthDate (Date)` | 1 a N con `Orders` |
+      | `Orders` | `orderID (Int [PK])`, `customerID (Int [FK])`, `employeeID (Int [FK])`, `productID (Int [FK])`, `orderTotal (Money)`, `orderDate (Date)` | Tabla central |
+
+  - **Modelo Dimensional (OLAP / Data Warehouse):** Diseñado para consultas analíticas masivas y agregaciones mediante esquemas en estrella (*Star Schema*):
+    - *Tablas de Dimensión:* `STORE` (`Store_key [PK]`, `City`, `Region`), `PRODUCT` (`Product_key [PK]`, `Description`, `Brand`).
+    - *Tabla de Hechos:* `SALES_FACT` (`Store_key [FK]`, `Product_key [FK]`, `Sales`, `Cost`, `Profit`).
+
+##### 📄 Ejemplo de Definición y Registros en RDBS (SQL):
+```sql
+-- Definición de tabla estructurada con tipos estrictos y restricciones
+CREATE TABLE Customers (
+    customerID   INT PRIMARY KEY,
+    firstName    VARCHAR(50) NOT NULL,
+    lastName     VARCHAR(50) NOT NULL,
+    birthDate    DATE,
+    moneySpent   DECIMAL(10, 2) DEFAULT 0.00,
+    anniversary  DATE
+);
+
+-- Registros tabulares perfectamente alineados en columnas
+INSERT INTO Customers VALUES (1, 'Carlos', 'García', '1990-05-14', 1250.50, '2023-01-10');
+INSERT INTO Customers VALUES (2, 'Lucía', 'Martín', '1988-11-23', 3420.00, '2021-06-15');
+```
+
+---
+
+#### 2. Datos Semiestructurados: JSON y XML
+
+Los **datos semiestructurados** no encajan en una cuadrícula tabular fija de filas y columnas, pero poseen una organización interna mediante **marcadores, etiquetas o claves autodescriptivas** que separan y jerarquizan los elementos (**esquema en lectura** o *schema-on-read*). Permiten campos opcionales, estructuras anidadas y evolución ágil del modelo.
+
+##### A. JSON (*JavaScript Object Notation*)
+Formato textual ligero basado en parejas `clave: valor` y listas ordenadas (arrays). Es el estándar de facto en APIs REST, mensajería de eventos (Kafka) y bases de datos documentales (MongoDB, CouchDB).
+
+```json
+{
+  "endereco": {
+    "cep": "31270901",
+    "city": "Belo Horizonte",
+    "neighborhood": "Pampulha",
+    "service": "correios",
+    "state": "MG",
+    "street": "Av. Presidente Antônio Carlos, 6627"
+  }
+}
+```
+
+##### B. XML (*Extensible Markup Language*)
+Lenguaje de marcado basado en etiquetas jerárquicas personalizables y atributos. Ampliamente utilizado en integración de sistemas legados, intercambio bancario, protocolos SOAP y configuraciones de clúster (ej. `core-site.xml` en Apache Hadoop).
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<endereco>
+    <cep>31270901</cep>
+    <city>Belo Horizonte</city>
+    <neighborhood>Pampulha</neighborhood>
+    <service>correios</service>
+    <state>MG</state>
+    <street>Av. Presidente Antônio Carlos, 6627</street>
+</endereco>
+```
+
+---
+
+#### 3. Datos No Estructurados
+
+Carecen de cualquier tipo de modelo de datos o estructura formal predeterminada. Constituyen aproximadamente el **80% - 90%** del total de datos generados en el mundo y son los que más impulsan la necesidad de almacenamiento masivo y Big Data:
+
+- **Tipos de Datos No Estructurados:**
+  - Texto (ej. correos electrónicos, documentos).
+  - Imágenes (ej. fotografías, radiografías).
+  - Videos (ej. grabaciones, transmisiones).
+
+Para gestionar estos datos masivos, se emplean diferentes enfoques. A continuación, se compara visualmente el almacenamiento clásico en bloques frente al almacenamiento de objetos (ideal para datos no estructurados):
+
+```mermaid
+flowchart LR
+    subgraph Block_Storage ["🗄️ BLOCK STORAGE"]
+        direction TB
+        B_IN["↓ BLOCK #"] --> B_VOL[("Volumen<br/>[ # ] [ # ] [ # ]<br/>[ # ] [ # ] [ # ]")]
+        B_VOL --> B_OUT["↑ BLOCK #"]
+    end
+
+    subgraph Object_Storage ["🌐 OBJECT STORAGE"]
+        direction TB
+        O_IN["↓ DATA"] --> OBJ(("OBJECT"))
+        OBJ --> O_OUT["↑ METADATA / OBJECT ID"]
+        
+        OBJ --- ID(("ID"))
+        OBJ --- D(("DATA"))
+        OBJ --- META(("META<br/>DATA"))
+        OBJ --- ATTR(("ATTRIBUTES"))
+    end
+```
+
+> 💡 **Nota:** Mientras que el **Block Storage** divide los archivos en bloques de tamaño fijo sin contexto adicional, el **Object Storage** empaqueta la información junto a identificadores únicos (`ID`), los propios datos (`DATA`), metadatos (`META DATA`) y atributos (`ATTRIBUTES`), lo que lo hace idóneo y altamente escalable para ecosistemas Big Data y Data Lakes.
+
+---
+
+#### 4. Metadatos (*Datos sobre los datos*)
+
+Los **metadatos** proporcionan información contextual que describe, clasifica, ubica y preserva los recursos de datos primarios:
+
+- **Tipos de metadatos:**
+  - **Técnicos / Estructurales:** Tamaño en bytes, formato MIME (`application/json`, `image/png`), códec, resolución de imagen, tasa de muestreo de audio.
+  - **Administrativos / Seguridad:** Permisos de acceso (ACLs), propietario, fechas de creación/modificación/expiración, políticas de cifrado.
+  - **Gobernanza y Linaje (*Data Lineage*):** Origen del dato, pipeline de transformación aplicado, sumas de verificación (*checksums* MD5/SHA-256) para control de integridad.
+
+##### 📋 Ejemplo de Metadatos de un Objeto de Almacenamiento Masivo:
+```http
+Content-Type: image/jpeg
+Content-Length: 4194304
+Last-Modified: Wed, 07 Oct 2026 19:15:00 GMT
+ETag: "68b329da9893e34099c7d8ad5cb9c940"
+x-amz-storage-class: GLACIER_IR
+x-amz-meta-departamento: Analitica_BigData
+x-amz-meta-clasificacion: Confidencial
+```
+
+#### 5. Tabla Comparativa Resumen de Tipologías de Datos
+
+| Criterio | Datos Estructurados (RDBS) | Datos Semiestructurados (JSON / XML) | Datos No Estructurados | Metadatos |
+| :--- | :--- | :--- | :--- | :--- |
+| **Modelo / Esquema** | Rígido (*Schema-on-Write*) | Flexible (*Schema-on-Read*) | Ninguno / Sin modelo | Estructurado o semiestructurado |
+| **Organización** | Tablas (filas y columnas) | Claves, árboles, etiquetas | Ficheros binarios o texto plano | Pares clave-valor / cabeceras |
+| **Almacenamiento Típico** | RDBMS (PostgreSQL, MySQL, Oracle) | NoSQL documental, Data Lakes | Data Lakes, S3, HDFS | Catálogos de datos, índices |
+| **Flexibilidad de Cambio** | Baja (requiere `ALTER TABLE`) | Alta (admite campos dinámicos) | Total (cualquier contenido) | Alta |
+| **Facilidad de Búsqueda** | Muy alta con SQL e índices | Alta con motores NoSQL / JSONPath | Requiere indexación/IA/embeddings | Muy alta mediante catálogos |
+
+---
+
+### 2.4 Desafíos del Almacenamiento Masivo
+
+*(Pendiente de impartición: escalabilidad de costes, latencia de acceso, seguridad y cifrado, cumplimiento normativo y gobierno del dato)*
+
+---
+
+## 3. Evolución de las Tecnologías de Almacenamiento
+
+*(Sección en desarrollo según la exposición en clase de Alejandro Delgado: Cinta Magnética, HDD, SSD, NAS/SAN y Cloud Storage)*
+
+---
+
+## 4. Estrategias para la Compresión y Deduplicación de Datos
+
+*(Pendiente de impartición: conceptos de compresión, técnicas de deduplicación a nivel de bloque y archivo, beneficios y coste de CPU)*
+
+---
+
+## 5. Políticas de Backup, Recuperación y Retención de Datos
+
+*(Pendiente de impartición: copias de seguridad completas, incrementales y diferenciales; RPO/RTO y cumplimiento legal/GDPR)*
+
+---
+
+## 6. Resumen de la Unidad y Conclusiones
+
+*(Pendiente de impartición: recapitulación de ideas clave y tendencias en almacenamiento masivo)*
