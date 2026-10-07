@@ -357,7 +357,17 @@ La forma en que almacenamos y procesamos la información ha evolucionado drásti
   - **Desventajas:** Su acceso es **secuencial** (para leer un dato concreto, es necesario desenrollar y recorrer físicamente toda la cinta anterior), lo que lo hace muy lento para lectura aleatoria o consultas ágiles.
   - **Uso actual:** Se utiliza masivamente para **Backups a largo plazo** y archivado profundo (*Cold Storage*), donde el tiempo de recuperación no es crítico.
 
-*(Sección en desarrollo: a la espera de las siguientes tecnologías como HDD, SSD, NAS/SAN, etc.)*
+### 3.2 Discos Duros (HDD - *Hard Disk Drive*)
+
+- **Contexto:** Ha sido la tecnología de almacenamiento dominante durante décadas en la informática comercial y personal.
+- **Funcionamiento (Mecánico/Magnético):** Su funcionamiento se basa en **platos giratorios** (discos magnéticos) y **cabezales de lectura/escritura** ubicados en el extremo de un brazo móvil (actuador). 
+  - *Componentes anatómicos clave:* Disco, Eje central, Cabezal, Brazo y Eje del actuador, además de conectores de energía y datos (IDE/SATA).
+- **Ventajas:** Excelente relación **capacidad/precio**. Permiten disponer de grandes volúmenes de almacenamiento a un coste muy asequible para sistemas locales y centros de datos tradicionales.
+- **Desventajas:** 
+  - Su **velocidad está físicamente limitada** por las RPM (revoluciones por minuto) de los platos y el desplazamiento del cabezal.
+  - Al poseer **partes móviles**, son altamente susceptibles a fallos mecánicos por golpes, vibraciones o desgaste físico con el tiempo.
+
+*(Sección en desarrollo: a la espera de las siguientes tecnologías como SSD, NAS/SAN, etc.)*
 
 ---
 
