@@ -2,7 +2,35 @@
 
 > Apuntes y ampliación de teoría de la asignatura **Sistemas de Big Data**.  
 > 📅 **Fecha:** 2026-10-05  
-> 📖 **Documento de referencia:** `2026-10-05 - SBD Conceptos Basicos.docx` (Bloque 3: Algorítmica)
+> 👨‍🏫 **Docente:** Ricardo Sanchez  
+> 📖 **Módulo:** Sistemas de Big Data — Conceptos Básicos (Bloque 3: Algorítmica)
+
+---
+
+## 📑 Índice de Contenidos
+
+1. [Fundamentos de Algoritmos](#1-fundamentos-de-algoritmos)
+   - 1.1. [Características Formales de un Algoritmo](#11-características-formales-de-un-algoritmo)
+   - 1.2. [Pseudocódigo: Planificando la Solución](#12-pseudocódigo-planificando-la-solución)
+   - 1.3. [Estructuras de Control: Dirigiendo el Flujo](#13-estructuras-de-control-dirigiendo-el-flujo)
+2. [Tipos de Datos y Estructuras en Memoria](#2-tipos-de-datos-y-estructuras-en-memoria)
+   - 2.1. [Tipos Abstractos de Datos: Pilas y Colas](#21-tipos-abstractos-de-datos-pilas-y-colas)
+3. [Complejidad Computacional y Notación Big O](#3-complejidad-computacional-y-notación-big-o)
+   - 3.1. [La Notación Big O ($O$)](#31-la-notación-big-o-o)
+   - 3.2. [Análisis Asintótico: Comportamiento a Largo Plazo](#32-análisis-asintótico-comportamiento-a-largo-plazo)
+   - 3.3. [Clases de Complejidad: P, NP y NP-Completitud](#33-clases-de-complejidad-p-np-y-np-completitud)
+4. [Algoritmos de Búsqueda: Encontrando Información](#4-algoritmos-de-búsqueda-encontrando-información)
+   - 4.1. [Búsqueda Lineal / Secuencial ($O(n)$)](#41-búsqueda-lineal--secuencial-on)
+   - 4.2. [Búsqueda Binaria ($O(\log n)$)](#42-búsqueda-binaria-olog-n)
+   - 4.3. [Árboles de Búsqueda (ABB / AVL)](#43-árboles-de-búsqueda-abb--avl)
+5. [Algoritmos de Ordenamiento: Poniendo Orden](#5-algoritmos-de-ordenamiento-poniendo-orden)
+   - 5.1. [Quicksort (Divide y Vencerás)](#51-quicksort-divide-y-vencerás)
+   - 5.2. [Mergesort (Mezcla Ordenada)](#52-mergesort-mezcla-ordenada)
+6. [Modelado con Estructuras No Lineales: Grafos y Árboles](#6-modelado-con-estructuras-no-lineales-grafos-y-árboles)
+   - 6.1. [Grafos: Modelando Relaciones Complejas](#61-grafos-modelando-relaciones-complejas)
+   - 6.2. [Árboles: Jerarquía y Organización](#62-árboles-jerarquía-y-organización)
+7. [Aplicando lo Aprendido: Análisis de Datos y Arquitecturas Big Data](#7-aplicando-lo-aprendido-análisis-de-datos-y-arquitecturas-big-data)
+8. [Resumen Global de Estructuras y Complejidades](#8-resumen-global-de-estructuras-y-complejidades)
 
 ---
 

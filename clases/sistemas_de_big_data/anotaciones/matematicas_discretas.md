@@ -1,8 +1,46 @@
 # Matemáticas Discretas y Fundamentos Computacionales
 
-> Apuntes y ampliación de teoría de la asignatura **Sistemas de Big Data**.  
-> 📅 **Fecha:** 2026-10-05  
-> 📖 **Documento de referencia:** `2026-10-05 - SBD Conceptos Basicos.docx`
+> 📅 **Fecha:** 2026-10-05
+> 👨‍🏫 **Docente:** Ricardo Sanchez
+> 📖 **Módulo:** Sistemas de Big Data
+> 📝 **Documento de referencia:** `2026-10-05 - SBD Conceptos Basicos.docx`
+
+## 📑 Índice de Contenidos
+
+- [Introducción](#introducción)
+  - [Lecturas Recomendadas y Recursos de Autoformación](#lecturas-recomendadas-y-recursos-de-autoformación)
+- [1. Conjuntos, Relaciones y Funciones](#1-conjuntos-relaciones-y-funciones)
+  - [1.1 ¿Por qué Matemática Discreta en Big Data e IA?](#11-por-qué-matemática-discreta-en-big-data-e-ia)
+  - [1.2 Conjuntos: La Base de Todo](#12-conjuntos-la-base-de-todo)
+    - [Operaciones Básicas entre Conjuntos](#operaciones-básicas-entre-conjuntos)
+    - [Mapa Conceptual y Diagrama de Regiones (Estilo Venn)](#mapa-conceptual-y-diagrama-de-regiones-estilo-venn)
+    - [Relaciones de Inclusión y Particionado de Conjuntos en Big Data](#relaciones-de-inclusión-y-particionado-de-conjuntos-en-big-data)
+    - [Ejemplo Práctico en Python (Analítica de Datos)](#ejemplo-práctico-en-python-analítica-de-datos)
+  - [1.3 Relaciones: Conexiones entre Elementos](#13-relaciones-conexiones-entre-elementos)
+    - [Propiedades Fundamentales de las Relaciones](#propiedades-fundamentales-de-las-relaciones)
+    - [Representación de Relaciones mediante Grafos Dirigidos (Digrafos)](#representación-de-relaciones-mediante-grafos-dirigidos-digrafos)
+    - [Caso de Estudio: La Relación "Es Mayor Que" ($>$)](#caso-de-estudio-la-relación-es-mayor-que)
+    - [Ejemplo Práctico en Python: Validador de Propiedades Relacionales](#ejemplo-práctico-en-python-validador-de-propiedades-relacionales)
+  - [1.4 Funciones: Mapeo entre Conjuntos](#14-funciones-mapeo-entre-conjuntos)
+    - [Clasificación de Funciones](#clasificación-de-funciones)
+    - [Diagrama de Función Hash y Sharding en Big Data](#diagrama-de-función-hash-y-sharding-en-big-data)
+    - [Ejemplo Práctico en Python: Clasificación Funcional y Transformaciones](#ejemplo-práctico-en-python-clasificación-funcional-y-transformaciones)
+- [2. Lógica Proposicional y Lógica de Predicados](#2-lógica-proposicional-y-lógica-de-predicados)
+  - [2.1 Lógica Proposicional: El Arte de Razonar](#21-lógica-proposicional-el-arte-de-razonar)
+    - [La Proposición (Afirmación)](#la-proposición-afirmación)
+    - [Conectores Lógicos Básicos](#conectores-lógicos-básicos)
+    - [Tablas de Verdad Combinadas](#tablas-de-verdad-combinadas)
+    - [Casos de Negocio en Data Quality y Filtrado (Pandas)](#casos-de-negocio-en-data-quality-y-filtrado-pandas)
+  - [2.2 Tablas de Verdad y Clasificación de Proposiciones Compuestas](#22-tablas-de-verdad-y-clasificación-de-proposiciones-compuestas)
+    - [Ejemplo en Python: Clasificador Exhaustivo de Fórmulas Lógicas](#ejemplo-en-python-clasificador-exhaustivo-de-fórmulas-lógicas)
+  - [2.3 Lógica de Predicados: Más Allá de lo Binario](#23-lógica-de-predicados-más-allá-de-lo-binario)
+    - [Cuantificadores Lógicos](#cuantificadores-lógicos)
+    - [Negación de Cuantificadores (Leyes de De Morgan Generalizadas)](#negación-de-cuantificadores-leyes-de-de-morgan-generalizadas)
+    - [Ejemplo Práctico en Python: Evaluación de Predicados y Cuantificadores](#ejemplo-práctico-en-python-evaluación-de-predicados-y-cuantificadores)
+  - [2.4 Inferencia Lógica: Sacando Conclusiones](#24-inferencia-lógica-sacando-conclusiones)
+    - [Reglas Fundamentales de Inferencia](#reglas-fundamentales-de-inferencia)
+    - [Ejemplo Práctico en Python: Motor de Inferencia Deductivo](#ejemplo-práctico-en-python-motor-de-inferencia-deductivo)
+- [3. Conexión con Algorítmica y Estructuras de Datos](#3-conexión-con-algorítmica-y-estructuras-de-datos)
 
 ---
 
