@@ -39,7 +39,6 @@
 6. [Resumen de la Unidad](#6-resumen-de-la-unidad-y-conclusiones)
    - 6.1. [Recapitulación de conceptos clave](#61-recapitulación-de-conceptos-clave)
    - 6.2. [Tendencias futuras en almacenamiento masivo](#62-tendencias-futuras-en-almacenamiento-masivo)
-   - 6.3. [Sesión de preguntas y respuestas](#63-sesión-de-preguntas-y-respuestas)
 
 ---
 
@@ -790,7 +789,3 @@ El volumen de datos seguirá creciendo de forma exponencial, lo que impulsa el d
 - **Nuevas tecnologías disruptivas:**
   - **DNA Storage (Almacenamiento en ADN):** Codificación de datos binarios en secuencias de nucleótidos sintéticos. Ofrece una densidad colosal (Exabytes en apenas unos gramos) y una durabilidad de miles de años, perfilándose como el futuro del archivado profundo.
   - **Almacenamiento Holográfico:** Utiliza láseres para almacenar información en tres dimensiones dentro del volumen de un cristal o fotopolímero, superando drásticamente los límites físicos y de velocidad de transferencia de los medios bidimensionales.
-
-### 6.3 Sesión de preguntas y respuestas
-
-*(Fin de la sesión. Sin preguntas adicionales).*
