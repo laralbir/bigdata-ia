@@ -31,8 +31,8 @@
    - 4.2. [Algoritmo Lempel-Ziv-Welch (LZW)](#42-algoritmo-lempel-ziv-welch-lzw)
    - 4.3. [Técnicas de Deduplicación](#43-técnicas-de-deduplicación)
    - 4.4. [Componentes, Beneficios y Consideraciones](#44-componentes-beneficios-y-consideraciones)
-5. [Políticas de Backup, Recuperación y Retención de datos](#5-políticas-de-backup-recuperación-y-retención-de-datos)
-   - 5.1. Importancia de las copias de seguridad
+5. [Políticas sobre los Datos](#5-políticas-sobre-los-datos)
+   - 5.1. [Importancia de las Copias de Seguridad](#51-importancia-de-las-copias-de-seguridad)
    - 5.2. Tipos de backups
    - 5.3. Estrategias de recuperación de datos
    - 5.4. Políticas de retención y cumplimiento normativo
@@ -576,9 +576,25 @@ Al descender al nivel puramente técnico de los datos (almacenamiento), toda est
 
 ---
 
-## 5. Políticas de Backup, Recuperación y Retención de Datos
+## 5. Políticas sobre los Datos
 
-*(Pendiente de impartición: copias de seguridad completas, incrementales y diferenciales; RPO/RTO y cumplimiento legal/GDPR)*
+La gestión y salvaguarda de la información es tan crítica como su almacenamiento. Implementar políticas de datos robustas garantiza que la información esté disponible y protegida ante desastres o requerimientos legales.
+
+### 5.1 Importancia de las Copias de Seguridad
+
+- **Protección contra Pérdida de Datos:**
+  - Evitar el impacto por borrado o eliminación (accidental o malintencionada).
+  - Preservar la confidencialidad e integridad de la información frente a brechas de seguridad.
+  
+- **Principio de Responsabilidad Proactiva, Compromisos y Cumplimientos:**
+  - Obligatoriedad de adherirse al **GDPR (General Data Protection Regulation)** en el marco europeo.
+  - Garantizar que los datos recogidos se basan en un uso con consentimiento explícito de los usuarios.
+  
+- **Cumplimiento Normativo:**
+  - Respetar las normativas impuestas por Organismos Reguladores específicos del sector (ej. banca, salud, administraciones públicas).
+  
+- **Continuidad del Negocio:**
+  - Ayuda a **prevenir, identificar y minimizar o eliminar los riesgos** asociados a la pérdida temporal o permanente de los datos operacionales de la empresa.
 
 ---
 
