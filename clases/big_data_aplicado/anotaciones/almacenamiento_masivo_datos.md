@@ -735,9 +735,9 @@ flowchart LR
     classDef rto fill:#22c55e,stroke:#16a34a,stroke-width:2px,color:#fff,font-weight:bold
     classDef disaster fill:#f97316,stroke:#ea580c,stroke-width:2px,color:#fff,font-weight:bold
 
-    RPO["⬅️ RPO (Recovery Point Objective)<br><br>⏳ Días - Horas - Mins - Segs"]:::rpo
+    RPO["⬅️&nbsp;RPO&nbsp;(Recovery&nbsp;Point&nbsp;Objective)<br><br>⏳&nbsp;Días&nbsp;-&nbsp;Horas&nbsp;-&nbsp;Mins&nbsp;-&nbsp;Segs"]:::rpo
     Desastre{{"💥<br>DESASTRE"}}:::disaster
-    RTO["RTO (Recovery Time Objective) ➡️<br><br>⏳ Segs - Mins - Horas - Días"]:::rto
+    RTO["RTO&nbsp;(Recovery&nbsp;Time&nbsp;Objective)&nbsp;➡️<br><br>⏳&nbsp;Segs&nbsp;-&nbsp;Mins&nbsp;-&nbsp;Horas&nbsp;-&nbsp;Días"]:::rto
 
     RPO === Desastre === RTO
 ```
