@@ -383,7 +383,53 @@ La forma en que almacenamos y procesamos la información ha evolucionado drásti
   - **U.2:** Formato empresarial, con apariencia similar a discos de 2.5" pero diseñado para servidores y cabinas de almacenamiento con interfaces NVMe.
 - **Uso actual:** Existe una **tendencia creciente en adopción** absoluta, convirtiéndose en el estándar para almacenamiento primario, cachés de bases de datos y procesamiento en caliente (*Hot Data*).
 
-*(Sección en desarrollo: a la espera de las siguientes tecnologías como NAS/SAN, Cloud, etc.)*
+### 3.4 Almacenamiento en Red: NAS y SAN
+
+A medida que crecieron las necesidades, el almacenamiento dejó de estar físicamente anclado a un único ordenador (*Direct Attached Storage* o DAS) para independizarse a través de la red:
+
+#### NAS (*Network Attached Storage*)
+- **Concepto:** Dispositivos dedicados (servidores de almacenamiento) que se conectan directamente a la red local (LAN) estándar de la empresa.
+- **Ventajas:** Muy **fácil implementación y gestión**. Permite que múltiples clientes (PC 1, PC 2) accedan a los mismos archivos compartidos de forma simultánea.
+
+#### SAN (*Storage Area Network*)
+- **Concepto:** Es una **red dedicada de alta velocidad** exclusiva para el almacenamiento, independiente de la red local de usuarios.
+- **Ventajas:** Proporciona un **mayor rendimiento y escalabilidad**. Los servidores (como hipervisores o servidores de correo) ven el almacenamiento SAN como si fuera un disco local (por ejemplo, mediante protocolos como iSCSI o Fibre Channel).
+- **Uso clave:** Es el pilar fundamental para la **Virtualización** empresarial y bases de datos críticas.
+
+```mermaid
+flowchart TD
+    subgraph Arquitectura_NAS ["NAS (Network Attached Storage)"]
+        Red_LAN((Red Local))
+        PC1[Cliente PC 1]
+        PC2[Cliente PC 2]
+        NAS_Dev[(Servidor NAS)]
+        
+        Red_LAN --- PC1
+        Red_LAN --- PC2
+        Red_LAN --- NAS_Dev
+    end
+
+    subgraph Arquitectura_SAN ["SAN (Storage Area Network)"]
+        Red_Publica((Red Local))
+        S1[Servidor Virtualización]
+        S2[Servidor Correo]
+        
+        Switch_SAN{Switch SAN de<br/>Alta Velocidad}
+        Storage1[(Cabina iSCSI)]
+        Storage2[(Cabina FC)]
+        
+        Red_Publica --- S1
+        Red_Publica --- S2
+        S1 === Switch_SAN
+        S2 === Switch_SAN
+        Switch_SAN === Storage1
+        Switch_SAN === Storage2
+    end
+```
+
+> 💡 **Diferencia clave:** En NAS, el almacenamiento viaja por la misma red que usan los usuarios (nivel de archivo). En SAN, existe una sub-red trasera hiper-rápida y exclusiva entre los servidores y las cabinas de almacenamiento (nivel de bloque).
+
+*(Sección en desarrollo: a la espera de Almacenamiento en la Nube)*
 
 ---
 
