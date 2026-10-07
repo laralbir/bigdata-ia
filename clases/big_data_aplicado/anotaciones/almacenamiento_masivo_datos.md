@@ -720,6 +720,55 @@ gantt
     Completa :active, 0, 10
 ```
 
+### 5.3 Estrategias de recuperación de datos
+
+En el contexto de la continuidad del negocio frente a un desastre o pérdida de datos, es fundamental establecer métricas y planes de recuperación.
+
+#### Métricas Clave (RPO y RTO)
+
+- **RPO (Recovery Point Objective):** Representa el *punto en el tiempo al que recuperar* los datos. Mide la **pérdida de datos tolerable** desde el último backup hasta el momento del desastre (se mide hacia atrás en el tiempo).
+- **RTO (Recovery Time Objective):** Representa el *tiempo máximo de recuperación* permitido. Mide el **tiempo de inactividad tolerable** desde que ocurre el desastre hasta que el sistema vuelve a estar operativo (se mide hacia adelante en el tiempo).
+
+```mermaid
+flowchart LR
+    classDef rpo fill:#8FAADC,stroke:#2F5597,stroke-width:2px,color:#000
+    classDef rto fill:#C6E0B4,stroke:#548235,stroke-width:2px,color:#000
+    classDef disaster fill:#F4B183,stroke:#C65911,stroke-width:2px,color:#000
+
+    subgraph Timeline ["Línea de Tiempo del Desastre"]
+        direction LR
+        t1[Días] --- t2[Horas] --- t3[Mins] --- t4[Segs]
+        D{{"💥 DESASTRE"}}:::disaster
+        t5[Segs] --- t6[Mins] --- t7[Horas] --- t8[Días]
+        
+        t4 --- D --- t5
+    end
+
+    RPO["⬅️ RPO (Recovery Point Objective)"]:::rpo
+    RTO["RTO (Recovery Time Objective) ➡️"]:::rto
+
+    t2 -.- RPO
+    t7 -.- RTO
+    
+    style t1 fill:none,stroke:none
+    style t2 fill:none,stroke:none
+    style t3 fill:none,stroke:none
+    style t4 fill:none,stroke:none
+    style t5 fill:none,stroke:none
+    style t6 fill:none,stroke:none
+    style t7 fill:none,stroke:none
+    style t8 fill:none,stroke:none
+```
+
+#### Plan de Recuperación
+
+Además de definir las métricas, es esencial realizar **pruebas regulares de recuperación**. Un Plan documentado debe incluir como mínimo:
+
+- **Frecuencia de pruebas:** Calendario periódico para verificar que los respaldos se pueden restaurar exitosamente.
+- **Funciones y Responsabilidades:** Quién hace qué durante la crisis (ej. responsable de restaurar las bases de datos).
+- **Canales de Comunicación:** Cómo se informa del estado de la caída (interna y externamente).
+- **Escalamiento:** Niveles de reporte según el tiempo que el servicio lleve caído.
+- **Inventario:** Listado actualizado de sistemas y datos críticos a restaurar primero.
 
 ---
 
