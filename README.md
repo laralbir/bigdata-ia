@@ -48,7 +48,7 @@ flowchart TD
 #### 🎓 Sesiones y Clases Lectivas
 | Fecha | Sesión / Temática Impartida | Recurso / Acceso |
 | :---: | :--- | :---: |
-| **2026-10-05** | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [📊 Material (DOCX)](<clases/sistemas_de_big_data/presentaciones/2026-10-05 - SBD Conceptos Basicos.docx>)<br>[📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md)<br>[🎥 Grabación](clases/sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md) |
+| **2026-10-05** | Lógica proposicional, teoría de conjuntos y matemáticas discretas para computación | [📊 Material (DOCX)](<clases/sistemas_de_big_data/presentaciones/2026-10-05 - SBD Conceptos Basicos.docx>)<br>[📊 Diapositivas](<clases/sistemas_de_big_data/presentaciones/2026-10-05_Conceptos básicos>)<br>[📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md)<br>[🎥 Grabación](clases/sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md) |
 | **2026-10-05** | Introducción a los algoritmos y complejidad computacional | [📝 Ver Apuntes](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md)<br>[🎥 Grabación](clases/sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md) |
 
 #### 📝 Cuadernos de Anotaciones y Teoría
