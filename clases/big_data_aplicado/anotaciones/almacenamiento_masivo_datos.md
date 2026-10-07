@@ -547,18 +547,12 @@ Una estrategia analítica integral se sostiene sobre seis dimensiones fundamenta
 ```mermaid
 mindmap
   root((ANALYTICS<br/>STRATEGY))
-    Contexto de Negocio
-      [Misión, Estrategia, KPIs, clientes, productos...]
-    Datos
-      [Calidad, fuentes estructuradas y desestructuradas, gobierno de datos...]
-    Equipo
-      [Habilidades, recursos, formación...]
-    Organización
-      [Cultura, nivel de maduración en analytics, inversores, procesos...]
-    Tecnología
-      [Analítica web & móvil, datawarehouse, big data, machine learning...]
-    Objetivos
-      [Planificación, objetivos, aspiraciones...]
+    Contexto(("**Contexto de Negocio**<br/>Misión, Estrategia, KPIs,<br/>clientes, productos..."))
+    Datos(("**Datos**<br/>Calidad, fuentes estructuradas<br/>y desestructuradas, gobierno..."))
+    Equipo(("**Equipo**<br/>Habilidades, recursos,<br/>formación..."))
+    Organizacion(("**Organización**<br/>Cultura, nivel de maduración<br/>en analytics, inversores..."))
+    Tecnologia(("**Tecnología**<br/>Analítica web & móvil,<br/>datawarehouse, big data..."))
+    Objetivos(("**Objetivos**<br/>Planificación, objetivos,<br/>aspiraciones..."))
 ```
 
 #### 4.4.2 Elementos de una Estrategia de Almacenamiento
