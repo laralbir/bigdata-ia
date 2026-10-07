@@ -40,7 +40,7 @@ flowchart TD
     Asignatura --> Pres["📊 presentaciones/<br>Diapositivas y material gráfico"]
     Asignatura --> Entr["💻 entregables/<br>Prácticas y tareas evaluables"]
     Asignatura --> Grab["🎥 grabaciones/<br>Enlaces a Google Drive en .md"]
-    Asignatura --> Calif["📈 calificaciones/<br>Evaluaciones y rúbricas"]
+    Asignatura --> Calif["📈 examenes/<br>Evaluaciones y rúbricas"]
 ```
 
 ### Descripción de Subcarpetas:
@@ -48,7 +48,7 @@ flowchart TD
 2. **`presentaciones/`**: Diapositivas en PDF u otros formatos facilitadas por el profesorado.
 3. **`entregables/`**: Enunciados de prácticas, código fuente resuelto y documentación técnica requerida para la entrega.
 4. **`grabaciones/`**: Ficheros Markdown con los enlaces directos a las grabaciones en la nube (Google Drive). **Nunca se almacenan vídeos directamente en el repositorio local.**
-5. **`calificaciones/`**: Registro de notas obtenidas, rúbricas de corrección y comentarios de retroalimentación docente.
+5. **`examenes/`**: Registro de notas obtenidas, rúbricas de corrección y comentarios de retroalimentación docente.
 
 ---
 
@@ -62,7 +62,7 @@ Navegación por las asignaturas dadas de alta en el sistema:
 - [Presentaciones](presentacion/presentaciones/) (incluye [Presentación MASTER IA y BIGDATA.pdf](presentacion/presentaciones/Presentaci%C3%B3n%20MASTER%20IA%20y%20BIGDATA.pdf))
 - [Entregables](presentacion/entregables/)
 - [Grabaciones](presentacion/grabaciones/) (incluye [Grabación Sesión Inaugural](presentacion/grabaciones/2026_10_01_grabacion_presentacion.md))
-- [Calificaciones](presentacion/calificaciones/)
+- [Exámenes](presentacion/examenes/)
 
 ### 2. [Sistemas de Big Data (`sistemas_de_big_data/`)](sistemas_de_big_data/)
 *Fecha de inicio: 2026-10-05*
@@ -70,7 +70,7 @@ Navegación por las asignaturas dadas de alta en el sistema:
 - [Presentaciones](sistemas_de_big_data/presentaciones/) (incluye [2026_10_05_sbd_conceptos_basicos.docx](sistemas_de_big_data/presentaciones/2026_10_05_sbd_conceptos_basicos.docx) y [Diapositivas](sistemas_de_big_data/presentaciones/2026_10_05_conceptos_basicos))
 - [Entregables](sistemas_de_big_data/entregables/)
 - [Grabaciones](sistemas_de_big_data/grabaciones/) (incluye [Grabación 2026-10-05](sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md))
-- [Calificaciones](sistemas_de_big_data/calificaciones/)
+- [Exámenes](sistemas_de_big_data/examenes/)
 
 ### 3. [Big Data Aplicado (`big_data_aplicado/`)](big_data_aplicado/)
 *Fecha de inicio: 2026-10-07 (Docente: Alejandro Delgado)*
@@ -78,4 +78,4 @@ Navegación por las asignaturas dadas de alta en el sistema:
 - [Presentaciones](big_data_aplicado/presentaciones/) (incluye [Diapositivas](big_data_aplicado/presentaciones/2026_10_08_almacenamiento_y_procesamiento_de_datos) y 9 lecturas recomendadas)
 - [Entregables](big_data_aplicado/entregables/)
 - [Grabaciones](big_data_aplicado/grabaciones/)
-- [Calificaciones](big_data_aplicado/calificaciones/)
+- [Exámenes](big_data_aplicado/examenes/)

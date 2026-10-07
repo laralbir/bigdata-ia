@@ -12,7 +12,7 @@ Directorio correspondiente a la sesión inaugural, presentación institucional y
 | [📁 `anotaciones/`](anotaciones/) | Apuntes y notas de la sesión inaugural | *Pendiente* |
 | [📁 `grabaciones/`](grabaciones/) | Enlaces a grabaciones en Google Drive | [🎥 Grabación Sesión Inaugural](grabaciones/2026_10_01_grabacion_presentacion.md) |
 | [📁 `entregables/`](entregables/) | Documentación y cuestionarios iniciales | *No aplica* |
-| [📁 `calificaciones/`](calificaciones/) | Evaluaciones | *No aplica* |
+| [📁 `examenes/`](examenes/) | Evaluaciones | *No aplica* |
 
 ---
 

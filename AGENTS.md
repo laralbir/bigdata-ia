@@ -5,7 +5,7 @@ Este repositorio se utiliza para almacenar los apuntes, trabajos, documentación
 
 ## Directory Structure
 - `clases/`: Contiene una carpeta por cada asignatura.
-  - Cada asignatura contiene las subcarpetas: `presentaciones`, `grabaciones`, `entregables`, `calificaciones`, `anotaciones`.
+  - Cada asignatura contiene las subcarpetas: `presentaciones`, `grabaciones`, `entregables`, `examenes`, `anotaciones`.
     - **Gestión de `grabaciones`**: Debido al gran volumen de estos ficheros, no se almacenan directamente en el repositorio; se incluirán archivos Markdown con los enlaces a las grabaciones en Google Drive.
 - `calendario/`: Documentación y calendarios del curso.
 

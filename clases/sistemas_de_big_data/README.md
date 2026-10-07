@@ -12,7 +12,7 @@ Directorio correspondiente a la asignatura **Sistemas de Big Data**.
 | [📁 `anotaciones/`](anotaciones/) | Apuntes y notas de las sesiones | [📝 Matemáticas Discretas](anotaciones/matematicas_discretas.md)<br>[📝 Intro. Algoritmos](anotaciones/introduccion_algoritmos.md) |
 | [📁 `grabaciones/`](grabaciones/) | Enlaces a grabaciones en Google Drive | [🎥 Grabación 2026-10-05](grabaciones/2026_10_05_grabacion_sistemas_big_data.md) |
 | [📁 `entregables/`](entregables/) | Prácticas y tareas evaluables | *No hay entregables* |
-| [📁 `calificaciones/`](calificaciones/) | Registro de evaluaciones | *No hay calificaciones* |
+| [📁 `examenes/`](examenes/) | Registro de evaluaciones | *No hay exámenes* |
 
 ---
 

@@ -25,7 +25,7 @@ flowchart TD
 
 | Carpeta / Archivo | Descripción del Contenido | Acceso Directo |
 | :--- | :--- | :---: |
-| [📁 `clases/`](clases/README.md) | Asignaturas oficiales del curso, divididas en sus cinco áreas clave: anotaciones, entregables, grabaciones, presentaciones y calificaciones. | [Ver índice de clases](clases/README.md) |
+| [📁 `clases/`](clases/README.md) | Asignaturas oficiales del curso, divididas en sus cinco áreas clave: anotaciones, entregables, grabaciones, presentaciones y exámenes. | [Ver índice de clases](clases/README.md) |
 | [📁 `cursos/`](cursos/README.md) | Cursos de formación preparatoria y complementaria (Linux CLI, Scripting Bash, Python Essentials, etc.). | [Ver índice de cursos](cursos/README.md) |
 | [📁 `calendario/`](calendario/README.md) | Cronograma académico, calendario lectivo oficial, hitos del curso y fechas límite de entrega. | [Ver calendario](calendario/README.md) |
 | [📄 `AGENTS.md`](AGENTS.md) | Normativa de contribución, directrices del repositorio y especificaciones de trabajo con IA. | [Ver especificaciones](AGENTS.md) |
@@ -78,7 +78,7 @@ Contiene las carpetas individuales para cada una de las asignaturas cursadas en 
 - **`anotaciones/`**: Apuntes teóricos, fórmulas y ampliaciones de temario en Markdown enriquecido (ej. [Matemáticas Discretas](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md)).
 - **`presentaciones/`**: Diapositivas, esquemas y material visual proporcionado por los docentes.
 - **`entregables/`**: Prácticas evaluables, ejercicios resueltos y código de proyectos.
-- **`calificaciones/`**: Registro de notas, evaluaciones y comentarios de feedback.
+- **`examenes/`**: Registro de notas, evaluaciones y comentarios de feedback.
 - **`grabaciones/`**: Ficheros Markdown con los enlaces organizados a las sesiones grabadas alojadas en Google Drive.
 
 > 💡 **Nota:** Siguiendo las directrices del proyecto, nunca se almacenan archivos binarios de vídeo en el repositorio local; siempre se gestionan mediante ficheros Markdown que referencian las carpetas de Google Drive.

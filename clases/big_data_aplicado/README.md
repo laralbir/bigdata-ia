@@ -12,7 +12,7 @@ Directorio correspondiente a la asignatura **Big Data Aplicado**.
 | [📁 `anotaciones/`](anotaciones/) | Apuntes y notas de las sesiones | [📝 Almacenamiento Masivo y Procesamiento](anotaciones/almacenamiento_masivo_datos.md) |
 | [📁 `grabaciones/`](grabaciones/) | Enlaces a grabaciones en Google Drive | *Pendiente de publicación* |
 | [📁 `entregables/`](entregables/) | Prácticas y tareas evaluables | *No hay entregables* |
-| [📁 `calificaciones/`](calificaciones/) | Registro de evaluaciones | *No hay calificaciones* |
+| [📁 `examenes/`](examenes/) | Registro de evaluaciones | *No hay exámenes* |
 
 ---
 
