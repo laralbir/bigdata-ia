@@ -27,10 +27,10 @@
 
 ### Parte #2: Estrategias, Protección y Gobernanza
 4. [Estrategias sobre los Datos](#4-estrategias-sobre-los-datos)
-   - 4.1. [Componentes, Beneficios y Consideraciones](#41-componentes-beneficios-y-consideraciones)
-   - 4.2. [Conceptos Básicos de Compresión](#42-conceptos-básicos-de-compresión)
-   - 4.3. [Algoritmo Lempel-Ziv-Welch (LZW)](#43-algoritmo-lempel-ziv-welch-lzw)
-   - 4.4. [Técnicas de Deduplicación](#44-técnicas-de-deduplicación)
+   - 4.1. [Conceptos Básicos de Compresión](#41-conceptos-básicos-de-compresión)
+   - 4.2. [Algoritmo Lempel-Ziv-Welch (LZW)](#42-algoritmo-lempel-ziv-welch-lzw)
+   - 4.3. [Técnicas de Deduplicación](#43-técnicas-de-deduplicación)
+   - 4.4. [Componentes, Beneficios y Consideraciones](#44-componentes-beneficios-y-consideraciones)
 5. [Políticas de Backup, Recuperación y Retención de datos](#5-políticas-de-backup-recuperación-y-retención-de-datos)
    - 5.1. Importancia de las copias de seguridad
    - 5.2. Tipos de backups
@@ -451,53 +451,7 @@ El paso definitivo en la evolución es externalizar el almacenamiento y delegarl
 
 ## 4. Estrategias sobre los Datos
 
-### 4.1 Componentes, Beneficios y Consideraciones
-
-Antes de profundizar en técnicas específicas (como compresión o deduplicación), es necesario establecer una **Estrategia de Datos (Analytics Strategy)** sólida. Esta estrategia funciona como una brújula que alinea los esfuerzos técnicos con los objetivos de la organización.
-
-#### 4.1.1 Pilares de una Analytics Strategy
-
-Una estrategia analítica integral se sostiene sobre seis dimensiones fundamentales interconectadas:
-
-```mermaid
-flowchart Central
-    Strategy((ANALYTICS<br>STRATEGY))
-    
-    Contexto[**Contexto de Negocio**<br>Misión, Estrategia, KPIs,<br>clientes, productos...]
-    Datos[**Datos**<br>Calidad, fuentes estructuradas y<br>desestructuradas, gobierno...]
-    Equipo[**Equipo**<br>Habilidades, recursos,<br>formación...]
-    Organizacion[**Organización**<br>Cultura, madurez analítica,<br>inversores, procesos...]
-    Tecnologia[**Tecnología**<br>Analítica web/móvil, datawarehouse,<br>big data, machine learning...]
-    Objetivos[**Objetivos**<br>Planificación, objetivos,<br>aspiraciones...]
-    
-    Strategy --- Contexto
-    Strategy --- Datos
-    Strategy --- Equipo
-    Strategy --- Organizacion
-    Strategy --- Tecnologia
-    Strategy --- Objetivos
-```
-
-#### 4.1.2 Elementos de una Estrategia de Almacenamiento
-
-Al descender al nivel puramente técnico de los datos (almacenamiento), toda estrategia debe contemplar:
-
-- **Componentes:**
-  - Herramientas de **Catálogo de Datos**.
-  - Herramientas de **Administración de Datos**.
-  - Herramientas de **Análisis de Datos**.
-
-- **Beneficios esperados (aplicando técnicas como compresión/deduplicación):**
-  - Reducción del espacio físico de almacenamiento necesario.
-  - Optimización del ancho de banda en las transferencias de red.
-  - Reducción general de costes operativos (OPEX) y de infraestructura (CAPEX).
-
-- **Consideraciones técnicas:**
-  - **Impacto en el Rendimiento:** Las técnicas de optimización consumen ciclos de CPU y RAM.
-  - **Compatibilidad con Aplicaciones:** Asegurar que los sistemas dependientes puedan leer los formatos comprimidos o deduplicados de forma transparente.
-  - **Equilibrio Coste-Beneficio:** Encontrar el *sweet spot* (punto ideal) entre la tasa de compresión lograda y el tiempo extra de procesamiento requerido.
-
-### 4.2 Conceptos Básicos de Compresión
+### 4.1 Conceptos Básicos de Compresión
 
 **Definición:** Consiste en reducir el tamaño físico que ocupan los datos en el medio de almacenamiento con el fin de optimizar el espacio y acelerar las transferencias, idealmente sin perder información original.
 
@@ -528,7 +482,7 @@ flowchart LR
     end
 ```
 
-### 4.3 Algoritmo Lempel-Ziv-Welch (LZW)
+### 4.2 Algoritmo Lempel-Ziv-Welch (LZW)
 
 Uno de los algoritmos de **compresión sin pérdida (*lossless*)** universales más famosos y utilizados (base de formatos como GIF o herramientas ZIP) es el **LZW**.
 
@@ -547,7 +501,7 @@ Su lógica se fundamenta en la creación de un diccionario dinámico durante la 
 
 > 🔗 **Recurso Adicional (Compartido en clase):** [Técnica de Compresión LZW (GeeksforGeeks)](https://www.geeksforgeeks.org/computer-networks/lzw-lempel-ziv-welch-compression-technique/)
 
-### 4.4 Técnicas de Deduplicación
+### 4.3 Técnicas de Deduplicación
 
 **Definición:** Proceso que consiste en escanear el almacenamiento para encontrar y **eliminar copias redundantes** de datos, dejando una única copia física y reemplazando las copias repetidas por punteros o referencias a la original.
 
@@ -581,6 +535,52 @@ flowchart LR
 
     Original_Data --> Process --> Deduplicated
 ```
+
+### 4.4 Componentes, Beneficios y Consideraciones
+
+Antes de profundizar en técnicas específicas (como compresión o deduplicación), es necesario establecer una **Estrategia de Datos (Analytics Strategy)** sólida. Esta estrategia funciona como una brújula que alinea los esfuerzos técnicos con los objetivos de la organización.
+
+#### 4.4.1 Pilares de una Analytics Strategy
+
+Una estrategia analítica integral se sostiene sobre seis dimensiones fundamentales interconectadas:
+
+```mermaid
+flowchart Central
+    Strategy((ANALYTICS<br>STRATEGY))
+    
+    Contexto[**Contexto de Negocio**<br>Misión, Estrategia, KPIs,<br>clientes, productos...]
+    Datos[**Datos**<br>Calidad, fuentes estructuradas y<br>desestructuradas, gobierno...]
+    Equipo[**Equipo**<br>Habilidades, recursos,<br>formación...]
+    Organizacion[**Organización**<br>Cultura, madurez analítica,<br>inversores, procesos...]
+    Tecnologia[**Tecnología**<br>Analítica web/móvil, datawarehouse,<br>big data, machine learning...]
+    Objetivos[**Objetivos**<br>Planificación, objetivos,<br>aspiraciones...]
+    
+    Strategy --- Contexto
+    Strategy --- Datos
+    Strategy --- Equipo
+    Strategy --- Organizacion
+    Strategy --- Tecnologia
+    Strategy --- Objetivos
+```
+
+#### 4.4.2 Elementos de una Estrategia de Almacenamiento
+
+Al descender al nivel puramente técnico de los datos (almacenamiento), toda estrategia debe contemplar:
+
+- **Componentes:**
+  - Herramientas de **Catálogo de Datos**.
+  - Herramientas de **Administración de Datos**.
+  - Herramientas de **Análisis de Datos**.
+
+- **Beneficios esperados (aplicando técnicas como compresión/deduplicación):**
+  - Reducción del espacio físico de almacenamiento necesario.
+  - Optimización del ancho de banda en las transferencias de red.
+  - Reducción general de costes operativos (OPEX) y de infraestructura (CAPEX).
+
+- **Consideraciones técnicas:**
+  - **Impacto en el Rendimiento:** Las técnicas de optimización consumen ciclos de CPU y RAM.
+  - **Compatibilidad con Aplicaciones:** Asegurar que los sistemas dependientes puedan leer los formatos comprimidos o deduplicados de forma transparente.
+  - **Equilibrio Coste-Beneficio:** Encontrar el *sweet spot* (punto ideal) entre la tasa de compresión lograda y el tiempo extra de procesamiento requerido.
 
 ---
 
