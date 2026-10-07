@@ -605,11 +605,27 @@ Dependiendo de la estrategia de redundancia y el espacio disponible, las políti
 - **Característica principal:** Fácil administración (para restaurar el sistema solo se necesita el backup del día deseado).
 
 ```mermaid
-xychart-beta
-    title "Volumen de copia diario: Completa"
-    x-axis ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"]
-    y-axis "Volumen Copiado" 0 --> 100
-    bar [60, 65, 70, 75, 80, 85, 90, 95]
+gantt
+    title Copia de Seguridad Completa
+    dateFormat X
+    axisFormat %s
+    
+    section Dom
+    Completa :0, 10
+    section Lun
+    Completa :0, 11
+    section Mar
+    Completa :0, 12
+    section Mie
+    Completa :0, 13
+    section Jue
+    Completa :0, 14
+    section Vie
+    Completa :0, 15
+    section Sab
+    Completa :0, 16
+    section Dom
+    Completa :0, 17
 ```
 
 #### 2. Copia de Seguridad Incremental Acumulativa
@@ -617,11 +633,27 @@ xychart-beta
 - En el resto de la semana, la **diferencia con la última copia de seguridad completa** es copiada cada día.
 
 ```mermaid
-xychart-beta
-    title "Volumen de copia diario: Incremental Acumulativa"
-    x-axis ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"]
-    y-axis "Volumen Copiado" 0 --> 100
-    bar [60, 5, 10, 15, 20, 25, 30, 95]
+gantt
+    title Copia Incremental Acumulativa
+    dateFormat X
+    axisFormat %s
+
+    section Dom
+    Completa :0, 10
+    section Lun
+    Inc. Acum. :10, 11
+    section Mar
+    Inc. Acum. :10, 12
+    section Mie
+    Inc. Acum. :10, 13
+    section Jue
+    Inc. Acum. :10, 14
+    section Vie
+    Inc. Acum. :10, 15
+    section Sab
+    Inc. Acum. :10, 16
+    section Dom
+    Completa :0, 17
 ```
 
 #### 3. Copia de Seguridad Incremental Diferencial
@@ -629,11 +661,27 @@ xychart-beta
 - El resto de la semana, la **diferencia de datos con la última copia de seguridad** es copiada cada día.
 
 ```mermaid
-xychart-beta
-    title "Volumen de copia diario: Incremental Diferencial"
-    x-axis ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"]
-    y-axis "Volumen Copiado" 0 --> 100
-    bar [60, 5, 7, 4, 6, 8, 5, 95]
+gantt
+    title Copia Incremental Diferencial
+    dateFormat X
+    axisFormat %s
+
+    section Dom
+    Completa :0, 10
+    section Lun
+    Diferencial :10, 11
+    section Mar
+    Diferencial :11, 12
+    section Mie
+    Diferencial :12, 13
+    section Jue
+    Diferencial :13, 14
+    section Vie
+    Diferencial :14, 15
+    section Sab
+    Diferencial :15, 16
+    section Dom
+    Completa :0, 17
 ```
 
 
