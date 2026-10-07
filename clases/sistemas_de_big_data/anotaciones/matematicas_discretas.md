@@ -1,9 +1,9 @@
 # Matemáticas Discretas y Fundamentos Computacionales
 
-> 📅 **Fecha:** 2026-10-05
-> 👨‍🏫 **Docente:** Ricardo Sanchez
-> 📖 **Módulo:** Sistemas de Big Data
-> 📝 **Documento de referencia:** `2026-10-05 - SBD Conceptos Basicos.docx`
+> 📅 **Fecha:** 2026-10-05  
+> 👨‍🏫 **Docente:** Ricardo Sanchez  
+> 📖 **Módulo:** Sistemas de Big Data  
+> 📝 **Documento de referencia:** `2026-10-05 - SBD Conceptos Basicos.docx`  
 
 ## 📑 Índice de Contenidos
 
