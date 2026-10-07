@@ -605,6 +605,18 @@ Dependiendo de la estrategia de redundancia y el espacio disponible, las políti
 - **Característica principal:** Fácil administración (para restaurar el sistema solo se necesita el backup del día deseado).
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'activeTaskBkgColor': '#3b82f6',
+    'activeTaskBorderColor': '#2563eb',
+    'critBkgColor': '#f97316',
+    'critBorderColor': '#ea580c',
+    'doneTaskBkgColor': '#22c55e',
+    'doneTaskBorderColor': '#16a34a',
+    'taskTextLightColor': '#ffffff'
+  }
+}}%%
 gantt
     title Copia de Seguridad Completa
     dateFormat X
@@ -633,6 +645,18 @@ gantt
 - En el resto de la semana, la **diferencia con la última copia de seguridad completa** es copiada cada día.
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'activeTaskBkgColor': '#3b82f6',
+    'activeTaskBorderColor': '#2563eb',
+    'critBkgColor': '#f97316',
+    'critBorderColor': '#ea580c',
+    'doneTaskBkgColor': '#22c55e',
+    'doneTaskBorderColor': '#16a34a',
+    'taskTextLightColor': '#ffffff'
+  }
+}}%%
 gantt
     title Copia Incremental Acumulativa
     dateFormat X
@@ -661,6 +685,18 @@ gantt
 - El resto de la semana, la **diferencia de datos con la última copia de seguridad** es copiada cada día.
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'activeTaskBkgColor': '#3b82f6',
+    'activeTaskBorderColor': '#2563eb',
+    'critBkgColor': '#f97316',
+    'critBorderColor': '#ea580c',
+    'doneTaskBkgColor': '#22c55e',
+    'doneTaskBorderColor': '#16a34a',
+    'taskTextLightColor': '#ffffff'
+  }
+}}%%
 gantt
     title Copia Incremental Diferencial
     dateFormat X
