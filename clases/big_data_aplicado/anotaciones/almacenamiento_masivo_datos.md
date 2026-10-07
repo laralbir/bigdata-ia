@@ -278,14 +278,24 @@ flowchart LR
 
 #### 4. Metadatos (*Datos sobre los datos*)
 
-Los **metadatos** proporcionan información contextual que describe, clasifica, ubica y preserva los recursos de datos primarios:
+Los **metadatos** identifican propiedades de los objetos almacenados y especifican cómo se les debe controlar cuando se accede a ellos, proporcionando información contextual vital para el almacenamiento masivo.
 
-- **Tipos de metadatos:**
-  - **Técnicos / Estructurales:** Tamaño en bytes, formato MIME (`application/json`, `image/png`), códec, resolución de imagen, tasa de muestreo de audio.
-  - **Administrativos / Seguridad:** Permisos de acceso (ACLs), propietario, fechas de creación/modificación/expiración, políticas de cifrado.
-  - **Gobernanza y Linaje (*Data Lineage*):** Origen del dato, pipeline de transformación aplicado, sumas de verificación (*checksums* MD5/SHA-256) para control de integridad.
+Atendiendo a su capacidad de modificación a lo largo del ciclo de vida del dato, se dividen en dos categorías principales:
 
-##### 📋 Ejemplo de Metadatos de un Objeto de Almacenamiento Masivo:
+- **Metadatos Editables:**
+  - **Control de acceso:** Permisos de lectura/escritura (ACLs), roles y políticas de seguridad.
+  - **Encoding:** Codificación de los datos.
+  - **Content-Language y Content-Type:** Idioma y formato del objeto (ej. `application/json`, `image/png`).
+  - **Retention time:** Tiempo de retención de los datos antes de su borrado o archivo por políticas de ciclo de vida.
+
+- **Metadatos No Editables:**
+  - **Generation / Versiones:** Identificador de la versión del objeto (cuando el versionado está activo en el bucket).
+  - **Checksum / Suma de Verificación:** Hashes para control de integridad (ej. MD5, SHA-256) que garantizan que el archivo no ha sido alterado o corrompido.
+  - **Hora y Fecha de Modificación:** Timestamps generados automáticamente por el sistema al subir o alterar el objeto.
+
+> 💡 **Nota Práctica:** En soluciones de *Cloud Storage* (como Amazon S3, Google Cloud Storage o un bucket genérico), se suelen exponer estas propiedades a través de la interfaz web, permitiendo al usuario configurar el versionado (para recuperar versiones anteriores si se sobrescribe un objeto) o habilitar registros de acceso (*server access logging*) para auditar quién accede a los datos.
+
+##### 📋 Ejemplo de Cabeceras de Metadatos (Petición HTTP):
 ```http
 Content-Type: image/jpeg
 Content-Length: 4194304
