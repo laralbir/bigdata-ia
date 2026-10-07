@@ -26,8 +26,8 @@
    - 3.5. [Almacenamiento en la Nube](#35-almacenamiento-en-la-nube-cloud-storage)
 
 ### Parte #2: Estrategias, Protección y Gobernanza
-4. [Estrategias para la compresión y deduplicación de datos](#4-estrategias-para-la-compresión-y-deduplicación-de-datos)
-   - 4.1. Conceptos básicos de compresión de datos
+4. [Estrategias sobre los Datos: Compresión y Deduplicación](#4-estrategias-sobre-los-datos-compresión-y-deduplicación)
+   - 4.1. [Conceptos Básicos de Compresión](#41-conceptos-básicos-de-compresión)
    - 4.2. Técnicas de deduplicación
    - 4.3. Beneficios y consideraciones
 5. [Políticas de Backup, Recuperación y Retención de datos](#5-políticas-de-backup-recuperación-y-retención-de-datos)
@@ -448,9 +448,37 @@ El paso definitivo en la evolución es externalizar el almacenamiento y delegarl
 
 ---
 
-## 4. Estrategias para la Compresión y Deduplicación de Datos
+## 4. Estrategias sobre los Datos: Compresión y Deduplicación
 
-*(Pendiente de impartición: conceptos de compresión, técnicas de deduplicación a nivel de bloque y archivo, beneficios y coste de CPU)*
+### 4.1 Conceptos Básicos de Compresión
+
+**Definición:** Consiste en reducir el tamaño físico que ocupan los datos en el medio de almacenamiento con el fin de optimizar el espacio y acelerar las transferencias, idealmente sin perder información original.
+
+#### Tipos de Compresión
+
+- **Compresión Sin Pérdida (*Lossless*):** 
+  - Al descomprimir el archivo, se recupera el 100% de los datos originales exactos, bit a bit.
+  - *Ejemplo conceptual (Run-Length Encoding):* En lugar de almacenar textualmente cientos de caracteres idénticos ("AAAAAAAAA..."), el algoritmo guarda una instrucción lógica como "Repetir 'A' 143 veces".
+  - *Algoritmos comunes:* ZIP, GZIP, DEFLATE.
+- **Compresión Con Pérdida (*Lossy*):** 
+  - Al descomprimir, el archivo resultante es una aproximación del original (se descarta información no vital o imperceptible). Es el estándar para formatos multimedia.
+
+```mermaid
+flowchart LR
+    subgraph Lossless ["Compresión Sin Pérdida (Lossless)"]
+        direction LR
+        Orig1[Original] -- Compresión --> Comp1[Comprimido]
+        Comp1 -- Descompresión --> Dest1[Original Exacto]
+    end
+
+    subgraph Lossy ["Compresión Con Pérdida (Lossy)"]
+        direction LR
+        Orig2[Original] -- Compresión --> Comp2[Comprimido]
+        Comp2 -- Descompresión --> Dest2[Original Degradado]
+    end
+```
+
+*(Sección en desarrollo: a la espera de técnicas de deduplicación...)*
 
 ---
 
