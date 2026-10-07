@@ -752,6 +752,23 @@ Además de definir las métricas, es esencial realizar **pruebas regulares de re
 - **Escalamiento:** Niveles de reporte según el tiempo que el servicio lleve caído.
 - **Inventario:** Listado actualizado de sistemas y datos críticos a restaurar primero.
 
+### 5.4 Políticas de retención y cumplimiento normativo
+
+El establecimiento de estas políticas ayuda a identificar y gestionar los riesgos relacionados con la pérdida de datos y la exposición no autorizada de la información corporativa.
+
+Los pilares fundamentales de estas políticas incluyen:
+- **Definición de Períodos de Retención:** Establecer exactamente cuánto tiempo deben guardarse los datos según su tipología.
+- **Cumplimiento de regulaciones:** Adherirse a los marcos normativos vigentes (ej. GDPR en Europa, HIPAA en salud, etc.).
+- **Destrucción segura de datos:** Garantizar un borrado irrecuperable de la información una vez que finaliza su ciclo de vida legal u operativo.
+
+> 🛡️ **El Reto de la Transformación Digital**  
+> El **28%** de las organizaciones ve la protección de datos (RGPD) como **el mayor reto** de la transformación digital.  
+> *(Fuente: Digital Transformation Study, Konica Minolta y Keypoint Intelligence, 2022)*
+
+> 🚨 **Impacto Real del Incumplimiento (Datos de 2021)**  
+> En 2021, se notificaron más de **130.000 violaciones** de datos personales, lo que provocó que se impusieran multas por valor de casi **1.100 millones de euros** a organizaciones por infracciones del Reglamento General de Protección de Datos (RGPD) de la Unión Europea.  
+> *(Fuente: Informe "GDPR fines surpass $1B in 2021; breach notifications also rise", Compliance Week, Enero 2022)*
+
 ---
 
 ## 6. Resumen de la Unidad y Conclusiones
