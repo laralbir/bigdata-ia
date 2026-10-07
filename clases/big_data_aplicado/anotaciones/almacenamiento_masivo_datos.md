@@ -38,7 +38,7 @@
    - 5.4. [Políticas de retención y cumplimiento normativo](#54-políticas-de-retención-y-cumplimiento-normativo)
 6. [Resumen de la Unidad](#6-resumen-de-la-unidad-y-conclusiones)
    - 6.1. [Recapitulación de conceptos clave](#61-recapitulación-de-conceptos-clave)
-   - 6.2. Tendencias futuras en almacenamiento masivo
+   - 6.2. [Tendencias futuras en almacenamiento masivo](#62-tendencias-futuras-en-almacenamiento-masivo)
    - 6.3. Sesión de preguntas y respuestas
 
 ---
@@ -781,4 +781,14 @@ A lo largo de esta unidad, hemos explorado los pilares del almacenamiento de dat
 - **Evolución constante de las tecnologías:** Hemos pasado de soportes secuenciales y mecánicos (cintas, discos duros tradicionales) a infraestructuras dinámicas, escalables horizontalmente y distribuidas geográficamente (Object Storage, Cloud, NVMe).
 - **Equilibrio entre Capacidad, Rendimiento y Costo:** El diseño arquitectónico de los datos exige encontrar un compromiso (*trade-off*) óptimo. No existe una solución única; es necesario combinar tecnologías (NAS, SAN, Cloud) y optimizaciones (compresión, deduplicación, políticas de backup RPO/RTO) para maximizar el valor de la información sin disparar los gastos operativos.
 
-*(Pendiente: Tendencias futuras y sesión de preguntas)*
+### 6.2 Tendencias futuras en almacenamiento masivo
+
+El volumen de datos seguirá creciendo de forma exponencial, lo que impulsa el desarrollo de nuevos paradigmas y tecnologías disruptivas en el sector:
+
+- **Almacenamiento definido por software (SDS):** Consiste en desacoplar el software de gestión y aprovisionamiento del hardware físico. Esto permite utilizar servidores estándar (*commodity hardware*) para crear pools de almacenamiento hiperflexibles, reduciendo la dependencia de fabricantes tradicionales.
+- **Inteligencia Artificial en la gestión de datos:** Integración de algoritmos de Machine Learning para predecir fallos de disco (*predictive maintenance*), automatizar el movimiento de datos entre capas calientes y frías (*smart tiering*) según patrones de uso, y optimizar en tiempo real los procesos de ciberseguridad y deduplicación.
+- **Nuevas tecnologías disruptivas:**
+  - **DNA Storage (Almacenamiento en ADN):** Codificación de datos binarios en secuencias de nucleótidos sintéticos. Ofrece una densidad colosal (Exabytes en apenas unos gramos) y una durabilidad de miles de años, perfilándose como el futuro del archivado profundo.
+  - **Almacenamiento Holográfico:** Utiliza láseres para almacenar información en tres dimensiones dentro del volumen de un cristal o fotopolímero, superando drásticamente los límites físicos y de velocidad de transferencia de los medios bidimensionales.
+
+*(Pendiente: Sesión de preguntas y respuestas)*
