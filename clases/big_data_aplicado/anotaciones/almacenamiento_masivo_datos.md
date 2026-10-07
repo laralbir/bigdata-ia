@@ -545,22 +545,20 @@ Antes de profundizar en técnicas específicas (como compresión o deduplicació
 Una estrategia analítica integral se sostiene sobre seis dimensiones fundamentales interconectadas:
 
 ```mermaid
-flowchart TD
-    Strategy(("ANALYTICS<br>STRATEGY"))
-    
-    Contexto["**Contexto de Negocio**<br>Misión, Estrategia, KPIs,<br>clientes, productos..."]
-    Datos["**Datos**<br>Calidad, fuentes estructuradas y<br>desestructuradas, gobierno..."]
-    Equipo["**Equipo**<br>Habilidades, recursos,<br>formación..."]
-    Organizacion["**Organización**<br>Cultura, madurez analítica,<br>inversores, procesos..."]
-    Tecnologia["**Tecnología**<br>Analítica web/móvil, datawarehouse,<br>big data, machine learning..."]
-    Objetivos["**Objetivos**<br>Planificación, objetivos,<br>aspiraciones..."]
-    
-    Strategy --- Contexto
-    Strategy --- Datos
-    Strategy --- Equipo
-    Strategy --- Organizacion
-    Strategy --- Tecnologia
-    Strategy --- Objetivos
+mindmap
+  root((ANALYTICS<br/>STRATEGY))
+    Contexto de Negocio
+      [Misión, Estrategia, KPIs, clientes, productos...]
+    Datos
+      [Calidad, fuentes estructuradas y desestructuradas, gobierno de datos...]
+    Equipo
+      [Habilidades, recursos, formación...]
+    Organización
+      [Cultura, nivel de maduración en analytics, inversores, procesos...]
+    Tecnología
+      [Analítica web & móvil, datawarehouse, big data, machine learning...]
+    Objetivos
+      [Planificación, objetivos, aspiraciones...]
 ```
 
 #### 4.4.2 Elementos de una Estrategia de Almacenamiento
