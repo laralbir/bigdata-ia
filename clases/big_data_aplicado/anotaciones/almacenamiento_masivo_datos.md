@@ -65,7 +65,7 @@ La digitalización integral de procesos, la proliferación de dispositivos IoT, 
 - **Eje de la transformación digital:** Permite a las corporaciones romper silos informativos, centralizar el conocimiento y operar con arquitecturas escalables.
 
 ```mermaid
-flowchart TD
+flowchart LR
     Fuentes["🌐 Fuentes Heterogéneas<br>(IoT, Redes, Transacciones, Logs)"] --> Explosion["📈 Crecimiento Exponencial<br>(~175 ZB anuales)"]
     Explosion --> Necesidad["🏢 Reto Corporativo:<br>Almacenar, Proteger y Servir a Escala"]
     Necesidad --> Explotacion["🎯 Impacto Real:<br>Decisiones Data-Driven y Modelos de IA"]
