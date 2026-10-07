@@ -773,4 +773,12 @@ Los pilares fundamentales de estas políticas incluyen:
 
 ## 6. Resumen de la Unidad y Conclusiones
 
-*(Pendiente de impartición: recapitulación de ideas clave y tendencias en almacenamiento masivo)*
+### 6.1 Recapitulación de Conceptos Clave
+
+A lo largo de esta unidad, hemos explorado los pilares del almacenamiento de datos a gran escala, destacando tres conclusiones fundamentales:
+
+- **Importancia del almacenamiento masivo en la era digital:** El almacenamiento ha dejado de ser un simple repositorio pasivo para convertirse en el motor crítico que habilita la transformación digital, las decisiones orientadas a datos (*Data-Driven*) y los modelos de Inteligencia Artificial.
+- **Evolución constante de las tecnologías:** Hemos pasado de soportes secuenciales y mecánicos (cintas, discos duros tradicionales) a infraestructuras dinámicas, escalables horizontalmente y distribuidas geográficamente (Object Storage, Cloud, NVMe).
+- **Equilibrio entre Capacidad, Rendimiento y Costo:** El diseño arquitectónico de los datos exige encontrar un compromiso (*trade-off*) óptimo. No existe una solución única; es necesario combinar tecnologías (NAS, SAN, Cloud) y optimizaciones (compresión, deduplicación, políticas de backup RPO/RTO) para maximizar el valor de la información sin disparar los gastos operativos.
+
+*(Pendiente: Tendencias futuras y sesión de preguntas)*
