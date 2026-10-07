@@ -346,7 +346,13 @@ A nivel de organización y usuario, existen acciones cotidianas fundamentales pa
 
 ## 3. Evolución de las Tecnologías de Almacenamiento
 
-*(Sección en desarrollo según la exposición en clase de Alejandro Delgado: Cinta Magnética, HDD, SSD, NAS/SAN y Cloud Storage)*
+La forma en que almacenamos y procesamos la información ha evolucionado drásticamente a lo largo del tiempo para adaptarse a volúmenes cada vez mayores.
+
+### 3.1 Comienzos
+
+- **Tarjetas Perforadas:** Fueron el primer medio empleado para el almacenamiento y procesamiento automatizado de datos. La información se representaba de forma física mediante la presencia o ausencia de agujeros en posiciones específicas de una cartulina, sirviendo como un sistema binario mecánico y rudimentario.
+
+*(Sección en desarrollo: a la espera de las siguientes tecnologías como Cinta Magnética, HDD, SSD, etc.)*
 
 ---
 
