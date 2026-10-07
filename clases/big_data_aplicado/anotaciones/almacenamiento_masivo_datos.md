@@ -459,9 +459,12 @@ El paso definitivo en la evolución es externalizar el almacenamiento y delegarl
 - **Compresión Sin Pérdida (*Lossless*):** 
   - Al descomprimir el archivo, se recupera el 100% de los datos originales exactos, bit a bit.
   - *Ejemplo conceptual (Run-Length Encoding):* En lugar de almacenar textualmente cientos de caracteres idénticos ("AAAAAAAAA..."), el algoritmo guarda una instrucción lógica como "Repetir 'A' 143 veces".
-  - *Algoritmos comunes:* ZIP, GZIP, DEFLATE.
+  - *Formatos y algoritmos comunes:* ZIP, GZIP, DEFLATE, **PNG** (imágenes sin pérdida).
 - **Compresión Con Pérdida (*Lossy*):** 
-  - Al descomprimir, el archivo resultante es una aproximación del original (se descarta información no vital o imperceptible). Es el estándar para formatos multimedia.
+  - Al descomprimir, el archivo resultante es una aproximación del original (se descarta información no vital o imperceptible para los sentidos humanos). Es el estándar para formatos multimedia para ahorrar gran cantidad de espacio.
+  - *Formatos comunes:* **JPG/JPEG** (imágenes), MP3 (audio), MP4 (vídeo).
+
+> 🖼️ **Ejemplo Práctico (Impacto en almacenamiento):** Al aplicar ambos métodos a una misma fotografía, un archivo en formato **PNG (Lossless)** puede ocupar por ejemplo **377 KB**, preservando cada píxel intacto. Si esa misma imagen se comprime a **JPG (Lossy)**, su tamaño puede reducirse drásticamente a **60.3 KB**; a simple vista el ser humano apenas notará la diferencia, pero a nivel binario se habrán descartado millones de datos prescindibles.
 
 ```mermaid
 flowchart LR
