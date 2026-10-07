@@ -429,7 +429,22 @@ flowchart TD
 
 > 💡 **Diferencia clave:** En NAS, el almacenamiento viaja por la misma red que usan los usuarios (nivel de archivo). En SAN, existe una sub-red trasera hiper-rápida y exclusiva entre los servidores y las cabinas de almacenamiento (nivel de bloque).
 
-*(Sección en desarrollo: a la espera de Almacenamiento en la Nube)*
+### 3.5 Almacenamiento en la Nube (*Cloud Storage*)
+
+El paso definitivo en la evolución es externalizar el almacenamiento y delegarlo en grandes proveedores de nube pública, accediendo a los datos de forma ubicua a través de Internet.
+
+- **Ventajas:**
+  - **Escalabilidad bajo demanda:** Capacidad de almacenamiento virtualmente ilimitada que crece o decrece instantáneamente según las necesidades.
+  - **Reducción de costos de infraestructura:** Elimina la necesidad de inversión inicial (CAPEX) en hardware y mantenimiento, pasando a un modelo de pago por uso (OPEX).
+  - **Accesibilidad global:** Los datos están disponibles desde cualquier ubicación geográfica con conexión a Internet.
+- **Desafíos:**
+  - **Seguridad y Privacidad:** Delegar los datos a un tercero implica retos en cifrado, soberanía del dato y confianza en la nube.
+  - **Dependencia de la Conectividad:** Sin conexión a Internet o ante caídas de red, los datos quedan temporalmente inaccesibles.
+  - **Costos a largo plazo (FinOps):** Si no se gestiona correctamente el ciclo de vida de los datos o las cuotas, el pago por uso recurrente puede disparar los costes empresariales.
+- **Principales Proveedores y Soluciones:**
+  - **Amazon Web Services (AWS):** Amazon S3 (Object Storage) y Amazon Elastic Block Store - EBS (Block Storage).
+  - **Microsoft Azure:** Azure Blob Storage (Object Storage) y Azure Managed Disks (Block Storage).
+  - **Google Cloud Platform (GCP):** Google Cloud Storage (Object Storage) y Persistent Disk (Block Storage).
 
 ---
 
