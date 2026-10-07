@@ -13,7 +13,6 @@ flowchart TD
     Repo["📦 masterBigData_IA"] --> Clases["📂 clases/<br>Asignaturas oficiales"]
     Repo --> Cursos["📂 cursos/<br>Cursos complementarios"]
     Repo --> Calendario["📂 calendario/<br>Planificación y fechas"]
-    Repo --> Facturas["📂 facturas/<br>Gestión administrativa"]
     Repo --> Specs["📄 AGENTS.md<br>Normas y especificaciones"]
 
     Clases --> Presentacion["presentacion/"]
@@ -29,7 +28,6 @@ flowchart TD
 | [📁 `clases/`](clases/README.md) | Asignaturas oficiales del curso, divididas en sus cinco áreas clave: anotaciones, entregables, grabaciones, presentaciones y calificaciones. | [Ver índice de clases](clases/README.md) |
 | [📁 `cursos/`](cursos/README.md) | Cursos de formación preparatoria y complementaria (Linux CLI, Scripting Bash, Python Essentials, etc.). | [Ver índice de cursos](cursos/README.md) |
 | [📁 `calendario/`](calendario/README.md) | Cronograma académico, calendario lectivo oficial, hitos del curso y fechas límite de entrega. | [Ver calendario](calendario/README.md) |
-| [📁 `facturas/`](facturas/README.md) | Justificantes de pago de matrícula, mensualidades, recibos y documentación administrativa. | [Ver facturación](facturas/README.md) |
 | [📄 `AGENTS.md`](AGENTS.md) | Normativa de contribución, directrices del repositorio y especificaciones de trabajo con IA. | [Ver especificaciones](AGENTS.md) |
 
 ---

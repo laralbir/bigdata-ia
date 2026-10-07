@@ -8,7 +8,6 @@ Este repositorio se utiliza para almacenar los apuntes, trabajos, documentación
   - Cada asignatura contiene las subcarpetas: `presentaciones`, `grabaciones`, `entregables`, `calificaciones`, `anotaciones`.
     - **Gestión de `grabaciones`**: Debido al gran volumen de estos ficheros, no se almacenan directamente en el repositorio; se incluirán archivos Markdown con los enlaces a las grabaciones en Google Drive.
 - `calendario/`: Documentación y calendarios del curso.
-- `facturas/`: Facturas y temas administrativos.
 
 ## Workflow Rules (Working on Specs)
 1. **Trabajo basado en Specs**: El enfoque principal es "trabajar sobre specs". Antes de generar código, resolver entregables o crear documentación extensa, debes buscar, leer o solicitar las especificaciones (specs) correspondientes.
