@@ -611,21 +611,21 @@ gantt
     axisFormat %s
     
     section Dom
-    Completa :0, 10
+    Completa :active, 0, 10
     section Lun
-    Completa :0, 11
+    Completa :active, 0, 11
     section Mar
-    Completa :0, 11
+    Completa :active, 0, 11
     section Mie
-    Completa :0, 12
+    Completa :active, 0, 12
     section Jue
-    Completa :0, 12
+    Completa :active, 0, 12
     section Vie
-    Completa :0, 13
+    Completa :active, 0, 13
     section Sab
-    Completa :0, 13
+    Completa :active, 0, 13
     section Dom 
-    Completa :0, 14
+    Completa :active, 0, 14
 ```
 
 #### 2. Copia de Seguridad Incremental Acumulativa
@@ -639,21 +639,21 @@ gantt
     axisFormat %s
 
     section Dom
-    Completa :0, 10
+    Completa :active, 0, 10
     section Lun
-    Inc. Acum. :0, 1
+    Inc. Acum. :crit, 0, 1
     section Mar
-    Inc. Acum. :0, 2
+    Inc. Acum. :crit, 0, 2
     section Mie
-    Inc. Acum. :0, 3
+    Inc. Acum. :crit, 0, 3
     section Jue
-    Inc. Acum. :0, 4
+    Inc. Acum. :crit, 0, 4
     section Vie
-    Inc. Acum. :0, 5
+    Inc. Acum. :crit, 0, 5
     section Sab
-    Inc. Acum. :0, 6
+    Inc. Acum. :crit, 0, 6
     section Dom 
-    Completa :0, 10
+    Completa :active, 0, 10
 ```
 
 #### 3. Copia de Seguridad Incremental Diferencial
@@ -667,21 +667,21 @@ gantt
     axisFormat %s
 
     section Dom
-    Completa :0, 10
+    Completa :active, 0, 10
     section Lun
-    Diferencial :0, 1
+    Diferencial :done, 0, 1
     section Mar
-    Diferencial :0, 1
+    Diferencial :done, 0, 1
     section Mie
-    Diferencial :0, 1
+    Diferencial :done, 0, 1
     section Jue
-    Diferencial :0, 1
+    Diferencial :done, 0, 1
     section Vie
-    Diferencial :0, 1
+    Diferencial :done, 0, 1
     section Sab
-    Diferencial :0, 1
+    Diferencial :done, 0, 1
     section Dom 
-    Completa :0, 10
+    Completa :active, 0, 10
 ```
 
 
