@@ -9,17 +9,17 @@
 
 - [Introducción](#introducción)
   - [Lecturas Recomendadas y Recursos de Autoformación](#lecturas-recomendadas-y-recursos-de-autoformación)
-- [1. Conjuntos, Relaciones y Funciones](#1-conjuntos-relaciones-y-funciones)
-  - [1.1 ¿Por qué Matemática Discreta en Big Data e IA?](#11-por-qué-matemática-discreta-en-big-data-e-ia)
-  - [1.2 Conjuntos: La Base de Todo](#12-conjuntos-la-base-de-todo)
-  - [1.3 Relaciones: Conexiones entre Elementos](#13-relaciones-conexiones-entre-elementos)
-  - [1.4 Funciones: Mapeo entre Conjuntos](#14-funciones-mapeo-entre-conjuntos)
-- [2. Lógica Proposicional y Lógica de Predicados](#2-lógica-proposicional-y-lógica-de-predicados)
-  - [2.1 Lógica Proposicional: El Arte de Razonar](#21-lógica-proposicional-el-arte-de-razonar)
-  - [2.2 Tablas de Verdad y Clasificación de Proposiciones Compuestas](#22-tablas-de-verdad-y-clasificación-de-proposiciones-compuestas)
-  - [2.3 Lógica de Predicados: Más Allá de lo Binario](#23-lógica-de-predicados-más-allá-de-lo-binario)
-  - [2.4 Inferencia Lógica: Sacando Conclusiones](#24-inferencia-lógica-sacando-conclusiones)
-- [3. Conexión con Algorítmica y Estructuras de Datos](#3-conexión-con-algorítmica-y-estructuras-de-datos)
+- 1. [Conjuntos, Relaciones y Funciones](#1-conjuntos-relaciones-y-funciones)
+  - 1.1 [¿Por qué Matemática Discreta en Big Data e IA?](#11-por-qué-matemática-discreta-en-big-data-e-ia)
+  - 1.2 [Conjuntos: La Base de Todo](#12-conjuntos-la-base-de-todo)
+  - 1.3 [Relaciones: Conexiones entre Elementos](#13-relaciones-conexiones-entre-elementos)
+  - 1.4 [Funciones: Mapeo entre Conjuntos](#14-funciones-mapeo-entre-conjuntos)
+- 2. [Lógica Proposicional y Lógica de Predicados](#2-lógica-proposicional-y-lógica-de-predicados)
+  - 2.1 [Lógica Proposicional: El Arte de Razonar](#21-lógica-proposicional-el-arte-de-razonar)
+  - 2.2 [Tablas de Verdad y Clasificación de Proposiciones Compuestas](#22-tablas-de-verdad-y-clasificación-de-proposiciones-compuestas)
+  - 2.3 [Lógica de Predicados: Más Allá de lo Binario](#23-lógica-de-predicados-más-allá-de-lo-binario)
+  - 2.4 [Inferencia Lógica: Sacando Conclusiones](#24-inferencia-lógica-sacando-conclusiones)
+- 3. [Conexión con Algorítmica y Estructuras de Datos](#3-conexión-con-algorítmica-y-estructuras-de-datos)
 
 ---
 
