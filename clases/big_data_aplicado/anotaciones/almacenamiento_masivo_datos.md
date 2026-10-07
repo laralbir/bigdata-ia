@@ -18,10 +18,10 @@
    - 2.2. [Características clave (Las 4 V's y Tradicional vs. Masivo)](#22-las-4-vs-aplicadas-al-almacenamiento-masivo)
    - 2.3. [Tipos de datos almacenados](#23-tipos-de-datos-almacenados)
    - 2.4. [Desafíos del almacenamiento masivo](#24-desafíos-del-almacenamiento-masivo)
-3. [Evolución de las tecnologías de almacenamiento](#3-evolución-de-las-tecnologías-de-almacenamiento)
-   - 3.1. Almacenamiento en cinta magnética
-   - 3.2. Discos duros (HDD)
-   - 3.3. Discos de estado sólido (SSD)
+3. [Evolución de las Tecnologías de Almacenamiento](#3-evolución-de-las-tecnologías-de-almacenamiento)
+   - 3.1. [Comienzos (Tarjetas y Cinta)](#31-comienzos)
+   - 3.2. [Discos Duros (HDD)](#32-discos-duros-hdd---hard-disk-drive)
+   - 3.3. [Unidades de Estado Sólido (SSD)](#33-unidades-de-estado-sólido-ssd---solid-state-drive)
    - 3.4. Almacenamiento en red (NAS y SAN)
    - 3.5. Almacenamiento en la Nube
 
