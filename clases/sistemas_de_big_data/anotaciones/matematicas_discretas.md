@@ -1,5 +1,6 @@
 # Matemáticas Discretas y Fundamentos Computacionales
 
+> Apuntes y ampliación de teoría de la asignatura **Sistemas de Big Data**.  
 > 📅 **Fecha:** 2026-10-05  
 > 👨‍🏫 **Docente:** Ricardo Sanchez  
 > 📖 **Módulo:** Sistemas de Big Data  
