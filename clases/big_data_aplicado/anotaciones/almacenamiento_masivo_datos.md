@@ -367,7 +367,23 @@ La forma en que almacenamos y procesamos la información ha evolucionado drásti
   - Su **velocidad está físicamente limitada** por las RPM (revoluciones por minuto) de los platos y el desplazamiento del cabezal.
   - Al poseer **partes móviles**, son altamente susceptibles a fallos mecánicos por golpes, vibraciones o desgaste físico con el tiempo.
 
-*(Sección en desarrollo: a la espera de las siguientes tecnologías como SSD, NAS/SAN, etc.)*
+### 3.3 Unidades de Estado Sólido (SSD - *Solid State Drive*)
+
+- **Funcionamiento (Electrónico):** A diferencia de los HDD, no tienen componentes mecánicos. Están basados íntegramente en chips de **memoria flash NAND**.
+- **Ventajas:** 
+  - **Mayor velocidad:** Tiempos de acceso y tasas de transferencia inmensamente superiores, reduciendo drásticamente la latencia.
+  - **Sin partes móviles:** Lo que los hace silenciosos, con menor consumo energético y muy resistentes a golpes o vibraciones.
+- **Desventajas:**
+  - **Costo más elevado** por gigabyte/terabyte en comparación con los discos mecánicos.
+  - **Limitaciones físicas de escritura:** Las celdas de memoria NAND sufren desgaste por cada ciclo de escritura/borrado, lo que limita su vida útil (aunque con tecnologías modernas como *wear leveling* esto se mitiga significativamente).
+- **Formatos y Conexiones Habituales (Ecosistema SSD):**
+  - **SATA:** El formato clásico (ej. 2.5"), compatible con conexiones de discos duros antiguos pero limitado por el ancho de banda del bus SATA.
+  - **PCIe:** Tarjetas conectadas directamente a las ranuras PCIe de la placa base, ofreciendo gran rendimiento.
+  - **M.2:** Formato compacto y moderno (como una pequeña placa), que aprovecha los protocolos NVMe a través de líneas PCIe para máxima velocidad.
+  - **U.2:** Formato empresarial, con apariencia similar a discos de 2.5" pero diseñado para servidores y cabinas de almacenamiento con interfaces NVMe.
+- **Uso actual:** Existe una **tendencia creciente en adopción** absoluta, convirtiéndose en el estándar para almacenamiento primario, cachés de bases de datos y procesamiento en caliente (*Hot Data*).
+
+*(Sección en desarrollo: a la espera de las siguientes tecnologías como NAS/SAN, Cloud, etc.)*
 
 ---
 
