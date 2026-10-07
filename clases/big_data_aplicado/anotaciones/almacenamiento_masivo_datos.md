@@ -22,8 +22,8 @@
    - 3.1. [Comienzos (Tarjetas y Cinta)](#31-comienzos)
    - 3.2. [Discos Duros (HDD)](#32-discos-duros-hdd---hard-disk-drive)
    - 3.3. [Unidades de Estado Sólido (SSD)](#33-unidades-de-estado-sólido-ssd---solid-state-drive)
-   - 3.4. Almacenamiento en red (NAS y SAN)
-   - 3.5. Almacenamiento en la Nube
+   - 3.4. [Almacenamiento en Red: NAS y SAN](#34-almacenamiento-en-red-nas-y-san)
+   - 3.5. [Almacenamiento en la Nube](#35-almacenamiento-en-la-nube-cloud-storage)
 
 ### Parte #2: Estrategias, Protección y Gobernanza
 4. [Estrategias para la compresión y deduplicación de datos](#4-estrategias-para-la-compresión-y-deduplicación-de-datos)
