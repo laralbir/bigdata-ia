@@ -731,33 +731,15 @@ En el contexto de la continuidad del negocio frente a un desastre o pérdida de 
 
 ```mermaid
 flowchart LR
-    classDef rpo fill:#8FAADC,stroke:#2F5597,stroke-width:2px,color:#000
-    classDef rto fill:#C6E0B4,stroke:#548235,stroke-width:2px,color:#000
-    classDef disaster fill:#F4B183,stroke:#C65911,stroke-width:2px,color:#000
+    classDef rpo fill:#3b82f6,stroke:#2563eb,stroke-width:2px,color:#fff,font-weight:bold
+    classDef rto fill:#22c55e,stroke:#16a34a,stroke-width:2px,color:#fff,font-weight:bold
+    classDef disaster fill:#f97316,stroke:#ea580c,stroke-width:2px,color:#fff,font-weight:bold
 
-    subgraph Timeline ["Línea de Tiempo del Desastre"]
-        direction LR
-        t1[Días] --- t2[Horas] --- t3[Mins] --- t4[Segs]
-        D{{"💥 DESASTRE"}}:::disaster
-        t5[Segs] --- t6[Mins] --- t7[Horas] --- t8[Días]
-        
-        t4 --- D --- t5
-    end
+    RPO["⬅️ RPO (Recovery Point Objective)<br><br>⏳ Días - Horas - Mins - Segs"]:::rpo
+    Desastre{{"💥<br>DESASTRE"}}:::disaster
+    RTO["RTO (Recovery Time Objective) ➡️<br><br>⏳ Segs - Mins - Horas - Días"]:::rto
 
-    RPO["⬅️ RPO (Recovery Point Objective)"]:::rpo
-    RTO["RTO (Recovery Time Objective) ➡️"]:::rto
-
-    t2 -.- RPO
-    t7 -.- RTO
-    
-    style t1 fill:none,stroke:none
-    style t2 fill:none,stroke:none
-    style t3 fill:none,stroke:none
-    style t4 fill:none,stroke:none
-    style t5 fill:none,stroke:none
-    style t6 fill:none,stroke:none
-    style t7 fill:none,stroke:none
-    style t8 fill:none,stroke:none
+    RPO === Desastre === RTO
 ```
 
 #### Plan de Recuperación
