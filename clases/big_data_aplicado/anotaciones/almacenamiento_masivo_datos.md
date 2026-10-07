@@ -320,7 +320,27 @@ x-amz-meta-clasificacion: Confidencial
 
 ### 2.4 Desafíos del Almacenamiento Masivo
 
-*(Pendiente de impartición: escalabilidad de costes, latencia de acceso, seguridad y cifrado, cumplimiento normativo y gobierno del dato)*
+El despliegue y mantenimiento de infraestructuras de almacenamiento a gran escala presenta varios retos críticos para las organizaciones:
+
+- **Gestión de la Complejidad:** Administrar infraestructuras distribuidas, asegurar la disponibilidad de los datos y coordinar múltiples arquitecturas (híbridas, multicloud).
+- **Seguridad y Privacidad de los datos:** Proteger la información contra accesos no autorizados, aplicar controles de acceso estrictos, y garantizar el cumplimiento normativo.
+- **Costos de Implementación y Mantenimiento:** Gestionar la inversión en infraestructura y el gasto recurrente derivado del almacenamiento, transferencia y personal especializado.
+- **Consumo Energético y Huella de Carbono:** El procesamiento masivo y la refrigeración continua de los Data Centers tienen un impacto medioambiental significativo.
+
+#### Sostenibilidad y Huella de Carbono Digital
+
+Uno de los principales focos actuales en la industria es la sostenibilidad tecnológica. La migración de infraestructuras locales (*On-Premises*) hacia proveedores Cloud altamente optimizados puede reducir drásticamente las emisiones.
+
+> 💡 **Impacto Cloud (Ejemplo AWS):** Optimizar las cargas de trabajo migrándolas a proveedores de nube pública como AWS puede reducir la huella de carbono asociada hasta en un **99%**. Esta reducción drástica se alcanza sumando la eficiencia del hardware a escala, la eficiencia de los sistemas de refrigeración de última generación y la inversión en fuentes de energía libre de carbono.
+
+A nivel de organización y usuario, existen acciones cotidianas fundamentales para reducir la **huella de carbono digital**:
+
+1. **Envía menos correos:** Evitar correos y contestaciones innecesarias; cada envío consume CO2.
+2. **Limpia tu bandeja de entrada:** No almacenar correos inútiles y darse de baja de suscripciones innecesarias libera espacio en servidores.
+3. **Reduce el peso de los mensajes:** Emplear enlaces a repositorios o nubes en lugar de adjuntar archivos pesados.
+4. **Cierra o desinstala apps que no utilices:** Evitar programas que consumen recursos (CPU, red) en segundo plano.
+5. **Comenta y actualiza con moderación:** Pensar si lo que se va a publicar realmente aporta valor, reduciendo el ruido en la red.
+6. **Utiliza proveedores de hosting responsables:** Priorizar a aquellos proveedores (ej. *dinahosting*, AWS, etc.) que aplican medidas reales para cuidar el medioambiente y disminuir su huella de carbono.
 
 ---
 
