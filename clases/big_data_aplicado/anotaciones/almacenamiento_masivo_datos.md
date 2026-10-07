@@ -351,8 +351,13 @@ La forma en que almacenamos y procesamos la información ha evolucionado drásti
 ### 3.1 Comienzos
 
 - **Tarjetas Perforadas:** Fueron el primer medio empleado para el almacenamiento y procesamiento automatizado de datos. La información se representaba de forma física mediante la presencia o ausencia de agujeros en posiciones específicas de una cartulina, sirviendo como un sistema binario mecánico y rudimentario.
+- **Cinta Magnética:**
+  - **Contexto:** Es la tecnología de almacenamiento de datos más antigua que aún continúa en uso activo en la actualidad.
+  - **Ventajas:** Ofrece un costo de almacenamiento extremadamente bajo por terabyte y una altísima capacidad (como los estándares modernos LTO).
+  - **Desventajas:** Su acceso es **secuencial** (para leer un dato concreto, es necesario desenrollar y recorrer físicamente toda la cinta anterior), lo que lo hace muy lento para lectura aleatoria o consultas ágiles.
+  - **Uso actual:** Se utiliza masivamente para **Backups a largo plazo** y archivado profundo (*Cold Storage*), donde el tiempo de recuperación no es crítico.
 
-*(Sección en desarrollo: a la espera de las siguientes tecnologías como Cinta Magnética, HDD, SSD, etc.)*
+*(Sección en desarrollo: a la espera de las siguientes tecnologías como HDD, SSD, NAS/SAN, etc.)*
 
 ---
 
