@@ -28,8 +28,8 @@
 ### Parte #2: Estrategias, Protección y Gobernanza
 4. [Estrategias sobre los Datos: Compresión y Deduplicación](#4-estrategias-sobre-los-datos-compresión-y-deduplicación)
    - 4.1. [Conceptos Básicos de Compresión](#41-conceptos-básicos-de-compresión)
-   - 4.2. Técnicas de deduplicación
-   - 4.3. Beneficios y consideraciones
+   - 4.2. [Algoritmo Lempel-Ziv-Welch (LZW)](#42-algoritmo-lempel-ziv-welch-lzw)
+   - 4.3. Técnicas de deduplicación
 5. [Políticas de Backup, Recuperación y Retención de datos](#5-políticas-de-backup-recuperación-y-retención-de-datos)
    - 5.1. Importancia de las copias de seguridad
    - 5.2. Tipos de backups
@@ -480,6 +480,25 @@ flowchart LR
         Comp2 -- Descompresión --> Dest2[Original Degradado]
     end
 ```
+
+### 4.2 Algoritmo Lempel-Ziv-Welch (LZW)
+
+Uno de los algoritmos de **compresión sin pérdida (*lossless*)** universales más famosos y utilizados (base de formatos como GIF o herramientas ZIP) es el **LZW**.
+
+Su lógica se fundamenta en la creación de un diccionario dinámico durante la lectura de los datos. En lugar de guardar secuencias de caracteres completas repetidas, el algoritmo sustituye las cadenas por referencias a entradas previas en el diccionario.
+
+- **Ejemplo de funcionamiento (Prefijos comunes):**
+  Si analizamos una lista de palabras ordenadas alfabéticamente:
+  1. `a`
+  2. `abandon` → Almacena `1 bandon` (reutiliza el prefijo de longitud 1 de la línea 1).
+  3. `ability` → Almacena `2 ility` (reutiliza el prefijo "ab" de longitud 2).
+  4. `able` → Almacena `2 le` (reutiliza el prefijo "ab").
+  5. `abortion` → Almacena `2 ortion`.
+  6. `about` → Almacena `3 ut` (reutiliza "abo" de la palabra anterior, longitud 3).
+  
+  Con este método, se evita almacenar textualmente partes de los datos que ya han aparecido, reduciendo el tamaño total del archivo mediante punteros lógicos.
+
+> 🔗 **Recurso Adicional (Compartido en clase):** [Técnica de Compresión LZW (GeeksforGeeks)](https://www.geeksforgeeks.org/computer-networks/lzw-lempel-ziv-welch-compression-technique/)
 
 *(Sección en desarrollo: a la espera de técnicas de deduplicación...)*
 
