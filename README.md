@@ -57,6 +57,18 @@ flowchart TD
 | **2026-10-05** | [Matemáticas Discretas](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) | Conjuntos, álgebra booleana, tablas de verdad, grafos y árboles aplicados a Big Data con Python | [Leer apunte](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md) |
 | **2026-10-05** | [Introducción a los Algoritmos](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) | Fundamentos algorítmicos, pseudocódigo, TAD (pilas/colas), Big O, búsqueda, ordenación, grafos y árboles en Python | [Leer apunte](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md) |
 
+### [Big Data Aplicado](clases/big_data_aplicado/)
+
+#### 🎓 Sesiones y Clases Lectivas
+| Fecha | Sesión / Temática Impartida | Recurso / Acceso |
+| :---: | :--- | :---: |
+| **2026-10-07** | Almacenamiento masivo y procesamiento de datos: fundamentos, 4 V's y tecnologías | [📝 Ver Apuntes](clases/big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md)<br>📚 Mat. Recomendado: [Algoritmos](clases/big_data_aplicado/presentaciones/Algoritmos_compresion_lossless.pdf), [Facts](clases/big_data_aplicado/presentaciones/Big_Data_20_Mind-Boggling_Facts.pdf), [Backup](clases/big_data_aplicado/presentaciones/Cloud_Backup_Guide.pdf), [NVMe/SAS/SATA](clases/big_data_aplicado/presentaciones/NVMe_SAS_and_SATA.pdf), [VMware](clases/big_data_aplicado/presentaciones/VMware_vCenter_SRM_4.0.pdf) |
+
+#### 📝 Cuadernos de Anotaciones y Teoría
+| Fecha | Documento de Anotaciones | Conceptos Clave Tratados | Acceso al Documento |
+| :---: | :--- | :--- | :--- : |
+| **2026-10-07** | [Almacenamiento Masivo](clases/big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md) | Fundamentos de almacenamiento masivo, 4 V's, tradicional vs masivo, escalabilidad y validación en Python | [Leer apunte](clases/big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md) |
+
 > 💡 **Nota:** Para consultar la lista completa y actualizada de sesiones, dirígete a [**`clases/README.md`**](clases/README.md).
 
 ---
@@ -76,7 +88,7 @@ Contiene las carpetas individuales para cada una de las asignaturas cursadas en 
 #### Asignaturas Actuales:
 - [**`presentacion/`**](clases/presentacion/): Jornada inaugural, introducción metodológica y presentación general del curso (*Inicio: 2026-10-01*). Contiene [Presentación MASTER IA y BIGDATA.pdf](<clases/presentacion/presentaciones/Presentación MASTER IA y BIGDATA.pdf>).
 - [**`sistemas_de_big_data/`**](clases/sistemas_de_big_data/): Infraestructuras distribuidas, matemáticas discretas aplicadas a datos, almacenamiento y clustering (*Inicio: 2026-10-05*).
-- [**`big_data_aplicado/`**](clases/big_data_aplicado/): Aplicación práctica de pipelines de datos, ingesta, procesamiento y analítica avanzada (*Inicio: 2026-10-15*).
+- [**`big_data_aplicado/`**](clases/big_data_aplicado/): Aplicación práctica de pipelines de datos, ingesta, procesamiento y analítica avanzada (*Inicio: 2026-10-07*).
 
 ---
 
