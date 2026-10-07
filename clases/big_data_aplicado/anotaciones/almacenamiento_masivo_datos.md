@@ -89,7 +89,7 @@ A diferencia del almacenamiento convencional centrado en ficheros aislados o bas
 El paradigma clásico de Big Data adquiere implicaciones directas sobre los requerimientos de hardware y software de almacenamiento:
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph BigData["🧩 Dimensiones Clave (4 V's)"]
         Vol["📦 Volumen (Volume)<br>¿Cuántos datos hay?<br>• Datos a gran escala<br>• Procesamiento distribuido"]
         Vel["⚡ Velocidad (Velocity)<br>¿Con qué frecuencia o inmediatez?<br>• Ritmo de generación<br>• Tasa de ingesta/procesamiento<br>• Latencia en peticiones"]
