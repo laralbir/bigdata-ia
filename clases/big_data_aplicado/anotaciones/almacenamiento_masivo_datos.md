@@ -29,7 +29,7 @@
 4. [Estrategias sobre los Datos: Compresión y Deduplicación](#4-estrategias-sobre-los-datos-compresión-y-deduplicación)
    - 4.1. [Conceptos Básicos de Compresión](#41-conceptos-básicos-de-compresión)
    - 4.2. [Algoritmo Lempel-Ziv-Welch (LZW)](#42-algoritmo-lempel-ziv-welch-lzw)
-   - 4.3. Técnicas de deduplicación
+   - 4.3. [Técnicas de Deduplicación](#43-técnicas-de-deduplicación)
 5. [Políticas de Backup, Recuperación y Retención de datos](#5-políticas-de-backup-recuperación-y-retención-de-datos)
    - 5.1. Importancia de las copias de seguridad
    - 5.2. Tipos de backups
@@ -500,7 +500,40 @@ Su lógica se fundamenta en la creación de un diccionario dinámico durante la 
 
 > 🔗 **Recurso Adicional (Compartido en clase):** [Técnica de Compresión LZW (GeeksforGeeks)](https://www.geeksforgeeks.org/computer-networks/lzw-lempel-ziv-welch-compression-technique/)
 
-*(Sección en desarrollo: a la espera de técnicas de deduplicación...)*
+### 4.3 Técnicas de Deduplicación
+
+**Definición:** Proceso que consiste en escanear el almacenamiento para encontrar y **eliminar copias redundantes** de datos, dejando una única copia física y reemplazando las copias repetidas por punteros o referencias a la original.
+
+#### Niveles de Deduplicación
+
+La granularidad con la que se analizan las redundancias puede variar:
+1. **A nivel de archivo:** Analiza ficheros enteros. Si dos usuarios suben el mismo PDF, solo se guarda uno. Es muy rápido pero menos eficiente si solo cambia una coma del fichero.
+2. **A nivel de bloque:** Divide los ficheros en bloques de tamaño fijo o variable. Si cambia un archivo, solo se almacena el bloque modificado, el resto de bloques se reutilizan. Es el estándar de facto en almacenamiento corporativo y copias de seguridad.
+3. **A nivel de byte:** Máxima granularidad. Muy preciso pero exige un coste computacional extremadamente alto.
+
+#### Estrategias de Implementación
+
+- **Inline (en tiempo real):** Los datos se deduplican en la propia memoria RAM o controladora de almacenamiento *antes* de ser escritos en los discos. Ahorra muchísimo espacio físico y ancho de banda, pero requiere CPUs muy potentes para no penalizar el rendimiento.
+- **Post-process (diferido):** Los datos se escriben tal cual llegan (con redundancias) para máxima velocidad de ingesta. Posteriormente, en momentos de baja carga del sistema (por la noche), un proceso escanea los discos, detecta duplicados, los elimina y los reemplaza por punteros.
+
+```mermaid
+flowchart LR
+    subgraph Original_Data ["Datos Originales (con Redundancia)"]
+        direction LR
+        C1[C] --- A1[A] --- B1[B] --- C2[C] --- D1[D]
+        B2[B] --- A2[A] --- B3[B] --- A3[A] --- A4[A]
+    end
+    
+    Process((De-dupe))
+    
+    subgraph Deduplicated ["Datos Únicos (Eliminados los Duplicados)"]
+        direction LR
+        A_f[A] --- B_f[B]
+        C_f[C] --- D_f[D]
+    end
+
+    Original_Data --> Process --> Deduplicated
+```
 
 ---
 
