@@ -615,17 +615,17 @@ gantt
     section Lun
     Completa :0, 11
     section Mar
-    Completa :0, 12
+    Completa :0, 11
     section Mie
-    Completa :0, 13
+    Completa :0, 12
     section Jue
-    Completa :0, 14
+    Completa :0, 12
     section Vie
-    Completa :0, 15
+    Completa :0, 13
     section Sab
-    Completa :0, 16
-    section Dom
-    Completa :0, 17
+    Completa :0, 13
+    section Dom 
+    Completa :0, 14
 ```
 
 #### 2. Copia de Seguridad Incremental Acumulativa
@@ -641,19 +641,19 @@ gantt
     section Dom
     Completa :0, 10
     section Lun
-    Inc. Acum. :10, 11
+    Inc. Acum. :0, 1
     section Mar
-    Inc. Acum. :10, 12
+    Inc. Acum. :0, 2
     section Mie
-    Inc. Acum. :10, 13
+    Inc. Acum. :0, 3
     section Jue
-    Inc. Acum. :10, 14
+    Inc. Acum. :0, 4
     section Vie
-    Inc. Acum. :10, 15
+    Inc. Acum. :0, 5
     section Sab
-    Inc. Acum. :10, 16
-    section Dom
-    Completa :0, 17
+    Inc. Acum. :0, 6
+    section Dom 
+    Completa :0, 10
 ```
 
 #### 3. Copia de Seguridad Incremental Diferencial
@@ -669,19 +669,19 @@ gantt
     section Dom
     Completa :0, 10
     section Lun
-    Diferencial :10, 11
+    Diferencial :0, 1
     section Mar
-    Diferencial :11, 12
+    Diferencial :0, 1
     section Mie
-    Diferencial :12, 13
+    Diferencial :0, 1
     section Jue
-    Diferencial :13, 14
+    Diferencial :0, 1
     section Vie
-    Diferencial :14, 15
+    Diferencial :0, 1
     section Sab
-    Diferencial :15, 16
-    section Dom
-    Completa :0, 17
+    Diferencial :0, 1
+    section Dom 
+    Completa :0, 10
 ```
 
 
