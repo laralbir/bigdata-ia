@@ -34,12 +34,12 @@
 5. [Políticas sobre los Datos](#5-políticas-sobre-los-datos)
    - 5.1. [Importancia de las Copias de Seguridad](#51-importancia-de-las-copias-de-seguridad)
    - 5.2. [Tipos de Backup / Respaldo](#52-tipos-de-backup--respaldo)
-   - 5.3. Estrategias de recuperación de datos
-   - 5.4. Políticas de retención y cumplimiento normativo
+   - 5.3. [Estrategias de recuperación de datos](#53-estrategias-de-recuperación-de-datos)
+   - 5.4. [Políticas de retención y cumplimiento normativo](#54-políticas-de-retención-y-cumplimiento-normativo)
 6. [Resumen de la Unidad](#6-resumen-de-la-unidad-y-conclusiones)
-   - 6.1. Recapitulación de conceptos clave
-   - 6.2. Tendencias futuras en almacenamiento masivo
-   - 6.3. Sesión de preguntas y respuestas
+   - 6.1. [Recapitulación de conceptos clave](#61-recapitulación-de-conceptos-clave)
+   - 6.2. [Tendencias futuras en almacenamiento masivo](#62-tendencias-futuras-en-almacenamiento-masivo)
+   - 6.3. [Sesión de preguntas y respuestas](#63-sesión-de-preguntas-y-respuestas)
 
 ---
 
