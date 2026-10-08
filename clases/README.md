@@ -77,5 +77,5 @@ Navegación por las asignaturas dadas de alta en el sistema:
 - [Anotaciones](big_data_aplicado/anotaciones/) (incluye [Almacenamiento Masivo y Procesamiento](big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md))
 - [Presentaciones](big_data_aplicado/presentaciones/) (incluye [Diapositivas](big_data_aplicado/presentaciones/2026_10_08_almacenamiento_y_procesamiento_de_datos) y 9 lecturas recomendadas)
 - [Entregables](big_data_aplicado/entregables/)
-- [Grabaciones](big_data_aplicado/grabaciones/)
+- [Grabaciones](big_data_aplicado/grabaciones/) (incluye [Grabación 2026-10-07](big_data_aplicado/grabaciones/2026_10_07_grabacion_big_data_aplicado.md))
 - [Exámenes](big_data_aplicado/examenes/)

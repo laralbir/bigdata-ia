@@ -10,7 +10,7 @@ Directorio correspondiente a la asignatura **Big Data Aplicado**.
 | :--- | :--- | :--- |
 | [📁 `presentaciones/`](presentaciones/) | Diapositivas oficiales y material gráfico de apoyo | [📊 Diapositivas](presentaciones/2026_10_08_almacenamiento_y_procesamiento_de_datos)<br>📚 Múltiples lecturas recomendadas |
 | [📁 `anotaciones/`](anotaciones/) | Apuntes y notas de las sesiones | [📝 Almacenamiento Masivo y Procesamiento](anotaciones/almacenamiento_masivo_datos.md) |
-| [📁 `grabaciones/`](grabaciones/) | Enlaces a grabaciones en Google Drive | *Pendiente de publicación* |
+| [📁 `grabaciones/`](grabaciones/) | Enlaces a grabaciones en Google Drive | [🎥 Grabación 2026-10-07](grabaciones/2026_10_07_grabacion_big_data_aplicado.md) |
 | [📁 `entregables/`](entregables/) | Prácticas y tareas evaluables | *No hay entregables* |
 | [📁 `examenes/`](examenes/) | Registro de evaluaciones | *No hay exámenes* |
 
@@ -21,3 +21,4 @@ Directorio correspondiente a la asignatura **Big Data Aplicado**.
 - 📝 [**Almacenamiento Masivo y Procesamiento**](anotaciones/almacenamiento_masivo_datos.md): Fundamentos de almacenamiento masivo, escala global (Zettabytes), 4 V's de datos, tradicional vs. masivo y validación en Python.
 - 📊 [**Diapositivas - Almacenamiento y Procesamiento**](presentaciones/2026_10_08_almacenamiento_y_procesamiento_de_datos): Carpeta con las diapositivas de la sesión del 2026-10-07.
 - 📚 **Material Recomendado**: 9 archivos PDF/JPG de lecturas complementarias sobre Cloud Backup, The Digitization of the World, Big Data Facts, Compresión, etc., ubicadas en la carpeta de [presentaciones](presentaciones/).
+- 🎥 [**Grabación de la clase**](grabaciones/2026_10_07_grabacion_big_data_aplicado.md): Enlace de Google Drive a la sesión del 2026-10-07.
