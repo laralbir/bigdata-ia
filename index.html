@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
   
   <style>
@@ -74,6 +73,13 @@
     
     .markdown-section {
       max-width: 95%;
+    }
+    
+    /* Ocultar iconos dobles del menú lateral */
+    .sidebar-nav li:has(> ul) > a::before,
+    .sidebar-nav li:has(> ul) > p::before {
+      display: none !important;
+      background: none !important;
     }
 </style>
 </head>
@@ -390,6 +396,16 @@
                     const buttonsToRemove = clone.querySelector('div[style*="display: flex"]');
                     if (buttonsToRemove) buttonsToRemove.remove();
                     
+                    // Arreglar gráficos Mermaid para el PDF
+                    const mermaids = clone.querySelectorAll('.mermaid svg');
+                    mermaids.forEach(svg => {
+                      svg.style.maxWidth = '100%';
+                      svg.style.height = 'auto';
+                      // Quitar anchos explícitos fijos que rompen el canvas
+                      svg.removeAttribute('width'); 
+                      svg.removeAttribute('height');
+                    });
+                    
                     const opt = {
                       margin:       15,
                       filename:     vm.route.file.split('/').pop().replace('.md', '.pdf'),
@@ -415,6 +431,66 @@
               }
             }
           });
+        },
+        function(hook, vm) {
+          hook.doneEach(function() {
+            // Sidebar manual collapse logic (reemplaza al plugin docsify-sidebar-collapse)
+            const sidebarNav = document.querySelector('.sidebar-nav');
+            if (sidebarNav) {
+              const folders = sidebarNav.querySelectorAll('li:has(> ul)');
+              folders.forEach(folder => {
+                if (folder.dataset.collapsible) return;
+                folder.dataset.collapsible = 'true';
+                
+                const link = folder.querySelector('a') || folder.querySelector('p');
+                if (link) {
+                  // Hide docsify-themeable default chevron bullet for this folder
+                  link.style.setProperty('--sidebar-nav-link-before-content', 'none'); 
+                  // Docsify-themeable usually uses background-image or content for ::before
+                  link.classList.add('folder-link');
+                  
+                  const arrow = document.createElement('span');
+                  arrow.innerHTML = '▼';
+                  arrow.style.fontSize = '10px';
+                  arrow.style.transition = 'transform 0.2s';
+                  arrow.style.display = 'inline-block';
+                  arrow.style.marginRight = '8px';
+                  arrow.style.color = 'var(--theme-color)';
+                  
+                  link.insertBefore(arrow, link.firstChild);
+                  
+                  const toggleFolder = () => {
+                    folder.classList.toggle('collapsed');
+                    const ul = folder.querySelector('ul');
+                    if (ul) {
+                      const isCollapsed = folder.classList.contains('collapsed');
+                      ul.style.display = isCollapsed ? 'none' : 'block';
+                      arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+                    }
+                  };
+                  
+                  // Toggle on click
+                  link.addEventListener('click', (e) => {
+                    if (e.target === arrow || link.tagName === 'P') {
+                       e.preventDefault();
+                    }
+                    toggleFolder();
+                  });
+                  
+                  // Auto collapse if not active
+                  setTimeout(() => {
+                    const hasActive = folder.querySelector('.active');
+                    if (!hasActive) {
+                       folder.classList.add('collapsed');
+                       const ul = folder.querySelector('ul');
+                       if (ul) ul.style.display = 'none';
+                       arrow.style.transform = 'rotate(-90deg)';
+                    }
+                  }, 50);
+                }
+              });
+            }
+          });
         }
       ]
     }
@@ -430,8 +506,6 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="https://unpkg.com/docsify-copy-code@2"></script>
   <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <!-- Sidebar Collapse -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <!-- Mermaid -->
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
