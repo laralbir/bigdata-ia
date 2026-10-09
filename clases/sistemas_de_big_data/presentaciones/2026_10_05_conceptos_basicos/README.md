@@ -1,56 +1,38 @@
 # Diapositivas: 2026 10 05 conceptos basicos
 
-## 2024_10_09_big_data_conceptos_basicos_01.png
 ![2024_10_09_big_data_conceptos_basicos_01.png](2024_10_09_big_data_conceptos_basicos_01.png)
 
-## 2024_10_09_big_data_conceptos_basicos_02.png
 ![2024_10_09_big_data_conceptos_basicos_02.png](2024_10_09_big_data_conceptos_basicos_02.png)
 
-## 2024_10_09_big_data_conceptos_basicos_03.png
 ![2024_10_09_big_data_conceptos_basicos_03.png](2024_10_09_big_data_conceptos_basicos_03.png)
 
-## 2024_10_09_big_data_conceptos_basicos_04.png
 ![2024_10_09_big_data_conceptos_basicos_04.png](2024_10_09_big_data_conceptos_basicos_04.png)
 
-## 2024_10_09_big_data_conceptos_basicos_05.png
 ![2024_10_09_big_data_conceptos_basicos_05.png](2024_10_09_big_data_conceptos_basicos_05.png)
 
-## 2024_10_09_big_data_conceptos_basicos_06.png
 ![2024_10_09_big_data_conceptos_basicos_06.png](2024_10_09_big_data_conceptos_basicos_06.png)
 
-## 2024_10_09_big_data_conceptos_basicos_07.png
 ![2024_10_09_big_data_conceptos_basicos_07.png](2024_10_09_big_data_conceptos_basicos_07.png)
 
-## 2024_10_09_big_data_conceptos_basicos_08.png
 ![2024_10_09_big_data_conceptos_basicos_08.png](2024_10_09_big_data_conceptos_basicos_08.png)
 
-## 2024_10_09_big_data_conceptos_basicos_09.png
 ![2024_10_09_big_data_conceptos_basicos_09.png](2024_10_09_big_data_conceptos_basicos_09.png)
 
-## 2024_10_09_big_data_conceptos_basicos_10.png
 ![2024_10_09_big_data_conceptos_basicos_10.png](2024_10_09_big_data_conceptos_basicos_10.png)
 
-## 2024_10_09_big_data_conceptos_basicos_11.png
 ![2024_10_09_big_data_conceptos_basicos_11.png](2024_10_09_big_data_conceptos_basicos_11.png)
 
-## 2024_10_09_big_data_conceptos_basicos_12.png
 ![2024_10_09_big_data_conceptos_basicos_12.png](2024_10_09_big_data_conceptos_basicos_12.png)
 
-## 2024_10_09_big_data_conceptos_basicos_13.png
 ![2024_10_09_big_data_conceptos_basicos_13.png](2024_10_09_big_data_conceptos_basicos_13.png)
 
-## 2024_10_09_big_data_conceptos_basicos_14.png
 ![2024_10_09_big_data_conceptos_basicos_14.png](2024_10_09_big_data_conceptos_basicos_14.png)
 
-## 2024_10_09_big_data_conceptos_basicos_15.png
 ![2024_10_09_big_data_conceptos_basicos_15.png](2024_10_09_big_data_conceptos_basicos_15.png)
 
-## 2024_10_09_big_data_conceptos_basicos_16.png
 ![2024_10_09_big_data_conceptos_basicos_16.png](2024_10_09_big_data_conceptos_basicos_16.png)
 
-## 2024_10_09_big_data_conceptos_basicos_17.png
 ![2024_10_09_big_data_conceptos_basicos_17.png](2024_10_09_big_data_conceptos_basicos_17.png)
 
-## 2024_10_09_big_data_conceptos_basicos_18.png
 ![2024_10_09_big_data_conceptos_basicos_18.png](2024_10_09_big_data_conceptos_basicos_18.png)
 
