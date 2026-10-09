@@ -116,11 +116,97 @@
       },
       plugins: [
         function(hook, vm) {
+          hook.beforeEach(function(html) {
+             if (window.slideshowKeydownHandler) {
+                 document.removeEventListener('keydown', window.slideshowKeydownHandler);
+                 window.slideshowKeydownHandler = null;
+             }
+             return html;
+          });
+          
           hook.doneEach(function() {
+            // Mermaid initialization
             if (window.mermaid) {
               window.mermaid.run({ querySelector: '.mermaid' }).catch(function(e) {
                 console.error('Mermaid render error', e);
               });
+            }
+            
+            // Slideshow Logic for presentation pages
+            const content = document.querySelector('.markdown-section');
+            if (!content) return;
+            
+            const h1 = content.querySelector('h1');
+            if (h1 && h1.textContent.toLowerCase().includes('diapositivas')) {
+              // Find all images that are direct children of paragraphs
+              const images = Array.from(content.querySelectorAll('p > img'));
+              if (images.length > 1) {
+                let currentIndex = 0;
+                
+                const navContainer = document.createElement('div');
+                navContainer.className = 'slideshow-controls';
+                navContainer.innerHTML = `
+                  <button id="slide-prev" class="btn-primary" style="margin-right: 10px; cursor: pointer;">⬅ Anterior</button>
+                  <span id="slide-counter" style="font-weight: 600; margin: 0 15px; font-family: var(--code-font-family);">1 / ${images.length}</span>
+                  <button id="slide-next" class="btn-primary" style="cursor: pointer;">Siguiente ➡</button>
+                `;
+                
+                navContainer.style.textAlign = 'center';
+                navContainer.style.margin = '2rem 0';
+                navContainer.style.padding = '1rem';
+                navContainer.style.background = '#f8fafc';
+                navContainer.style.borderRadius = '12px';
+                
+                h1.insertAdjacentElement('afterend', navContainer);
+                
+                function updateSlides() {
+                  images.forEach((img, index) => {
+                    const p = img.closest('p');
+                    if (p) {
+                      p.style.display = index === currentIndex ? 'block' : 'none';
+                      p.style.textAlign = 'center';
+                    }
+                    if (index === currentIndex) {
+                      img.style.maxHeight = '70vh';
+                      img.style.width = 'auto';
+                      img.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+                      img.style.borderRadius = '8px';
+                      img.style.border = '1px solid #e2e8f0';
+                    }
+                  });
+                  document.getElementById('slide-counter').textContent = `${currentIndex + 1} / ${images.length}`;
+                  
+                  const prevBtn = document.getElementById('slide-prev');
+                  const nextBtn = document.getElementById('slide-next');
+                  
+                  prevBtn.disabled = currentIndex === 0;
+                  prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+                  prevBtn.style.cursor = currentIndex === 0 ? 'not-allowed' : 'pointer';
+                  
+                  nextBtn.disabled = currentIndex === images.length - 1;
+                  nextBtn.style.opacity = currentIndex === images.length - 1 ? '0.5' : '1';
+                  nextBtn.style.cursor = currentIndex === images.length - 1 ? 'not-allowed' : 'pointer';
+                }
+                
+                document.getElementById('slide-prev').addEventListener('click', () => {
+                  if (currentIndex > 0) { currentIndex--; updateSlides(); }
+                });
+                
+                document.getElementById('slide-next').addEventListener('click', () => {
+                  if (currentIndex < images.length - 1) { currentIndex++; updateSlides(); }
+                });
+                
+                window.slideshowKeydownHandler = (e) => {
+                  if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    currentIndex--; updateSlides();
+                  } else if (e.key === 'ArrowRight' && currentIndex < images.length - 1) {
+                    currentIndex++; updateSlides();
+                  }
+                };
+                document.addEventListener('keydown', window.slideshowKeydownHandler);
+                
+                updateSlides();
+              }
             }
           });
         }
