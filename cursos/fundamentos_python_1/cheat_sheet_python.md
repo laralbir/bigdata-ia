@@ -44,16 +44,23 @@ nulo = None       # El equivalente a null/undefined
 print(f"Hola {nombre}")
 ```
 
-### Operadores Lógicos y Ternarios
+### Operadores Lógicos, Ternarios y Cortocircuitos
 ```python
 # JS/TS: &&, ||, !
 # Python: and, or, not
 if activo and not nulo:
     print("Funciona")
 
-# Ternario JS: const x = edad > 18 ? "Mayor" : "Menor"
-# Ternario Python:
+# 1. Ternario oficial
+# JS: const x = edad > 18 ? "Mayor" : "Menor"
+# Python (primero va el valor verdadero):
 x = "Mayor" if edad > 18 else "Menor"
+
+# 2. Cortocircuito lógico (Hack estilo JS/PHP)
+# JS: const x = (edad > 18) && "Mayor" || "Menor"
+# Python:
+x = (edad > 18) and "Mayor" or "Menor"
+# ⚠️ Peligro: Falla si el valor verdadero se evalúa como False (ej. 0, "", None)
 ```
 
 ---
