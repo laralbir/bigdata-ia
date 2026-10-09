@@ -150,6 +150,7 @@
                   <span id="slide-counter" style="font-weight: 600; margin: 0 15px; font-family: var(--code-font-family);">1 / ${images.length}</span>
                   <button id="slide-next" class="btn-primary" style="cursor: pointer;">Siguiente ➡</button>
                   <button id="slide-fullscreen" class="btn-primary" style="margin-left: 20px; cursor: pointer; background: #64748b;" title="Pantalla Completa">⛶</button>
+                  <button id="slide-download" class="btn-primary" style="margin-left: 10px; cursor: pointer; background: #10b981;" title="Descargar como ZIP">⬇ Descargar</button>
                 `;
                 
                 navContainer.style.textAlign = 'center';
@@ -189,6 +190,65 @@
                 document.addEventListener('fullscreenchange', () => {
                   wrapper.style.overflowY = document.fullscreenElement ? 'auto' : 'visible';
                   updateSlides();
+                });
+                
+                document.getElementById('slide-download').addEventListener('click', async (e) => {
+                  const btn = e.target;
+                  const originalText = btn.innerHTML;
+                  btn.disabled = true;
+                  btn.innerHTML = '⏳ Preparando...';
+                  btn.style.opacity = '0.7';
+                  
+                  try {
+                    if (!window.JSZip) {
+                      await new Promise((resolve, reject) => {
+                        const script = document.createElement('script');
+                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+                        script.onload = resolve;
+                        script.onerror = reject;
+                        document.head.appendChild(script);
+                      });
+                    }
+                    
+                    const zip = new window.JSZip();
+                    
+                    // Descargar imágenes
+                    const imgPromises = images.map(async (img) => {
+                      const url = new URL(img.src);
+                      const filename = url.pathname.split('/').pop();
+                      const response = await fetch(url.href);
+                      const blob = await response.blob();
+                      zip.file(filename, blob);
+                    });
+                    
+                    // Descargar markdown
+                    if (vm.route && vm.route.file) {
+                      const mdResponse = await fetch(vm.route.file);
+                      if (mdResponse.ok) {
+                        const mdText = await mdResponse.text();
+                        zip.file('README.md', mdText);
+                      }
+                    }
+                    
+                    await Promise.all(imgPromises);
+                    const zipBlob = await zip.generateAsync({ type: 'blob' });
+                    
+                    const downloadUrl = URL.createObjectURL(zipBlob);
+                    const a = document.createElement('a');
+                    a.href = downloadUrl;
+                    let safeName = h1.textContent.replace('Diapositivas:', '').trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
+                    a.download = (safeName || 'presentacion') + '.zip';
+                    a.click();
+                    URL.revokeObjectURL(downloadUrl);
+                    
+                  } catch (err) {
+                    console.error('Error al descargar ZIP:', err);
+                    alert('Hubo un error al preparar la descarga.');
+                  } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                  }
                 });
                 
                 function updateSlides() {
