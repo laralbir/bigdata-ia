@@ -1,5 +1,10 @@
 # Máster en Big Data e Inteligencia Artificial (FP)
 
+<div align="center">
+<a href="calendario/calendario_interactivo.html" class="btn-primary">🗓️ Abrir Calendario Interactivo</a>
+</div>
+
+
 Repositorio central de apuntes, prácticas, entregables, proyectos y documentación del **Curso de Especialización en Big Data e Inteligencia Artificial** para Formación Profesional (2026/2027).
 
 ---

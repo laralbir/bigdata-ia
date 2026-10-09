@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Máster Big Data & IA</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Campus Virtual y Repositorio del Máster en Big Data e IA">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  
+  <!-- Tema moderno (Themeable Simple) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <!-- Fuentes modernas -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap">
+  
+  <style>
+    :root {
+      --theme-color: #2563eb; /* Azul moderno */
+      --base-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --base-font-size: 16px;
+      --heading-color: #0f172a;
+      
+      --sidebar-width: 280px;
+      --sidebar-background: #f8fafc;
+      --sidebar-nav-link-color: #475569;
+      --sidebar-nav-link-color--active: var(--theme-color);
+      --sidebar-nav-link-font-weight--active: 600;
+      
+      --code-font-family: 'Fira Code', monospace;
+      --code-theme-background: #1e293b;
+      --code-theme-text: #f8fafc;
+    }
+    
+    body { font-family: var(--base-font-family); }
+    
+    .markdown-section { 
+      max-width: 900px; 
+      padding: 3rem 4rem; 
+    }
+    
+    .markdown-section h1, .markdown-section h2, .markdown-section h3 { 
+      font-weight: 700; 
+      letter-spacing: -0.025em; 
+    }
+    
+    .markdown-section h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #0f172a; }
+    .markdown-section h2 { font-size: 1.8rem; margin-top: 2.5rem; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+    
+    /* Estilo premium para notas/quotes */
+    .markdown-section blockquote { 
+      border-left: 4px solid var(--theme-color); 
+      background: #eff6ff; 
+      color: #1e3a8a; 
+      border-radius: 0 8px 8px 0; 
+      padding: 1rem 1.5rem; 
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    /* Botón moderno para el calendario */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white !important;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2), 0 2px 4px -1px rgba(37, 99, 235, 0.1);
+      transition: all 0.2s ease;
+      margin: 1rem 0;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3), 0 4px 6px -2px rgba(37, 99, 235, 0.15);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Construyendo el campus virtual...</div>
+  <script>
+    window.$docsify = {
+      name: '🎓 Campus Big Data',
+      repo: 'laralbir/bigdata-ia',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      auto2top: true,
+      themeColor: '#2563eb',
+      search: {
+        placeholder: '🔍 Buscar en el temario...',
+        noData: 'No se encontraron resultados',
+        depth: 3
+      }
+    }
+  </script>
+  
+  <!-- Core Docsify -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Search Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- Zoom image Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- Themeable Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+  <!-- Mermaid Plugin for rendering flowcharts -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+</body>
+</html>
