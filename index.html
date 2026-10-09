@@ -359,8 +359,48 @@
                 pdfBtn.style.background = '#6366f1';
                 pdfBtn.innerHTML = '🖨 Guardar como PDF';
                 
-                pdfBtn.addEventListener('click', () => {
-                  window.print();
+                pdfBtn.addEventListener('click', async (e) => {
+                  const btn = e.target;
+                  const originalText = btn.innerHTML;
+                  btn.disabled = true;
+                  btn.innerHTML = '⏳ Generando PDF...';
+                  btn.style.opacity = '0.7';
+                  
+                  try {
+                    if (!window.html2pdf) {
+                      await new Promise((resolve, reject) => {
+                        const script = document.createElement('script');
+                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                        script.onload = resolve;
+                        script.onerror = reject;
+                        document.head.appendChild(script);
+                      });
+                    }
+                    
+                    // Clonar el contenido para no modificar el DOM visible
+                    const clone = content.cloneNode(true);
+                    
+                    // Eliminar la zona de botones del clon
+                    const buttonsToRemove = clone.querySelector('div[style*="display: flex"]');
+                    if (buttonsToRemove) buttonsToRemove.remove();
+                    
+                    const opt = {
+                      margin:       15,
+                      filename:     vm.route.file.split('/').pop().replace('.md', '.pdf'),
+                      image:        { type: 'jpeg', quality: 0.98 },
+                      html2canvas:  { scale: 2, useCORS: true },
+                      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                    };
+                    
+                    await window.html2pdf().set(opt).from(clone).save();
+                  } catch (err) {
+                    console.error('Error al generar PDF:', err);
+                    alert('Hubo un error al generar el PDF.');
+                  } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                  }
                 });
                 
                 btnContainer.appendChild(mdBtn);
