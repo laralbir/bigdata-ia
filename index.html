@@ -88,7 +88,28 @@
         nextText: 'Siguiente',
         crossChapter: true,
         crossChapterText: true
-      }
+      },
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "mermaid") {
+              return '<div class="mermaid">' + code + '</div>';
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            if (window.mermaid) {
+              window.mermaid.run({ querySelector: '.mermaid' }).catch(function(e) {
+                console.error('Mermaid render error', e);
+              });
+            }
+          });
+        }
+      ]
     }
   </script>
   
@@ -105,9 +126,17 @@
   <!-- Mermaid -->
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({ startOnLoad: true, theme: "base", themeVariables: { primaryColor: "#f8fafc", primaryBorderColor: "#e2e8f0", primaryTextColor: "#0f172a", lineColor: "#4f46e5" } });
+    mermaid.initialize({ 
+      startOnLoad: false, 
+      theme: "base", 
+      themeVariables: { 
+        primaryColor: "#f8fafc", 
+        primaryBorderColor: "#e2e8f0", 
+        primaryTextColor: "#0f172a", 
+        lineColor: "#4f46e5" 
+      } 
+    });
     window.mermaid = mermaid;
   </script>
-  <script src="https://unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
 </body>
 </html>
