@@ -3,8 +3,24 @@
 
 - **📚 Asignaturas**
   - [Presentación del Curso](clases/presentacion/README.md)
+    - [📊 Presentaciones](clases/presentacion/presentaciones/README.md)
+    - **🎥 Grabaciones**
+      - [Grabación: Sesión Inaugural y Presentación del Máster](clases/presentacion/grabaciones/2026_10_01_grabacion_presentacion.md)
   - [Sistemas de Big Data](clases/sistemas_de_big_data/README.md)
+    - **📝 Apuntes y Teoría**
+      - [Introducción a los Algoritmos, Estructuras de Datos y Complejidad Computacional](clases/sistemas_de_big_data/anotaciones/introduccion_algoritmos.md)
+      - [Matemáticas Discretas y Fundamentos Computacionales](clases/sistemas_de_big_data/anotaciones/matematicas_discretas.md)
+    - [📊 Presentaciones](clases/sistemas_de_big_data/presentaciones/README.md)
+    - **🎥 Grabaciones**
+      - [Grabación: Sistemas de Big Data - Conceptos Básicos y Algorítmica](clases/sistemas_de_big_data/grabaciones/2026_10_05_grabacion_sistemas_big_data.md)
+      - [Enlaces a Grabaciones: Sistemas de Big Data](clases/sistemas_de_big_data/grabaciones/enlaces_drive.md)
   - [Big Data Aplicado](clases/big_data_aplicado/README.md)
+    - **📝 Apuntes y Teoría**
+      - [Almacenamiento Masivo y Procesamiento de Datos](clases/big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md)
+    - [📊 Presentaciones](clases/big_data_aplicado/presentaciones/README.md)
+    - **🎥 Grabaciones**
+      - [Grabación: Big Data Aplicado (2026-10-07)](clases/big_data_aplicado/grabaciones/2026_10_07_grabacion_big_data_aplicado.md)
+      - [Enlaces a Grabaciones: Big Data Aplicado](clases/big_data_aplicado/grabaciones/enlaces_drive.md)
 
 - **👨‍💻 Cursos Extras**
   - [Fundamentos de Linux — Cisco Networking Academy](cursos/fundamentos_linux/00-indice.md)

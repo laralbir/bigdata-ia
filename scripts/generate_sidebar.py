@@ -1,5 +1,4 @@
 import os
-import re
 
 def get_markdown_title(filepath, fallback_name):
     try:
@@ -22,7 +21,12 @@ def format_name(name):
         "programacion_de_inteligencia_artificial": "Programación IA",
         "big_data_aplicado": "Big Data Aplicado",
         "aws_e_ia": "AWS e IA",
-        "presentacion": "Presentación del Curso"
+        "presentacion": "Presentación del Curso",
+        "anotaciones": "📝 Apuntes y Teoría",
+        "presentaciones": "📊 Presentaciones",
+        "grabaciones": "🎥 Grabaciones",
+        "entregables": "💻 Entregables",
+        "examenes": "📈 Exámenes"
     }
     if name in mapping:
         return mapping[name]
@@ -64,6 +68,30 @@ def generate_sidebar():
                 sidebar.append(f"  - [{subject_title}]({readme_path})")
             else:
                 sidebar.append(f"  - {subject_title}")
+                
+            subdirs = ["anotaciones", "presentaciones", "grabaciones", "entregables", "examenes"]
+            for subdir in subdirs:
+                subdir_path = os.path.join(subject_path, subdir)
+                if os.path.exists(subdir_path):
+                    files = sorted([f for f in os.listdir(subdir_path) if f.endswith('.md')])
+                    if files:
+                        # Append the category folder as a non-clickable title or clickable if it has README
+                        subdir_readme = os.path.join(subdir_path, "README.md")
+                        category_name = format_name(subdir)
+                        if "README.md" in files:
+                            sidebar.append(f"    - [{category_name}]({subdir_readme})")
+                        else:
+                            sidebar.append(f"    - **{category_name}**")
+                            
+                        for f in files:
+                            if f == "README.md":
+                                continue
+                            
+                            filepath = os.path.join(subdir_path, f)
+                            fallback = "Enlaces a Grabaciones" if f == "enlaces_drive.md" else format_name(f[:-3])
+                            name = get_markdown_title(filepath, fallback)
+                                
+                            sidebar.append(f"      - [{name}]({filepath})")
 
     sidebar.append("")
     sidebar.append("- **👨‍💻 Cursos Extras**")
