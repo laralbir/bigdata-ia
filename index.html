@@ -149,6 +149,7 @@
                   <button id="slide-prev" class="btn-primary" style="margin-right: 10px; cursor: pointer;">⬅ Anterior</button>
                   <span id="slide-counter" style="font-weight: 600; margin: 0 15px; font-family: var(--code-font-family);">1 / ${images.length}</span>
                   <button id="slide-next" class="btn-primary" style="cursor: pointer;">Siguiente ➡</button>
+                  <button id="slide-fullscreen" class="btn-primary" style="margin-left: 20px; cursor: pointer; background: #64748b;" title="Pantalla Completa">⛶</button>
                 `;
                 
                 navContainer.style.textAlign = 'center';
@@ -157,7 +158,38 @@
                 navContainer.style.background = '#f8fafc';
                 navContainer.style.borderRadius = '12px';
                 
-                h1.insertAdjacentElement('afterend', navContainer);
+                const wrapper = document.createElement('div');
+                wrapper.className = 'slideshow-wrapper';
+                wrapper.style.background = '#ffffff';
+                wrapper.style.padding = '1rem';
+                wrapper.style.borderRadius = '12px';
+                
+                h1.insertAdjacentElement('afterend', wrapper);
+                wrapper.appendChild(navContainer);
+                
+                images.forEach((img, index) => {
+                  const p = img.closest('p');
+                  if (p) {
+                    const prev = p.previousElementSibling;
+                    if (prev && prev.tagName === 'H2') {
+                      wrapper.appendChild(prev);
+                    }
+                    wrapper.appendChild(p);
+                  }
+                });
+                
+                document.getElementById('slide-fullscreen').addEventListener('click', () => {
+                  if (!document.fullscreenElement) {
+                    wrapper.requestFullscreen().catch(e => console.error(e));
+                  } else {
+                    document.exitFullscreen();
+                  }
+                });
+                
+                document.addEventListener('fullscreenchange', () => {
+                  wrapper.style.overflowY = document.fullscreenElement ? 'auto' : 'visible';
+                  updateSlides();
+                });
                 
                 function updateSlides() {
                   images.forEach((img, index) => {
@@ -178,7 +210,7 @@
                       }
                     }
                     if (index === currentIndex) {
-                      img.style.maxHeight = '70vh';
+                      img.style.maxHeight = document.fullscreenElement ? '85vh' : '70vh';
                       img.style.width = 'auto';
                       img.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
                       img.style.borderRadius = '8px';
