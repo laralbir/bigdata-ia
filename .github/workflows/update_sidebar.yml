@@ -1,0 +1,35 @@
+name: Auto-Generate Sidebar
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'clases/**/*.md'
+      - 'cursos/**/*.md'
+      - 'scripts/generate_sidebar.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Generate Sidebar
+        run: python scripts/generate_sidebar.py
+        
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add _sidebar.md
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: regenerar automatica de _sidebar.md" && git push)

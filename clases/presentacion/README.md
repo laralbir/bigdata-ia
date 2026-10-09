@@ -1,4 +1,4 @@
-# Presentacion
+# Presentación del Curso
 
 Directorio correspondiente a la sesión inaugural, presentación institucional y bienvenida del **Curso de Especialización en Big Data e Inteligencia Artificial** (Promoción 2026/2027).
 
