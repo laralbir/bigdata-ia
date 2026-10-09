@@ -175,11 +175,36 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 locale: 'es',
+                customButtons: {
+                    fullscreenButton: {
+                        text: '⛶ Pantalla Completa',
+                        click: function() {
+                            var elem = document.documentElement;
+                            if (!document.fullscreenElement) {
+                                if (elem.requestFullscreen) {
+                                    elem.requestFullscreen();
+                                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                                    elem.webkitRequestFullscreen();
+                                } else if (elem.msRequestFullscreen) { /* IE11 */
+                                    elem.msRequestFullscreen();
+                                }
+                            } else {
+                                if (document.exitFullscreen) {
+                                    document.exitFullscreen();
+                                } else if (document.webkitExitFullscreen) { /* Safari */
+                                    document.webkitExitFullscreen();
+                                } else if (document.msExitFullscreen) { /* IE11 */
+                                    document.msExitFullscreen();
+                                }
+                            }
+                        }
+                    }
+                },
                 headerToolbar: {
-                    left: 'prev,next today',
+                    left: 'prev,next today fullscreenButton',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-                },
+                },,
                 navLinks: true, 
                 businessHours: true, 
                 editable: false,
