@@ -7,30 +7,23 @@
   <meta name="description" content="Campus Virtual y Repositorio del Máster en Big Data e IA">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   
-  <!-- Estilos Modernos Base (Docsify Themeable) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
-  
-  <!-- Fuentes modernas Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
   
   <style>
-    /* Configuración segura mediante variables de docsify-themeable */
     :root {
       --theme-color: #4f46e5;
       --base-font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       --base-font-size: 16px;
       --base-line-height: 1.6;
-      
       --code-font-family: 'JetBrains Mono', monospace;
       
-      /* Sidebar */
       --sidebar-width: 300px;
       --sidebar-background: #ffffff;
       --sidebar-border-color: #f3f4f6;
       --sidebar-nav-link-color--active: var(--theme-color);
       --sidebar-nav-link-font-weight--active: 600;
       
-      /* Coverpage */
       --cover-background-color: #ffffff;
       --cover-background-image: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
       --cover-heading-color: #111827;
@@ -38,13 +31,11 @@
       --cover-button-color--primary: #ffffff;
       --cover-button-border: 0;
       
-      /* Blockquotes (Notas) */
       --blockquote-border-color: var(--theme-color);
       --blockquote-background: #eff6ff;
       --blockquote-color: #1e40af;
     }
     
-    /* Pequeños retoques seguros que no rompen el responsive */
     .btn-primary {
       display: inline-block;
       background: var(--theme-color);
@@ -62,7 +53,6 @@
       text-decoration: none;
     }
     
-    /* Fix para el título del coverpage (gradiente) */
     .cover-main h1 {
       background: -webkit-linear-gradient(45deg, #4f46e5, #ec4899);
       -webkit-background-clip: text;
@@ -98,17 +88,6 @@
         nextText: 'Siguiente',
         crossChapter: true,
         crossChapterText: true
-      },
-      // Configuración de Mermaid segura vía markdown renderer
-      markdown: {
-        renderer: {
-          code: function(code, lang) {
-            if (lang === "mermaid") {
-              return '<div class="mermaid">' + code + '</div>';
-            }
-            return this.origin.code.apply(this, arguments);
-          }
-        }
       }
     }
   </script>
@@ -123,15 +102,20 @@
   <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
   
-  <!-- Mermaid js modules (Versión compatible con docsify) -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  <!-- Mermaid -->
+  <script src="//cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  <script src="//unpkg.com/docsify-mermaid@2.0.0/dist/docsify-mermaid.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: false, theme: 'default' });
-    window.$docsify.plugins = [].concat(function(hook, vm) {
-      hook.doneEach(function() {
-        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-      });
-    }, window.$docsify.plugins);
+    mermaid.initialize({ 
+      startOnLoad: true, 
+      theme: 'base',
+      themeVariables: { 
+        primaryColor: '#f3f4f6', 
+        primaryBorderColor: '#e5e7eb', 
+        primaryTextColor: '#111827', 
+        lineColor: '#6366f1' 
+      }
+    });
   </script>
 </body>
 </html>
