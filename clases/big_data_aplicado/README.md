@@ -1,24 +1,13 @@
 # Big Data Aplicado
 
-Directorio correspondiente a la asignatura **Big Data Aplicado**.
+Bienvenido a la sección de Big Data Aplicado.
 
----
+## 📝 Apuntes y Teoría
+- [Almacenamiento Masivo de Datos](clases/big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md)
 
-## 📂 Contenido del Módulo
+## 📊 Presentaciones
+- [Ver diapositivas](clases/big_data_aplicado/presentaciones/README.md)
 
-| Subdirectorio | Contenido | Recurso Disponible |
-| :--- | :--- | :--- |
-| [📁 `presentaciones/`](presentaciones/) | Diapositivas oficiales y material gráfico de apoyo | [📊 Diapositivas](presentaciones/2026_10_08_almacenamiento_y_procesamiento_de_datos)<br>📚 Múltiples lecturas recomendadas |
-| [📁 `anotaciones/`](anotaciones/) | Apuntes y notas de las sesiones | [📝 Almacenamiento Masivo y Procesamiento](anotaciones/almacenamiento_masivo_datos.md) |
-| [📁 `grabaciones/`](grabaciones/) | Enlaces a grabaciones en Google Drive | [🎥 Grabación 2026-10-07](grabaciones/2026_10_07_grabacion_big_data_aplicado.md) |
-| [📁 `entregables/`](entregables/) | Prácticas y tareas evaluables | *No hay entregables* |
-| [📁 `examenes/`](examenes/) | Registro de evaluaciones | *No hay exámenes* |
-
----
-
-## 📄 Documentos Destacados
-
-- 📝 [**Almacenamiento Masivo y Procesamiento**](anotaciones/almacenamiento_masivo_datos.md): Fundamentos de almacenamiento masivo, escala global (Zettabytes), 4 V's de datos, tradicional vs. masivo y validación en Python.
-- 📊 [**Diapositivas - Almacenamiento y Procesamiento**](presentaciones/2026_10_08_almacenamiento_y_procesamiento_de_datos): Carpeta con las diapositivas de la sesión del 2026-10-07.
-- 📚 **Material Recomendado**: 9 archivos PDF/JPG de lecturas complementarias sobre Cloud Backup, The Digitization of the World, Big Data Facts, Compresión, etc., ubicadas en la carpeta de [presentaciones](presentaciones/).
-- 🎥 [**Grabación de la clase**](grabaciones/2026_10_07_grabacion_big_data_aplicado.md): Enlace de Google Drive a la sesión del 2026-10-07.
+## 🎥 Grabaciones
+- [Clase 1: Conceptos](clases/big_data_aplicado/grabaciones/2026_10_07_grabacion_big_data_aplicado.md)
+- [Todas las grabaciones](clases/big_data_aplicado/grabaciones/enlaces_drive.md)
