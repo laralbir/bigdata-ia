@@ -165,6 +165,17 @@
                     if (p) {
                       p.style.display = index === currentIndex ? 'block' : 'none';
                       p.style.textAlign = 'center';
+                      
+                      // Bulletproof against cached markdown or future errors:
+                      // If the previous element is an h2 (the filename header), hide/show it too.
+                      const prev = p.previousElementSibling;
+                      if (prev && prev.tagName === 'H2') {
+                        prev.style.display = index === currentIndex ? 'block' : 'none';
+                        prev.style.textAlign = 'center';
+                        prev.style.borderBottom = 'none';
+                        prev.style.fontSize = '1.1rem';
+                        prev.style.color = '#64748b';
+                      }
                     }
                     if (index === currentIndex) {
                       img.style.maxHeight = '70vh';
