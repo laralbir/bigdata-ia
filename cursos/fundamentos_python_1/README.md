@@ -22,4 +22,5 @@ La documentación enriquecida de cada módulo (a partir del material en `raw/`) 
 
 ## 🛠️ Recursos Adicionales
 
+- [🌐 Learn X in Y minutes: Python (Español)](https://learnxinyminutes.com/es/python/)
 - [🐍 Cheat Sheet: De TypeScript / Node / PHP a Python](cheat_sheet_python.md)
