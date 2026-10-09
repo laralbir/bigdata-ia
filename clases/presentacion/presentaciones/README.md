@@ -4,4 +4,4 @@ Este directorio contiene las diapositivas y el material gráfico utilizado duran
 
 ## 📚 Listado de Recursos
 
-- 📕 [**Presentación MASTER IA y BIGDATA.pdf**](Presentacio%CC%81n%20MASTER%20IA%20y%20BIGDATA.pdf)
+- 📕 <a href="https://laralbir.github.io/bigdata-ia/clases/presentacion/presentaciones/Presentacio%CC%81n%20MASTER%20IA%20y%20BIGDATA.pdf" target="_blank">**Presentación MASTER IA y BIGDATA.pdf**</a>
