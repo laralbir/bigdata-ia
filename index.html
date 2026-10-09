@@ -80,6 +80,12 @@
 <body>
   <div id="app">Cargando el Campus Virtual...</div>
   <script>
+    // Corrección para enlaces con "Copy Link to Highlight" de Chrome (:~:text=)
+    // Docsify intenta leerlos como parte de la ruta del archivo y lanza 404.
+    if (window.location.hash.includes(':~:text=')) {
+      window.location.hash = window.location.hash.split(':~:text=')[0];
+    }
+    
     window.$docsify = {
       name: '🎓 Campus Big Data',
       repo: 'laralbir/bigdata-ia',
