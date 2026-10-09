@@ -22,13 +22,7 @@ def format_name(name):
         "programacion_de_inteligencia_artificial": "Programación IA",
         "big_data_aplicado": "Big Data Aplicado",
         "aws_e_ia": "AWS e IA",
-        "presentacion": "Presentación del Curso",
-        "anotaciones": "Apuntes",
-        "presentaciones": "Presentaciones",
-        "grabaciones": "Grabaciones",
-        "entregables": "Entregables",
-        "examenes": "Exámenes",
-        "enlaces_drive": "Enlaces Drive"
+        "presentacion": "Presentación del Curso"
     }
     if name in mapping:
         return mapping[name]
@@ -70,24 +64,6 @@ def generate_sidebar():
                 sidebar.append(f"  - [{subject_title}]({readme_path})")
             else:
                 sidebar.append(f"  - {subject_title}")
-            
-            subdirs = ["anotaciones", "presentaciones", "grabaciones", "entregables", "examenes"]
-            for subdir in subdirs:
-                subdir_path = os.path.join(subject_path, subdir)
-                if os.path.exists(subdir_path):
-                    files = sorted([f for f in os.listdir(subdir_path) if f.endswith('.md')])
-                    if files:
-                        for f in files:
-                            filepath = os.path.join(subdir_path, f)
-                            
-                            # Determine nice name
-                            if f == "README.md":
-                                name = get_markdown_title(filepath, format_name(subdir))
-                            else:
-                                fallback = "Enlaces Drive" if f == "enlaces_drive.md" else format_name(f[:-3])
-                                name = get_markdown_title(filepath, fallback)
-                                
-                            sidebar.append(f"    - [{name}]({filepath})")
 
     sidebar.append("")
     sidebar.append("- **👨‍💻 Cursos Extras**")
