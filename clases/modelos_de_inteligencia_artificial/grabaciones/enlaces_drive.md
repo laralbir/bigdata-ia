@@ -1,3 +1,3 @@
-# Enlaces a Grabaciones: modelos_de_inteligencia_artificial
+# Enlaces a Grabaciones: Modelos de Inteligencia Artificial
 
 > 💡 **Nota:** En este documento se irán añadiendo los enlaces a Google Drive con las grabaciones de la asignatura para no saturar el repositorio.
