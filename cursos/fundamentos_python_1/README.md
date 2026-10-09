@@ -19,3 +19,7 @@ El curso enseña a diseñar, desarrollar y depurar programas, a analizar problem
 ## 📌 Próximamente
 
 La documentación enriquecida de cada módulo (a partir del material en `raw/`) está pendiente de redacción. Este README se actualizará con los enlaces a cada capítulo a medida que se vaya completando, siguiendo la misma convención aplicada en [Fundamentos de Linux](../fundamentos_linux/00-indice.md).
+
+## 🛠️ Recursos Adicionales
+
+- [🐍 Cheat Sheet: De TypeScript / Node / PHP a Python](cheat_sheet_python.md)
