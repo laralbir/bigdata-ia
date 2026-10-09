@@ -314,6 +314,61 @@
               }
             }
           });
+        },
+        function(hook, vm) {
+          hook.doneEach(function() {
+            // Añadir botones de descarga en apuntes (anotaciones)
+            if (vm.route && vm.route.file && vm.route.file.includes('anotaciones/')) {
+              const content = document.querySelector('.markdown-section');
+              if (!content) return;
+              
+              const h1 = content.querySelector('h1');
+              if (h1) {
+                const btnContainer = document.createElement('div');
+                btnContainer.style.marginTop = '-10px';
+                btnContainer.style.marginBottom = '30px';
+                btnContainer.style.display = 'flex';
+                btnContainer.style.gap = '10px';
+                
+                const mdBtn = document.createElement('button');
+                mdBtn.className = 'btn-primary';
+                mdBtn.style.padding = '6px 12px';
+                mdBtn.style.fontSize = '14px';
+                mdBtn.style.background = '#10b981';
+                mdBtn.innerHTML = '⬇ Descargar Markdown';
+                
+                mdBtn.addEventListener('click', async () => {
+                  try {
+                    const res = await fetch(vm.route.file);
+                    const blob = await res.blob();
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = vm.route.file.split('/').pop();
+                    a.click();
+                    URL.revokeObjectURL(url);
+                  } catch (e) {
+                    console.error('Error downloading MD:', e);
+                  }
+                });
+                
+                const pdfBtn = document.createElement('button');
+                pdfBtn.className = 'btn-primary';
+                pdfBtn.style.padding = '6px 12px';
+                pdfBtn.style.fontSize = '14px';
+                pdfBtn.style.background = '#6366f1';
+                pdfBtn.innerHTML = '🖨 Guardar como PDF';
+                
+                pdfBtn.addEventListener('click', () => {
+                  window.print();
+                });
+                
+                btnContainer.appendChild(mdBtn);
+                btnContainer.appendChild(pdfBtn);
+                h1.insertAdjacentElement('afterend', btnContainer);
+              }
+            }
+          });
         }
       ]
     }
