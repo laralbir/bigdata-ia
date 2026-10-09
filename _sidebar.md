@@ -1,5 +1,5 @@
 - [🏠 Inicio](/README.md)
-- [📅 Calendario Interactivo](calendario/calendario_interactivo.html)
+- [📅 Calendario Interactivo](calendario.md)
 
 - **📚 Asignaturas**
   - [Sistemas de Big Data](clases/sistemas_de_big_data/grabaciones/enlaces_drive.md)

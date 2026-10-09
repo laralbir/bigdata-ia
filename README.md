@@ -1,7 +1,7 @@
 # Máster en Big Data e Inteligencia Artificial (FP)
 
 <div align="center">
-<a href="calendario/calendario_interactivo.html" class="btn-primary">🗓️ Abrir Calendario Interactivo</a>
+<a href="calendario.md" class="btn-primary">🗓️ Abrir Calendario Interactivo</a>
 </div>
 
 

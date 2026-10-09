@@ -10,4 +10,4 @@
 * Navegación Single Page Application (SPA)
 
 [Ir al Temario](#/README)
-[Ver Calendario](calendario/calendario_interactivo.html)
+[Ver Calendario](calendario.md)

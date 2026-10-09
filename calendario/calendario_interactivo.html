@@ -158,7 +158,7 @@
 </head>
 <body>
 
-    <a href="../#/README" class="btn-back">← Volver al Campus</a>
+    
 
     <div class="header-container">
         <h2>Calendario Interactivo</h2>
@@ -199,7 +199,10 @@
                     if (info.event.start < today) {
                         var go = confirm('Esta clase ya se ha impartido.\nAsignatura: ' + info.event.title + '\n\n¿Deseas ir al campus para ver las grabaciones, presentaciones y material?');
                         if(go) {
-                            window.open(info.event.extendedProps.folder_url, '_self');
+                            
+var targetHash = info.event.extendedProps.folder_url.replace('../#', '');
+window.top.location.hash = targetHash;
+
                         }
                     } else {
                         alert('Asignatura: ' + info.event.title + '\n' +
