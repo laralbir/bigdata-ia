@@ -103,19 +103,11 @@
   <script src="https://unpkg.com/docsify-copy-code@2"></script>
   <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <!-- Mermaid -->
-  <script src="//cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-  <script src="//unpkg.com/docsify-mermaid@2.0.0/dist/docsify-mermaid.js"></script>
-  <script>
-    mermaid.initialize({ 
-      startOnLoad: true, 
-      theme: 'base',
-      themeVariables: { 
-        primaryColor: '#f3f4f6', 
-        primaryBorderColor: '#e5e7eb', 
-        primaryTextColor: '#111827', 
-        lineColor: '#6366f1' 
-      }
-    });
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "base", themeVariables: { primaryColor: "#f8fafc", primaryBorderColor: "#e2e8f0", primaryTextColor: "#0f172a", lineColor: "#4f46e5" } });
+    window.mermaid = mermaid;
   </script>
+  <script src="https://unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
 </body>
 </html>
