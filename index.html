@@ -397,20 +397,27 @@
                     if (buttonsToRemove) buttonsToRemove.remove();
                     
                     // Arreglar gráficos Mermaid para el PDF
-                    const mermaids = clone.querySelectorAll('.mermaid svg');
-                    mermaids.forEach(svg => {
-                      svg.style.maxWidth = '100%';
-                      svg.style.height = 'auto';
-                      // Quitar anchos explícitos fijos que rompen el canvas
-                      svg.removeAttribute('width'); 
-                      svg.removeAttribute('height');
+                    const mermaids = clone.querySelectorAll('.mermaid');
+                    mermaids.forEach(container => {
+                      container.style.width = '100%';
+                      container.style.maxWidth = '100%';
+                      container.style.overflow = 'hidden';
+                      container.style.textAlign = 'center';
+                      container.style.boxSizing = 'border-box';
+                      const svg = container.querySelector('svg');
+                      if (svg) {
+                        svg.style.maxWidth = '100%';
+                        svg.style.height = 'auto';
+                        svg.removeAttribute('width'); 
+                        svg.removeAttribute('height');
+                      }
                     });
                     
                     const opt = {
                       margin:       15,
                       filename:     vm.route.file.split('/').pop().replace('.md', '.pdf'),
                       image:        { type: 'jpeg', quality: 0.98 },
-                      html2canvas:  { scale: 2, useCORS: true },
+                      html2canvas:  { scale: 2, useCORS: true, windowWidth: 800 },
                       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
                     };
                     
