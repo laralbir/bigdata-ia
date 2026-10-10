@@ -76,8 +76,8 @@
     }
     
     /* Ocultar iconos dobles del menú lateral */
-    .sidebar-nav li:has(> ul) > a::before,
-    .sidebar-nav li:has(> ul) > p::before {
+    .sidebar-nav a.folder-link::before,
+    .sidebar-nav p.folder-link::before {
       display: none !important;
       background: none !important;
     }
@@ -437,16 +437,16 @@
             // Sidebar manual collapse logic (reemplaza al plugin docsify-sidebar-collapse)
             const sidebarNav = document.querySelector('.sidebar-nav');
             if (sidebarNav) {
-              const folders = sidebarNav.querySelectorAll('li:has(> ul)');
+              const allLis = sidebarNav.querySelectorAll('li');
+              const folders = Array.from(allLis).filter(li => li.querySelector(':scope > ul'));
+              
               folders.forEach(folder => {
                 if (folder.dataset.collapsible) return;
                 folder.dataset.collapsible = 'true';
                 
-                const link = folder.querySelector('a') || folder.querySelector('p');
+                const link = folder.querySelector(':scope > a') || folder.querySelector(':scope > p');
                 if (link) {
                   // Hide docsify-themeable default chevron bullet for this folder
-                  link.style.setProperty('--sidebar-nav-link-before-content', 'none'); 
-                  // Docsify-themeable usually uses background-image or content for ::before
                   link.classList.add('folder-link');
                   
                   const arrow = document.createElement('span');
@@ -461,7 +461,7 @@
                   
                   const toggleFolder = () => {
                     folder.classList.toggle('collapsed');
-                    const ul = folder.querySelector('ul');
+                    const ul = folder.querySelector(':scope > ul');
                     if (ul) {
                       const isCollapsed = folder.classList.contains('collapsed');
                       ul.style.display = isCollapsed ? 'none' : 'block';
@@ -471,6 +471,7 @@
                   
                   // Toggle on click
                   link.addEventListener('click', (e) => {
+                    // Si hacemos click en la flecha, o es un <p> sin enlace, prevenimos la navegación
                     if (e.target === arrow || link.tagName === 'P') {
                        e.preventDefault();
                     }
@@ -482,7 +483,7 @@
                     const hasActive = folder.querySelector('.active');
                     if (!hasActive) {
                        folder.classList.add('collapsed');
-                       const ul = folder.querySelector('ul');
+                       const ul = folder.querySelector(':scope > ul');
                        if (ul) ul.style.display = 'none';
                        arrow.style.transform = 'rotate(-90deg)';
                     }
