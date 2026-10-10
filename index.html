@@ -97,7 +97,7 @@
       repo: 'laralbir/bigdata-ia',
       loadSidebar: true,
       coverpage: false,
-      sidebarDisplayLevel: 1, // Collapse sidebar sub-menus by default
+      sidebarDisplayLevel: 0, // Custom script handles collapsing
       
       subMaxLevel: 0,
       auto2top: true,
@@ -434,7 +434,10 @@
         },
         function(hook, vm) {
           hook.doneEach(function() {
-            // Sidebar manual collapse logic (reemplaza al plugin docsify-sidebar-collapse)
+            // Inicializar estado de carpetas expandidas
+            window.expandedFolders = window.expandedFolders || new Set();
+            
+            // Sidebar manual collapse logic
             const sidebarNav = document.querySelector('.sidebar-nav');
             if (sidebarNav) {
               const allLis = sidebarNav.querySelectorAll('li');
@@ -446,8 +449,8 @@
                 
                 const link = folder.querySelector(':scope > a') || folder.querySelector(':scope > p');
                 if (link) {
-                  // Hide docsify-themeable default chevron bullet for this folder
                   link.classList.add('folder-link');
+                  const folderId = link.innerText.trim();
                   
                   const arrow = document.createElement('span');
                   arrow.innerHTML = '▼';
@@ -456,38 +459,46 @@
                   arrow.style.display = 'inline-block';
                   arrow.style.marginRight = '8px';
                   arrow.style.color = 'var(--theme-color)';
+                  arrow.style.cursor = 'pointer';
                   
                   link.insertBefore(arrow, link.firstChild);
                   
-                  const toggleFolder = () => {
-                    folder.classList.toggle('collapsed');
-                    const ul = folder.querySelector(':scope > ul');
-                    if (ul) {
-                      const isCollapsed = folder.classList.contains('collapsed');
-                      ul.style.display = isCollapsed ? 'none' : 'block';
-                      arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
-                    }
+                  const ul = folder.querySelector(':scope > ul');
+                  
+                  const expand = () => {
+                    folder.classList.remove('collapsed');
+                    if (ul) ul.style.display = 'block';
+                    arrow.style.transform = 'rotate(0deg)';
+                    window.expandedFolders.add(folderId);
                   };
                   
-                  // Toggle on click
+                  const collapse = () => {
+                    folder.classList.add('collapsed');
+                    if (ul) ul.style.display = 'none';
+                    arrow.style.transform = 'rotate(-90deg)';
+                    window.expandedFolders.delete(folderId);
+                  };
+                  
                   link.addEventListener('click', (e) => {
-                    // Si hacemos click en la flecha, o es un <p> sin enlace, prevenimos la navegación
                     if (e.target === arrow || link.tagName === 'P') {
                        e.preventDefault();
                     }
-                    toggleFolder();
+                    if (folder.classList.contains('collapsed')) {
+                      expand();
+                    } else {
+                      collapse();
+                    }
                   });
                   
-                  // Auto collapse if not active
+                  // Auto collapse o expandir basado en estado
                   setTimeout(() => {
                     const hasActive = folder.querySelector('.active');
-                    if (!hasActive) {
-                       folder.classList.add('collapsed');
-                       const ul = folder.querySelector(':scope > ul');
-                       if (ul) ul.style.display = 'none';
-                       arrow.style.transform = 'rotate(-90deg)';
+                    if (window.expandedFolders.has(folderId) || hasActive) {
+                       expand();
+                    } else {
+                       collapse();
                     }
-                  }, 50);
+                  }, 100);
                 }
               });
             }
