@@ -1,7 +1,7 @@
 # Máster en Big Data e Inteligencia Artificial (FP)
 
 <div align="center">
-<a href="#/calendario.md" class="btn-primary">🗓️ Abrir Calendario Interactivo</a>
+<a href="https://laralbir.github.io/bigdata-ia/" target="_blank" rel="noopener"><strong>🗓️ Abrir Calendario Interactivo (Versión Web)</strong></a>
 </div>
 
 

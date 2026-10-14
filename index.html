@@ -2,553 +2,775 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Máster Big Data & IA</title>
+  <title>Calendario Académico — Máster Big Data & IA</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Campus Virtual y Repositorio del Máster en Big Data e IA">
+  <meta name="description" content="Calendario interactivo y planificación del Máster en Big Data e Inteligencia Artificial (2026/2027)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <!-- Soporte para Fórmulas Matemáticas (LaTeX) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- FullCalendar 5 CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
+
   <style>
     :root {
-      --theme-color: #4f46e5;
-      --base-font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      --base-font-size: 16px;
-      --base-line-height: 1.6;
-      --code-font-family: 'JetBrains Mono', monospace;
-      
-      --sidebar-width: 300px;
-      --sidebar-background: #ffffff;
-      --sidebar-border-color: #f3f4f6;
-      --sidebar-nav-link-color--active: var(--theme-color);
-      --sidebar-nav-link-font-weight--active: 600;
-      
-      --cover-background-color: #ffffff;
-      --cover-background-image: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-      --cover-heading-color: #111827;
-      --cover-button-background--primary: var(--theme-color);
-      --cover-button-color--primary: #ffffff;
-      --cover-button-border: 0;
-      
-      --blockquote-border-color: var(--theme-color);
-      --blockquote-background: #eff6ff;
-      --blockquote-color: #1e40af;
-    }
-    
-    .btn-primary {
-      display: inline-block;
-      background: var(--theme-color);
-      color: white !important;
-      padding: 10px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
-      transition: transform 0.2s;
-      margin: 1rem 0;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      text-decoration: none;
-    }
-    
-    .cover-main h1 {
-      background: -webkit-linear-gradient(45deg, #4f46e5, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 3.5rem;
-    }
-  
-    .mermaid {
-      display: flex;
-      justify-content: center;
-      margin: 2rem 0;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg-body: #f8fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --radius-lg: 16px;
+      --radius-md: 10px;
     }
 
-    /* Aprovechar mejor el ancho de la pantalla */
-    :root {
-      --content-max-width: 90em;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    
-    .markdown-section {
-      max-width: 95%;
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      padding: 30px 20px 50px 20px;
+      min-height: 100vh;
     }
-    
-    /* Ocultar iconos dobles del menú lateral */
-    .sidebar-nav a.folder-link::before,
-    .sidebar-nav p.folder-link::before {
-      display: none !important;
-      background: none !important;
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
     }
-</style>
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0 auto 20px auto;
+    }
+
+    /* Quick Actions */
+    .actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-github {
+      background: #0f172a;
+      color: #ffffff;
+    }
+    .btn-github:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+    }
+
+    .btn-ics {
+      background: #ffffff;
+      color: var(--primary);
+      border-color: #cbd5e1;
+    }
+    .btn-ics:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .btn-pdf {
+      background: #ffffff;
+      color: #dc2626;
+      border-color: #cbd5e1;
+    }
+    .btn-pdf:hover {
+      background: #fef2f2;
+      border-color: #dc2626;
+      transform: translateY(-2px);
+    }
+
+    /* Leyenda de colores */
+    .legend-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 20px;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+    }
+
+    /* Calendar Card */
+    #calendar-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      border: 1px solid var(--border-color);
+    }
+
+    /* FullCalendar styling overrides */
+    .fc {
+      font-family: inherit;
+    }
+
+    .fc .fc-toolbar-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-transform: capitalize;
+    }
+
+    .fc .fc-button-primary {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-transform: capitalize;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: all 0.15s ease;
+    }
+
+    .fc .fc-button-primary:hover {
+      background: #f1f5f9;
+      color: var(--primary);
+      border-color: #94a3b8;
+    }
+
+    .fc .fc-button-primary:not(:disabled):active,
+    .fc .fc-button-primary:not(:disabled).fc-button-active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .fc .fc-button-primary:disabled {
+      opacity: 0.5;
+      background: #f8fafc;
+      color: #94a3b8;
+      border-color: #e2e8f0;
+    }
+
+    .fc-theme-standard td, .fc-theme-standard th {
+      border-color: #f1f5f9;
+    }
+
+    .fc-col-header-cell {
+      padding: 10px 0;
+      background: #f8fafc;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .fc-daygrid-day-number {
+      font-weight: 600;
+      color: #334155;
+      padding: 6px 8px;
+      font-size: 0.9rem;
+    }
+
+    .fc-day-today {
+      background-color: #f5f3ff !important;
+    }
+
+    .fc-day-today .fc-daygrid-day-number {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* Event pills */
+    .fc-event {
+      cursor: pointer;
+      border-radius: 6px;
+      border: none !important;
+      padding: 3px 6px;
+      margin: 2px 0;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .fc-event:hover {
+      transform: translateY(-1px);
+      filter: brightness(0.95);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.12);
+    }
+
+    .fc-event-time {
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    /* Past event styling */
+    .fc-event.past-event {
+      opacity: 0.65;
+      filter: grayscale(0.2);
+    }
+    .fc-event.past-event .fc-event-title {
+      text-decoration: line-through;
+    }
+
+    /* Modal Backdrop & Dialog */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-dialog {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 520px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      position: relative;
+      animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #94a3b8;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+      border-radius: 6px;
+      transition: color 0.15s;
+    }
+    .modal-close-btn:hover {
+      color: #0f172a;
+    }
+
+    .modal-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .modal-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      font-size: 0.92rem;
+    }
+
+    .modal-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .modal-info-icon {
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .modal-info-content strong {
+      display: block;
+      color: #334155;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .modal-info-content span {
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .modal-actions .btn {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+    }
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 35px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 15px 10px 40px 10px;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      #calendar-card {
+        padding: 12px;
+      }
+      .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .fc .fc-toolbar-title {
+        font-size: 1.15rem;
+      }
+      .legend-container {
+        gap: 10px;
+        font-size: 0.78rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="app">Cargando el Campus Virtual...</div>
-  <script>
-    // Corrección para enlaces con "Copy Link to Highlight" de Chrome (:~:text=)
-    // Docsify intenta leerlos como parte de la ruta del archivo y lanza 404.
-    if (window.location.hash.includes(':~:text=')) {
-      window.location.hash = window.location.hash.split(':~:text=')[0];
-    }
-    
-    window.$docsify = {
-      name: '🎓 Campus Big Data',
-      repo: 'laralbir/bigdata-ia',
-      loadSidebar: true,
-      coverpage: false,
-      sidebarDisplayLevel: 0, // Custom script handles collapsing
+
+  <div class="container">
+    <header>
+      <div class="badge-top">
+        <span>🎓</span>
+        <span>Especialización en Big Data e Inteligencia Artificial</span>
+      </div>
+      <h1>Calendario de Clases 2026 - 2027</h1>
+      <p class="subtitle">Planificación académica interactiva. Haz clic en cualquier sesión para consultar los detalles o acceder a su material en el repositorio.</p>
+
+      <div class="actions-bar">
+        <a href="https://github.com/laralbir/bigdata-ia" class="btn btn-github" target="_blank" rel="noopener">
+          <span>📦</span>
+          <span>Repositorio en GitHub</span>
+        </a>
+        <a href="calendario/campus_digitechfp.ics" download class="btn btn-ics">
+          <span>📅</span>
+          <span>Descargar .ICS</span>
+        </a>
+        <a href="calendario/Calendario%20Lectivo%202026%202027%20Master%20IA%20y%20Big%20Data.pdf" class="btn btn-pdf" target="_blank" rel="noopener">
+          <span>📄</span>
+          <span>PDF Oficial</span>
+        </a>
+      </div>
+
+      <div class="legend-container">
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #3788d8;"></span>
+          <span>Clases Lectivas</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #28a745;"></span>
+          <span>TFM y Entregas</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #ff9f89;"></span>
+          <span>Masterclasses</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #dc3545;"></span>
+          <span>Exámenes</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="calendar-card">
+      <div id="calendar"></div>
+    </main>
+
+    <footer>
+      <p>Máster en Big Data e Inteligencia Artificial (2026/2027) · <a href="https://github.com/laralbir/bigdata-ia" target="_blank" rel="noopener">laralbir/bigdata-ia</a></p>
+    </footer>
+  </div>
+
+  <!-- Modal de Detalle de Evento -->
+  <div id="event-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <button id="modal-close" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+      <span id="modal-badge" class="modal-tag">Clase</span>
+      <h2 id="modal-title" class="modal-title">Título de la Clase</h2>
       
-      subMaxLevel: 0,
-      auto2top: true,
-      themeColor: '#4f46e5',
-      search: {
-        placeholder: '🔍 Buscar material...',
-        noData: 'No se encontraron resultados',
-        depth: 3
-      },
-      copyCode: {
-        buttonText : 'Copiar',
-        errorText  : 'Error',
-        successText: 'Copiado!'
-      },
-      pagination: {
-        previousText: 'Anterior',
-        nextText: 'Siguiente',
-        crossChapter: true,
-        crossChapterText: true
-      },
-      markdown: {
-        renderer: {
-          code: function(code, lang) {
-            if (lang === "mermaid") {
-              return '<div class="mermaid">' + code + '</div>';
+      <div class="modal-info-list">
+        <div class="modal-info-item">
+          <span class="modal-info-icon">🗓️</span>
+          <div class="modal-info-content">
+            <strong>Fecha y Horario</strong>
+            <span id="modal-datetime">-</span>
+          </div>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-icon">👨‍🏫</span>
+          <div class="modal-info-content">
+            <strong>Profesorado / Información</strong>
+            <span id="modal-desc">-</span>
+          </div>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-icon">📌</span>
+          <div class="modal-info-content">
+            <strong>Estado de la Sesión</strong>
+            <span id="modal-status">-</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="btn-modal-close" class="btn btn-secondary">Cerrar</button>
+        <a id="btn-modal-repo" href="#" class="btn btn-github" target="_blank" rel="noopener">
+          <span>📁</span>
+          <span>Ver Material en GitHub</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      
+      var eventsData = [
+        {"title":"Sistemas de Big Data","start":"2026-10-05T19:00:00","end":"2026-10-05T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"Big Data Aplicado","start":"2026-10-07T19:00:00","end":"2026-10-07T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Big Data Aplicado","start":"2026-10-14T19:00:00","end":"2026-10-14T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2026-10-19T19:00:00","end":"2026-10-19T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"Big Data Aplicado","start":"2026-10-21T19:00:00","end":"2026-10-21T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2026-10-26T19:00:00","end":"2026-10-26T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"TFM","start":"2026-10-26T21:30:00","end":"2026-10-26T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"Big Data Aplicado","start":"2026-10-28T19:00:00","end":"2026-10-28T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2026-11-02T19:00:00","end":"2026-11-02T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"Big Data Aplicado","start":"2026-11-04T19:00:00","end":"2026-11-04T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Introducción a Python","start":"2026-11-11T19:00:00","end":"2026-11-11T21:30:00","description":"Profesor: ZZ | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Sistemas de Big Data","start":"2026-11-16T19:00:00","end":"2026-11-16T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"Big Data Aplicado","start":"2026-11-18T19:00:00","end":"2026-11-18T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2026-11-23T19:00:00","end":"2026-11-23T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"TFM","start":"2026-11-23T21:30:00","end":"2026-11-23T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"Big Data Aplicado","start":"2026-11-25T19:00:00","end":"2026-11-25T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2026-11-30T19:00:00","end":"2026-11-30T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"Big Data Aplicado","start":"2026-12-02T19:00:00","end":"2026-12-02T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Big Data Aplicado","start":"2026-12-09T19:00:00","end":"2026-12-09T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2026-12-14T19:00:00","end":"2026-12-14T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"TFM","start":"2026-12-14T21:30:00","end":"2026-12-14T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"MASTERCLASS 1: Best Practices Programación IA","start":"2026-12-15T19:00:00","end":"2026-12-15T21:30:00","description":"Masterclass formativa sobre buenas prácticas en IA | Estado: Confirmado","color":"#ff9f89","folder_url":"clases/"},
+        {"title":"Big Data Aplicado","start":"2026-12-16T19:00:00","end":"2026-12-16T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2026-12-21T19:00:00","end":"2026-12-21T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"Big Data Aplicado","start":"2027-01-13T19:00:00","end":"2027-01-13T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"Sistemas de Big Data","start":"2027-01-18T19:00:00","end":"2027-01-18T21:30:00","description":"Profesor: Alfredo y Jose Fco Valverde | Estado: Confirmado","color":"#3788d8","folder_url":"clases/sistemas_de_big_data/"},
+        {"title":"TFM","start":"2027-01-18T21:30:00","end":"2027-01-18T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"MASTERCLASS 2: Computer Vision","start":"2027-01-19T19:00:00","end":"2027-01-19T21:30:00","description":"Masterclass formativa sobre Visión Artificial | Estado: Confirmado","color":"#ff9f89","folder_url":"clases/"},
+        {"title":"Big Data Aplicado","start":"2027-01-20T19:00:00","end":"2027-01-20T21:30:00","description":"Profesor: Enrique y Ricardo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/big_data_aplicado/"},
+        {"title":"EXAMEN 1er Semestre","start":"2027-01-23","allDay":true,"description":"Evaluación final correspondiente al primer semestre lectivo","color":"#dc3545","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-01-25T19:00:00","end":"2027-01-25T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-01-27T19:00:00","end":"2027-01-27T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-02-01T19:00:00","end":"2027-02-01T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-02-03T19:00:00","end":"2027-02-03T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"TFM","start":"2027-02-03T21:30:00","end":"2027-02-03T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"RECUPERACIÓN 1er Semestre","start":"2027-02-06","allDay":true,"description":"Examen de recuperación del primer semestre","color":"#dc3545","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-02-08T19:00:00","end":"2027-02-08T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-02-10T19:00:00","end":"2027-02-10T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"MASTERCLASS 3: Agentic AI","start":"2027-02-11T19:00:00","end":"2027-02-11T21:30:00","description":"Masterclass formativa sobre Sistemas Agénticos | Estado: Confirmado","color":"#ff9f89","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-02-15T19:00:00","end":"2027-02-15T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-02-17T19:00:00","end":"2027-02-17T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"TFM","start":"2027-02-17T21:30:00","end":"2027-02-17T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-02-22T19:00:00","end":"2027-02-22T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-02-24T19:00:00","end":"2027-02-24T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-03-01T19:00:00","end":"2027-03-01T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-03-03T19:00:00","end":"2027-03-03T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-03-08T19:00:00","end":"2027-03-08T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-03-10T19:00:00","end":"2027-03-10T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"TFM","start":"2027-03-10T21:30:00","end":"2027-03-10T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"Sistemas de Aprendizaje Automático","start":"2027-03-15T19:00:00","end":"2027-03-15T21:30:00","description":"Profesor: Inés y Pablo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-03-17T19:00:00","end":"2027-03-17T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"AWS e IA","start":"2027-03-18T19:00:00","end":"2027-03-18T21:30:00","description":"Profesor: Óscar Cuellar | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-03-31T19:00:00","end":"2027-03-31T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"TFM","start":"2027-03-31T21:30:00","end":"2027-03-31T22:00:00","description":"Profesor: TFM | Estado: Confirmado","color":"#28a745","folder_url":"clases/"},
+        {"title":"Modelos de Inteligencia Artificial","start":"2027-04-05T19:00:00","end":"2027-04-05T21:30:00","description":"Profesor: Miguel y Paloma | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-04-07T19:00:00","end":"2027-04-07T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"MASTERCLASS 4: Metodología Agile","start":"2027-04-08T19:00:00","end":"2027-04-08T21:30:00","description":"Masterclass formativa sobre Agile y Scrum | Estado: Confirmado","color":"#ff9f89","folder_url":"clases/"},
+        {"title":"Modelos de Inteligencia Artificial","start":"2027-04-12T19:00:00","end":"2027-04-12T21:30:00","description":"Profesor: Miguel y Paloma | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-04-14T19:00:00","end":"2027-04-14T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Modelos de Inteligencia Artificial","start":"2027-04-19T19:00:00","end":"2027-04-19T21:30:00","description":"Profesor: Miguel y Paloma | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-04-21T19:00:00","end":"2027-04-21T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Modelos de Inteligencia Artificial","start":"2027-04-26T19:00:00","end":"2027-04-26T21:30:00","description":"Profesor: Miguel y Paloma | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-04-28T19:00:00","end":"2027-04-28T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Modelos de Inteligencia Artificial","start":"2027-05-03T19:00:00","end":"2027-05-03T21:30:00","description":"Profesor: Miguel y Paloma | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-05-05T19:00:00","end":"2027-05-05T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Modelos de Inteligencia Artificial","start":"2027-05-10T19:00:00","end":"2027-05-10T21:30:00","description":"Profesor: Miguel y Paloma | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-05-12T19:00:00","end":"2027-05-12T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"MASTERCLASS 5: Data & IA Strategy","start":"2027-05-13T19:00:00","end":"2027-05-13T21:30:00","description":"Masterclass formativa sobre Estrategia de Datos e IA | Estado: Confirmado","color":"#ff9f89","folder_url":"clases/"},
+        {"title":"Programación de Inteligencia Artificial","start":"2027-05-19T19:00:00","end":"2027-05-19T21:30:00","description":"Profesor: Enrique y Alfredo | Estado: Confirmado","color":"#3788d8","folder_url":"clases/"},
+        {"title":"TFM — Entrega de TFM","start":"2027-05-24T22:59:00","end":"2027-05-24T23:00:00","description":"Fecha límite oficial para entrega del Trabajo Fin de Máster","color":"#28a745","folder_url":"clases/"},
+        {"title":"EXAMEN 2º Semestre","start":"2027-05-22","allDay":true,"description":"Evaluación final correspondiente al segundo semestre lectivo","color":"#dc3545","folder_url":"clases/"}
+      ];
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'es',
+        firstDay: 1, // Lunes
+        height: 'auto',
+        customButtons: {
+          fullscreenButton: {
+            text: '⛶ Pantalla Completa',
+            hint: 'Ver a pantalla completa',
+            click: function() {
+              var elem = document.getElementById('calendar-card');
+              if (!document.fullscreenElement) {
+                if (elem.requestFullscreen) elem.requestFullscreen();
+                else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+              } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+              }
             }
-            return this.origin.code.apply(this, arguments);
           }
-        }
-      },
-      plugins: [
-        function(hook, vm) {
-          hook.beforeEach(function(html) {
-             if (window.slideshowKeydownHandler) {
-                 document.removeEventListener('keydown', window.slideshowKeydownHandler);
-                 window.slideshowKeydownHandler = null;
-             }
-             return html;
-          });
-          
-          hook.doneEach(function() {
-            // Mermaid initialization
-            if (window.mermaid) {
-              window.mermaid.run({ querySelector: '.mermaid' }).catch(function(e) {
-                console.error('Mermaid render error', e);
-              });
-            }
-            
-            // Slideshow Logic for presentation pages
-            const content = document.querySelector('.markdown-section');
-            if (!content) return;
-            
-            const h1 = content.querySelector('h1');
-            if (h1 && h1.textContent.toLowerCase().includes('diapositivas')) {
-              // Find all images that are direct children of paragraphs
-              const images = Array.from(content.querySelectorAll('p > img'));
-              if (images.length > 1) {
-                let currentIndex = 0;
-                
-                const navContainer = document.createElement('div');
-                navContainer.className = 'slideshow-controls';
-                navContainer.innerHTML = `
-                  <button id="slide-prev" class="btn-primary" style="margin-right: 10px; cursor: pointer;">⬅ Anterior</button>
-                  <span id="slide-counter" style="font-weight: 600; margin: 0 15px; font-family: var(--code-font-family);">1 / ${images.length}</span>
-                  <button id="slide-next" class="btn-primary" style="cursor: pointer;">Siguiente ➡</button>
-                  <button id="slide-fullscreen" class="btn-primary" style="margin-left: 20px; cursor: pointer; background: #64748b;" title="Pantalla Completa">⛶</button>
-                  <button id="slide-download" class="btn-primary" style="margin-left: 10px; cursor: pointer; background: #10b981;" title="Descargar como ZIP">⬇ Descargar</button>
-                `;
-                
-                navContainer.style.textAlign = 'center';
-                navContainer.style.margin = '2rem 0';
-                navContainer.style.padding = '1rem';
-                navContainer.style.background = '#f8fafc';
-                navContainer.style.borderRadius = '12px';
-                
-                const wrapper = document.createElement('div');
-                wrapper.className = 'slideshow-wrapper';
-                wrapper.style.background = '#ffffff';
-                wrapper.style.padding = '1rem';
-                wrapper.style.borderRadius = '12px';
-                
-                h1.insertAdjacentElement('afterend', wrapper);
-                wrapper.appendChild(navContainer);
-                
-                images.forEach((img, index) => {
-                  const p = img.closest('p');
-                  if (p) {
-                    const prev = p.previousElementSibling;
-                    if (prev && prev.tagName === 'H2') {
-                      wrapper.appendChild(prev);
-                    }
-                    wrapper.appendChild(p);
-                  }
-                });
-                
-                document.getElementById('slide-fullscreen').addEventListener('click', () => {
-                  if (!document.fullscreenElement) {
-                    wrapper.requestFullscreen().catch(e => console.error(e));
-                  } else {
-                    document.exitFullscreen();
-                  }
-                });
-                
-                document.addEventListener('fullscreenchange', () => {
-                  wrapper.style.overflowY = document.fullscreenElement ? 'auto' : 'visible';
-                  updateSlides();
-                });
-                
-                document.getElementById('slide-download').addEventListener('click', async (e) => {
-                  const btn = e.target;
-                  const originalText = btn.innerHTML;
-                  btn.disabled = true;
-                  btn.innerHTML = '⏳ Preparando...';
-                  btn.style.opacity = '0.7';
-                  
-                  try {
-                    if (!window.JSZip) {
-                      await new Promise((resolve, reject) => {
-                        const script = document.createElement('script');
-                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
-                        script.onload = resolve;
-                        script.onerror = reject;
-                        document.head.appendChild(script);
-                      });
-                    }
-                    
-                    const zip = new window.JSZip();
-                    
-                    // Descargar imágenes
-                    const imgPromises = images.map(async (img) => {
-                      const url = new URL(img.src);
-                      const filename = url.pathname.split('/').pop();
-                      const response = await fetch(url.href);
-                      const blob = await response.blob();
-                      zip.file(filename, blob);
-                    });
-                    
-                    // Descargar markdown
-                    if (vm.route && vm.route.file) {
-                      const mdResponse = await fetch(vm.route.file);
-                      if (mdResponse.ok) {
-                        const mdText = await mdResponse.text();
-                        zip.file('README.md', mdText);
-                      }
-                    }
-                    
-                    await Promise.all(imgPromises);
-                    const zipBlob = await zip.generateAsync({ type: 'blob' });
-                    
-                    const downloadUrl = URL.createObjectURL(zipBlob);
-                    const a = document.createElement('a');
-                    a.href = downloadUrl;
-                    let safeName = h1.textContent.replace('Diapositivas:', '').trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
-                    a.download = (safeName || 'presentacion') + '.zip';
-                    a.click();
-                    URL.revokeObjectURL(downloadUrl);
-                    
-                  } catch (err) {
-                    console.error('Error al descargar ZIP:', err);
-                    alert('Hubo un error al preparar la descarga.');
-                  } finally {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
-                  }
-                });
-                
-                function updateSlides() {
-                  images.forEach((img, index) => {
-                    const p = img.closest('p');
-                    if (p) {
-                      p.style.display = index === currentIndex ? 'block' : 'none';
-                      p.style.textAlign = 'center';
-                      
-                      // Bulletproof against cached markdown or future errors:
-                      // If the previous element is an h2 (the filename header), hide/show it too.
-                      const prev = p.previousElementSibling;
-                      if (prev && prev.tagName === 'H2') {
-                        prev.style.display = index === currentIndex ? 'block' : 'none';
-                        prev.style.textAlign = 'center';
-                        prev.style.borderBottom = 'none';
-                        prev.style.fontSize = '1.1rem';
-                        prev.style.color = '#64748b';
-                      }
-                    }
-                    if (index === currentIndex) {
-                      img.style.maxHeight = document.fullscreenElement ? '85vh' : '70vh';
-                      img.style.width = 'auto';
-                      img.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
-                      img.style.borderRadius = '8px';
-                      img.style.border = '1px solid #e2e8f0';
-                    }
-                  });
-                  document.getElementById('slide-counter').textContent = `${currentIndex + 1} / ${images.length}`;
-                  
-                  const prevBtn = document.getElementById('slide-prev');
-                  const nextBtn = document.getElementById('slide-next');
-                  
-                  prevBtn.disabled = currentIndex === 0;
-                  prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-                  prevBtn.style.cursor = currentIndex === 0 ? 'not-allowed' : 'pointer';
-                  
-                  nextBtn.disabled = currentIndex === images.length - 1;
-                  nextBtn.style.opacity = currentIndex === images.length - 1 ? '0.5' : '1';
-                  nextBtn.style.cursor = currentIndex === images.length - 1 ? 'not-allowed' : 'pointer';
-                }
-                
-                document.getElementById('slide-prev').addEventListener('click', () => {
-                  if (currentIndex > 0) { currentIndex--; updateSlides(); }
-                });
-                
-                document.getElementById('slide-next').addEventListener('click', () => {
-                  if (currentIndex < images.length - 1) { currentIndex++; updateSlides(); }
-                });
-                
-                window.slideshowKeydownHandler = (e) => {
-                  if (e.key === 'ArrowLeft' && currentIndex > 0) {
-                    currentIndex--; updateSlides();
-                  } else if (e.key === 'ArrowRight' && currentIndex < images.length - 1) {
-                    currentIndex++; updateSlides();
-                  }
-                };
-                document.addEventListener('keydown', window.slideshowKeydownHandler);
-                
-                updateSlides();
-              }
-            }
-          });
         },
-        function(hook, vm) {
-          hook.doneEach(function() {
-            // Añadir botones de descarga en apuntes (anotaciones)
-            if (vm.route && vm.route.file && vm.route.file.includes('anotaciones/')) {
-              const content = document.querySelector('.markdown-section');
-              if (!content) return;
-              
-              const h1 = content.querySelector('h1');
-              if (h1) {
-                const btnContainer = document.createElement('div');
-                btnContainer.style.marginTop = '-10px';
-                btnContainer.style.marginBottom = '30px';
-                btnContainer.style.display = 'flex';
-                btnContainer.style.gap = '10px';
-                
-                const mdBtn = document.createElement('button');
-                mdBtn.className = 'btn-primary';
-                mdBtn.style.padding = '6px 12px';
-                mdBtn.style.fontSize = '14px';
-                mdBtn.style.background = '#10b981';
-                mdBtn.innerHTML = '⬇ Descargar Markdown';
-                
-                mdBtn.addEventListener('click', async () => {
-                  try {
-                    const res = await fetch(vm.route.file);
-                    const blob = await res.blob();
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = vm.route.file.split('/').pop();
-                    a.click();
-                    URL.revokeObjectURL(url);
-                  } catch (e) {
-                    console.error('Error downloading MD:', e);
-                  }
-                });
-                
-                const pdfBtn = document.createElement('button');
-                pdfBtn.className = 'btn-primary';
-                pdfBtn.style.padding = '6px 12px';
-                pdfBtn.style.fontSize = '14px';
-                pdfBtn.style.background = '#6366f1';
-                pdfBtn.innerHTML = '🖨 Guardar como PDF';
-                
-                pdfBtn.addEventListener('click', async (e) => {
-                  const btn = e.target;
-                  const originalText = btn.innerHTML;
-                  btn.disabled = true;
-                  btn.innerHTML = '⏳ Generando PDF...';
-                  btn.style.opacity = '0.7';
-                  
-                  try {
-                    if (!window.html2pdf) {
-                      await new Promise((resolve, reject) => {
-                        const script = document.createElement('script');
-                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-                        script.onload = resolve;
-                        script.onerror = reject;
-                        document.head.appendChild(script);
-                      });
-                    }
-                    
-                    // Clonar el contenido para no modificar el DOM visible
-                    const clone = content.cloneNode(true);
-                    
-                    // Ajustar el clon para evitar que html2canvas lo recorte o lo escale mal
-                    clone.style.margin = '0';
-                    clone.style.padding = '0';
-                    clone.style.width = '100%';
-                    clone.style.maxWidth = '800px';
-                    
-                    // Eliminar la zona de botones del clon
-                    const buttonsToRemove = clone.querySelector('div[style*="display: flex"]');
-                    if (buttonsToRemove) buttonsToRemove.remove();
-                    
-                    // Arreglar gráficos Mermaid para el PDF
-                    const mermaids = clone.querySelectorAll('.mermaid');
-                    mermaids.forEach(container => {
-                      container.style.width = '100%';
-                      container.style.maxWidth = '100%';
-                      container.style.overflow = 'hidden';
-                      container.style.textAlign = 'center';
-                      container.style.boxSizing = 'border-box';
-                      const svg = container.querySelector('svg');
-                      if (svg) {
-                        svg.style.maxWidth = '100%';
-                        svg.style.height = 'auto';
-                        svg.removeAttribute('width'); 
-                        svg.removeAttribute('height');
-                      }
-                    });
-                    
-                    const opt = {
-                      margin:       15,
-                      filename:     vm.route.file.split('/').pop().replace('.md', '.pdf'),
-                      image:        { type: 'jpeg', quality: 0.98 },
-                      html2canvas:  { scale: 2, useCORS: true },
-                      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                    };
-                    
-                    await window.html2pdf().set(opt).from(clone).save();
-                  } catch (err) {
-                    console.error('Error al generar PDF:', err);
-                    alert('Hubo un error al generar el PDF.');
-                  } finally {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
-                  }
-                });
-                
-                btnContainer.appendChild(mdBtn);
-                btnContainer.appendChild(pdfBtn);
-                h1.insertAdjacentElement('afterend', btnContainer);
-              }
-            }
-          });
+        headerToolbar: {
+          left: 'prev,next today fullscreenButton',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
-        function(hook, vm) {
-          hook.doneEach(function() {
-            // Inicializar estado de carpetas expandidas
-            window.expandedFolders = window.expandedFolders || new Set();
-            
-            // Sidebar manual collapse logic
-            const sidebarNav = document.querySelector('.sidebar-nav');
-            if (sidebarNav) {
-              const allLis = sidebarNav.querySelectorAll('li');
-              const folders = Array.from(allLis).filter(li => li.querySelector(':scope > ul'));
-              
-              folders.forEach(folder => {
-                if (folder.dataset.collapsible) return;
-                folder.dataset.collapsible = 'true';
-                
-                const link = folder.querySelector(':scope > a') || folder.querySelector(':scope > p');
-                if (link) {
-                  link.classList.add('folder-link');
-                  const folderId = link.innerText.trim();
-                  
-                  const arrow = document.createElement('span');
-                  arrow.innerHTML = '▼';
-                  arrow.style.fontSize = '10px';
-                  arrow.style.transition = 'transform 0.2s';
-                  arrow.style.display = 'inline-block';
-                  arrow.style.marginRight = '8px';
-                  arrow.style.color = 'var(--theme-color)';
-                  arrow.style.cursor = 'pointer';
-                  
-                  link.insertBefore(arrow, link.firstChild);
-                  
-                  const ul = folder.querySelector(':scope > ul');
-                  
-                  const expand = () => {
-                    folder.classList.remove('collapsed');
-                    if (ul) ul.style.display = 'block';
-                    arrow.style.transform = 'rotate(0deg)';
-                    window.expandedFolders.add(folderId);
-                  };
-                  
-                  const collapse = () => {
-                    folder.classList.add('collapsed');
-                    if (ul) ul.style.display = 'none';
-                    arrow.style.transform = 'rotate(-90deg)';
-                    window.expandedFolders.delete(folderId);
-                  };
-                  
-                  link.addEventListener('click', (e) => {
-                    if (e.target === arrow || link.tagName === 'P') {
-                       e.preventDefault();
-                    }
-                    if (folder.classList.contains('collapsed')) {
-                      expand();
-                    } else {
-                      collapse();
-                    }
-                  });
-                  
-                  // Auto collapse o expandir basado en estado
-                  setTimeout(() => {
-                    const hasActive = folder.querySelector('.active');
-                    if (window.expandedFolders.has(folderId) || hasActive) {
-                       expand();
-                    } else {
-                       collapse();
-                    }
-                  }, 100);
-                }
-              });
-            }
-          });
+        buttonText: {
+          today: 'Hoy',
+          month: 'Mes',
+          week: 'Semana',
+          day: 'Día',
+          list: 'Agenda'
+        },
+        navLinks: true,
+        businessHours: true,
+        editable: false,
+        selectable: true,
+        events: eventsData,
+        eventDidMount: function(info) {
+          var today = new Date();
+          var eventEnd = info.event.end || info.event.start;
+          if (eventEnd < today) {
+            info.el.classList.add('past-event');
+            info.el.title = "Clase impartida · Clic para ver detalles";
+          } else {
+            info.el.title = "Clase programada · Clic para ver detalles";
+          }
+        },
+        eventClick: function(info) {
+          openEventModal(info.event);
         }
-      ]
-    }
-  </script>
-  
-  <!-- Core Docsify -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-  <!-- Themeable Plugin (DEBE IR JUSTO DESPUÉS DE DOCSIFY) -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
-  
-  <!-- Plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="https://unpkg.com/docsify-copy-code@2"></script>
-  <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <!-- Mermaid -->
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({ 
-      startOnLoad: false, 
-      theme: "base", 
-      themeVariables: { 
-        primaryColor: "#f8fafc", 
-        primaryBorderColor: "#e2e8f0", 
-        primaryTextColor: "#0f172a", 
-        lineColor: "#4f46e5" 
-      } 
+      });
+
+      calendar.render();
+
+      // Modal Logic
+      var modal = document.getElementById('event-modal');
+      var modalTitle = document.getElementById('modal-title');
+      var modalBadge = document.getElementById('modal-badge');
+      var modalDateTime = document.getElementById('modal-datetime');
+      var modalDesc = document.getElementById('modal-desc');
+      var modalStatus = document.getElementById('modal-status');
+      var btnRepo = document.getElementById('btn-modal-repo');
+      var btnClose = document.getElementById('modal-close');
+      var btnCloseAlt = document.getElementById('btn-modal-close');
+
+      function openEventModal(event) {
+        var today = new Date();
+        var isPast = (event.end || event.start) < today;
+
+        modalTitle.textContent = event.title;
+        
+        // Formato fecha
+        var start = event.start;
+        var end = event.end;
+        var dateStr = start.toLocaleDateString('es-ES', { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        });
+        dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+
+        if (event.allDay) {
+          modalDateTime.textContent = dateStr + ' (Todo el día)';
+        } else if (end) {
+          var timeStr = start.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }) + 
+                        ' - ' + 
+                        end.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+          modalDateTime.textContent = dateStr + ' · ' + timeStr;
+        } else {
+          modalDateTime.textContent = dateStr;
+        }
+
+        // Descripción / Profesor
+        modalDesc.textContent = event.extendedProps.description || 'Sin información adicional disponible.';
+
+        // Estado y Badge
+        var badgeColor = event.backgroundColor || '#3788d8';
+        modalBadge.style.background = badgeColor;
+        modalBadge.style.color = '#ffffff';
+
+        if (badgeColor === '#dc3545') {
+          modalBadge.textContent = 'Examen';
+        } else if (badgeColor === '#ff9f89') {
+          modalBadge.textContent = 'Masterclass';
+          modalBadge.style.color = '#1f2937';
+        } else if (badgeColor === '#28a745') {
+          modalBadge.textContent = 'TFM / Entrega';
+        } else {
+          modalBadge.textContent = 'Clase Lectiva';
+        }
+
+        if (isPast) {
+          modalStatus.innerHTML = '<span style="color: #059669; font-weight: 600;">✅ Sesión impartida</span>';
+        } else {
+          modalStatus.innerHTML = '<span style="color: #2563eb; font-weight: 600;">⏳ Sesión programada</span>';
+        }
+
+        // Enlace al Repositorio
+        var folderUrl = event.extendedProps.folder_url || 'clases/';
+        var githubBase = 'https://github.com/laralbir/bigdata-ia/tree/main/';
+        btnRepo.href = githubBase + folderUrl;
+
+        modal.style.display = 'flex';
+      }
+
+      function closeModal() {
+        modal.style.display = 'none';
+      }
+
+      btnClose.addEventListener('click', closeModal);
+      btnCloseAlt.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
     });
-    window.mermaid = mermaid;
   </script>
 </body>
 </html>
