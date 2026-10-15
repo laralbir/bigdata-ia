@@ -21,6 +21,7 @@
     - [📊 Presentaciones](clases/big_data_aplicado/presentaciones/README.md)
     - **🎥 Grabaciones**
       - [Grabación: Big Data Aplicado (2026-10-07)](clases/big_data_aplicado/grabaciones/2026_10_07_grabacion_big_data_aplicado.md)
+      - [Grabación: Big Data Aplicado (2026-10-14)](clases/big_data_aplicado/grabaciones/2026_10_14_grabacion_big_data_aplicado.md)
 
 - **👨‍💻 Cursos Extras**
   - [Fundamentos de Linux — Cisco Networking Academy](cursos/fundamentos_linux/00-indice.md)

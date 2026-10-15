@@ -11,5 +11,6 @@ Bienvenido a la sección de Big Data Aplicado.
 - [Ver diapositivas](clases/big_data_aplicado/presentaciones/README.md)
 
 ## 🎥 Grabaciones
-- [Clase 1: Conceptos](clases/big_data_aplicado/grabaciones/2026_10_07_grabacion_big_data_aplicado.md)
+- [Clase 1: Conceptos (2026-10-07)](clases/big_data_aplicado/grabaciones/2026_10_07_grabacion_big_data_aplicado.md)
+- [Clase 2: Ingesta y Datos No Estructurados (2026-10-14)](clases/big_data_aplicado/grabaciones/2026_10_14_grabacion_big_data_aplicado.md)
 - [Todas las grabaciones](clases/big_data_aplicado/grabaciones/enlaces_drive.md)
