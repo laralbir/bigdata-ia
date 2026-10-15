@@ -4,6 +4,7 @@ Este directorio contiene las diapositivas y el material gráfico utilizado duran
 
 ## 📚 Listado de Recursos
 
+- 📄 <a href="https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_almacenamiento_y_procesamiento_de_datos.docx" target="_blank">**2026_10_07_bda_almacenamiento_y_procesamiento_de_datos.docx**</a>
 - 📕 <a href="https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_1_the_digitization_of_the_world.pdf" target="_blank">**2026_10_07_bda_lectura_recomendada_1_the_digitization_of_the_world.pdf**</a>
 - 📕 <a href="https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_2_big_data_what_it_is_and_why_it_matters.pdf" target="_blank">**2026_10_07_bda_lectura_recomendada_2_big_data_what_it_is_and_why_it_matters.pdf**</a>
 - 🖼️ <a href="https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_3_a_day_in_data.jpg" target="_blank">**2026_10_07_bda_lectura_recomendada_3_a_day_in_data.jpg**</a>

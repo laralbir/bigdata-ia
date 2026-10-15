@@ -36,10 +36,11 @@
    - 5.2. [Tipos de Backup / Respaldo](#52-tipos-de-backup--respaldo)
    - 5.3. [Estrategias de recuperación de datos](#53-estrategias-de-recuperación-de-datos)
    - 5.4. [Políticas de retención y cumplimiento normativo](#54-políticas-de-retención-y-cumplimiento-normativo)
-6. [Resumen de la Unidad](#6-resumen-de-la-unidad-y-conclusiones)
+6. [Resumen de la Unidad y Conclusiones](#6-resumen-de-la-unidad-y-conclusiones)
    - 6.1. [Recapitulación de conceptos clave](#61-recapitulación-de-conceptos-clave)
    - 6.2. [Tendencias futuras en almacenamiento masivo](#62-tendencias-futuras-en-almacenamiento-masivo)
    - 6.3. [Conclusión Final](#63-conclusión-final)
+   - 6.4. [Material Oficial, Lecturas Recomendadas y Recursos Web](#64-material-oficial-lecturas-recomendadas-y-recursos-web)
 
 ---
 
@@ -798,3 +799,29 @@ A modo de reflexión final, la evolución del almacenamiento masivo nos demuestr
 Mientras que hace unas décadas el foco estaba puesto puramente en la capacidad de los discos duros, hoy el paradigma se ha desplazado hacia la **agilidad, la resiliencia y el procesamiento distribuido**. El futuro de los datos pertenece a infraestructuras hiper-flexibles e invisibles para el usuario final (Cloud, Data Lakes, SDS) que, orquestadas por la Inteligencia Artificial, serán capaces de auto-gestionarse en tiempo real. 
 
 Para cualquier arquitecto o ingeniero de Big Data, dominar no solo dónde residen los datos, sino cómo se optimizan (mediante LZW, deduplicación) y cómo se garantizan ante desastres (con sólidas métricas de RPO/RTO y políticas de seguridad), es la verdadera clave para transformar un simple "almacén digital" en el activo analítico más valioso de la organización.
+
+---
+
+### 6.4 Material Oficial, Lecturas Recomendadas y Recursos Web
+
+#### 📄 Documento Oficial de Autoformación
+- [**2026_10_07_bda_almacenamiento_y_procesamiento_de_datos.docx**](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_almacenamiento_y_procesamiento_de_datos.docx): Guía didáctica oficial con la estructura conceptual del módulo, actividades de investigación y selección de lecturas.
+
+#### 📚 Lecturas Recomendadas del Módulo
+1. 📕 [The Digitization of the World - From Edge to Core (IDC)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_1_the_digitization_of_the_world.pdf): Análisis del crecimiento exponencial de la Global Datasphere hacia los 175 ZB.
+2. 📕 [Big Data: What it is and why it matters? (SAS)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_2_big_data_what_it_is_and_why_it_matters.pdf): Importancia del Big Data, orígenes y casos de uso en la industria.
+3. 🖼️ [A Day in Data (Infografía)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_3_a_day_in_data.jpg): Volumen de datos diarios generados en redes, comercio e IoT.
+4. 🖼️ [Las cuatro V del Big Data (Esquema conceptual)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_4_cuatro_v_del_big_data.jpg): Volumen, Velocidad, Variedad y Veracidad.
+5. 📕 [Big Data: 20 Mind-Boggling Facts Everyone Must Read (Bernard Marr / Forbes)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_5_big_data_20_mind_boggling_facts_everyone_must_read.pdf): Hechos y estadísticas esenciales sobre la era del dato masivo.
+6. 📕 [NVMe, SAS, and SATA (Dell Technologies)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_6_nvme_sas_and_sata.pdf): Comparativa de arquitecturas de buses, interfaces y rendimientos de almacenamiento.
+7. 📕 [Algoritmo de compresión](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_7_algoritmo_de_compresion.pdf): Fundamentos teóricos y matemáticos de compresión sin pérdida y LZW.
+8. 📕 [Cloud Backup – What You Need to Know to Get Started (TechTarget)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_8_cloud_backup_what_you_need_to_know_to_get_started.pdf): Estrategias de respaldo en la nube y modelo 3-2-1.
+9. 📕 [Recovery Manager - Performance and Best Practices (VMware SRM)](https://laralbir.github.io/bigdata-ia/clases/big_data_aplicado/presentaciones/2026_10_07_bda_lectura_recomendada_9_recovery_manager_performance_and_best_practices.pdf): Métricas RTO/RPO y continuidad operativa ante desastres.
+
+#### 🌐 Recursos Web y Actividades de Ampliación
+- **Opciones de Almacenamiento en Cloud:** [AWS Storage Options](https://aws.amazon.com/products/storage/) | [Google Cloud Storage](https://cloud.google.com/products/storage?hl=es_419) | [Azure Storage Services](https://azure.microsoft.com/en-us/product-categories/storage/)
+- **Métricas y Tecnologías de Disco:** [Bytes en Perspectiva (Vídeo)](https://youtu.be/-aYat9357mE) | [A Beginner’s Guide to Understanding RAID](https://www.youtube.com/watch?v=mJ1YyKMn74c) | [Tecnología HAMR (Seagate)](https://www.seagate.com/es/es/innovation/hamr/)
+- **Almacenamiento Empresarial y de Red:** [What’s the Diff: NAS vs. SAN? (Backblaze)](https://www.backblaze.com/blog/whats-the-diff-nas-vs-san/) | [¿Qué es el almacenamiento de objetos? (AWS)](https://aws.amazon.com/what-is/object-storage/)
+- **Optimización y Deduplicación:** [Demystifying Data Deduplication](https://www.falconstor.com/technology/demystifying-data-deduplication/) | [The Complete Data Deduplication Guide (Veritas)](https://www.veritas.com/information-center/data-deduplication)
+- **Continuidad de Negocio y RTO/RPO:** [Understanding RPO and RTO (Druva)](https://www.druva.com/blog/understanding-rpo-and-rto) | [Understanding Disaster Recovery (IBM)](https://cloud.ibm.com/docs/overview?topic=overview-understanding-dr)
+- **Tendencias de Futuro:** [DNA Data Storage (Vídeo explicativo)](https://youtu.be/BgOlfRcsowI) | [Dynamic and Scalable DNA-based Information Storage (Nature Communications)](https://www.nature.com/articles/s41467-020-16797-2)
