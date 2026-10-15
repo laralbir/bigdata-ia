@@ -21,3 +21,4 @@
 ![2026_10_14_datos_no_estructurados_11.png](2026_10_14_datos_no_estructurados_11.png)
 
 ![2026_10_14_datos_no_estructurados_12.png](2026_10_14_datos_no_estructurados_12.png)
+
