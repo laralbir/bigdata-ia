@@ -23,3 +23,4 @@
 ![2026_10_14_sistemas_de_gestion_del_almacenamiento_12.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_12.png)
 
 ![2026_10_14_sistemas_de_gestion_del_almacenamiento_13.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_13.png)
+

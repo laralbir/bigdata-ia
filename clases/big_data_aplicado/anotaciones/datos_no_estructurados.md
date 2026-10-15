@@ -589,3 +589,4 @@ if __name__ == "__main__":
 - **Portales y Recursos en Línea:**
   - *OpenCV (Open Source Computer Vision Library)*: Documentación y tutoriales para el tratamiento avanzado de imágenes y vídeo.
   - *Hugging Face Transformers Documentation*: Repositorio de referencia para el despliegue de modelos profundos de NLP y análisis de sentimiento.
+
