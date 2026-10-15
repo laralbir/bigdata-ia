@@ -14,3 +14,4 @@ Puedes acceder a la grabación de esta sesión alojada en Google Drive mediante 
 👉 **[Ver Grabación de la Clase (Google Drive)](https://drive.google.com/file/d/1w36sq87gVTFDa5J-HwYz6fW8wHc_I_AD/view?usp=drive_link)**
 
 > 💡 **Nota:** Es necesario acceder con las credenciales correspondientes si el enlace es privado.
+
