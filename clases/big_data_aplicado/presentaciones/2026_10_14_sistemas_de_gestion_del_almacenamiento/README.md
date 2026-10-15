@@ -1,0 +1,25 @@
+# Diapositivas: 2026 10 14 sistemas de gestion del almacenamiento
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_02.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_02.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_03.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_03.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_04.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_04.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_05.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_05.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_06.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_06.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_07.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_07.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_08.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_08.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_09.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_09.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_10.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_10.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_11.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_11.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_12.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_12.png)
+
+![2026_10_14_sistemas_de_gestion_del_almacenamiento_13.png](2026_10_14_sistemas_de_gestion_del_almacenamiento_13.png)

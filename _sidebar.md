@@ -16,6 +16,8 @@
   - [Big Data Aplicado](clases/big_data_aplicado/README.md)
     - **📝 Apuntes y Teoría**
       - [Almacenamiento Masivo y Procesamiento de Datos](clases/big_data_aplicado/anotaciones/almacenamiento_masivo_datos.md)
+      - [Sistemas de Gestión del Almacenamiento: Ingesta de Datos](clases/big_data_aplicado/anotaciones/sistemas_gestion_almacenamiento.md)
+      - [Datos No Estructurados: Fuentes, Extracción y Procesamiento](clases/big_data_aplicado/anotaciones/datos_no_estructurados.md)
     - [📊 Presentaciones](clases/big_data_aplicado/presentaciones/README.md)
     - **🎥 Grabaciones**
       - [Grabación: Big Data Aplicado (2026-10-07)](clases/big_data_aplicado/grabaciones/2026_10_07_grabacion_big_data_aplicado.md)
